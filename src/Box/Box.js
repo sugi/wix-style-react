@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -45,6 +45,7 @@ const formatSizeValue = value => (isFinite(value) ? `${value}px` : `${value}`);
 
 const Box = ({
   dataHook,
+  gap,
   children,
   className,
   style,
@@ -93,6 +94,25 @@ const Box = ({
     [horizontalAlignmentValues[align]]: align,
     [verticalAlignmentValues[verticalAlign]]: verticalAlign,
   });
+
+  const childs = useMemo(() => {
+    if (gap) {
+      const length = children.length;
+      const value = formatSpacingValue(gap);
+      return children.map((child, index) => (
+        <div
+          style={{
+            marginRight: length - 1 !== index && value,
+            marginBottom: value,
+          }}
+        >
+          {child}
+        </div>
+      ));
+    }
+    return children;
+  }, [gap, children]);
+
   const rootStyles = {
     ...style,
 
@@ -105,7 +125,9 @@ const Box = ({
     margin: formatSpacingValue(margin),
     marginTop: formatSpacingValue(marginTop),
     marginRight: formatSpacingValue(marginRight),
-    marginBottom: formatSpacingValue(marginBottom),
+    marginBottom: gap
+      ? `-${formatSpacingValue(gap)}`
+      : formatSpacingValue(marginBottom),
     marginLeft: formatSpacingValue(marginLeft),
 
     // Sizing
@@ -144,7 +166,7 @@ const Box = ({
 
   return (
     <div data-hook={dataHook} className={rootClassNames} style={rootStyles}>
-      {children}
+      {childs}
     </div>
   );
 };
