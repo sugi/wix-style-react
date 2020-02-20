@@ -132,7 +132,10 @@
     "path": "src/FilePicker"
   },
   "FloatingHelper": {
-    "path": "src/FloatingHelper"
+    "path": "src/FloatingHelper",
+    "missingFiles": [
+      "FloatingHelper.js"
+    ]
   },
   "FloatingNotification": {
     "path": "src/FloatingNotification"
