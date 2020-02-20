@@ -170,6 +170,7 @@ export const sidePanelTestkitFactory = protractorUniTestkitFactoryCreator(load(r
 export const fontUpgradeTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/FontUpgrade/FontUpgrade.uni.driver')));
 export const customModalTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/CustomModal/CustomModal.uni.driver')));
 export const statusIndicatorTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/StatusIndicator/StatusIndicator.uni.driver')));
+export const floatingHelper2TestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/FloatingHelper2/FloatingHelper2.uni.driver')));
 export const drillViewTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/Deprecated/SideMenu/DrillView/DrillView.protractor.driver')));
 export const cardHeaderTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/Card/Header/Header.uni.driver')));
 export const sideMenuTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/Deprecated/SideMenu/core/SideMenu.uni.driver')));

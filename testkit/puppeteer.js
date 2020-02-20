@@ -150,6 +150,7 @@ export const sidePanelTestkitFactory = puppeteerUniTestkitFactoryCreator(load(re
 export const fontUpgradeTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/FontUpgrade/FontUpgrade.uni.driver')));
 export const customModalTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/CustomModal/CustomModal.uni.driver')));
 export const statusIndicatorTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/StatusIndicator/StatusIndicator.uni.driver')));
+export const floatingHelper2TestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/FloatingHelper2/FloatingHelper2.uni.driver')));
 export const drillViewTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/Deprecated/SideMenu/DrillView/DrillView.uni.driver')));
 export const cardHeaderTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/Card/Header/Header.uni.driver')));
 export const sideMenuTestkitFactory = puppeteerUniTestkitFactoryCreator(load(require('../src/Deprecated/SideMenu/core/SideMenu.uni.driver')));
