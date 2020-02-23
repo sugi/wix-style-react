@@ -180,3 +180,4 @@ export { default as FontUpgrade } from './FontUpgrade';
 export { default as StatusIndicator } from './StatusIndicator';
 export { default as CustomModal } from './CustomModal';
 export { default as FloatingHelper } from './FloatingHelper';
+export { default as FloatingHelperContent } from './FloatingHelperContent';

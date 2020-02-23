@@ -460,5 +460,11 @@
   },
   "StatusIndicator": {
     "path": "src/StatusIndicator"
+  },
+  "FloatingHelper": {
+    "path": "src/FloatingHelper"
+  },
+  "FloatingHelperContent": {
+    "path": "src/FloatingHelperContent"
   }
 }

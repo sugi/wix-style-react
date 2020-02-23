@@ -71,7 +71,6 @@ declare namespace EnzymeTestkit {
   export const emptyStateTestkitFactory: any;
   export const errorIndicatorTestkitFactory: any;
   export const filePickerTestkitFactory: any;
-  export const floatingHelperTestkitFactory: any;
   export const floatingNotificationTestkitFactory: any;
   export const formFieldTestkitFactory: any;
   export const genericModalLayoutTestkitFactory: any;
@@ -163,6 +162,8 @@ declare namespace EnzymeTestkit {
   export const fontUpgradeTestkitFactory: any;
   export const customModalTestkitFactory: EnzymeUniTestkitFactory<CustomModalDriver>;
   export const statusIndicatorTestkitFactory: any;
+  export const floatingHelperTestkitFactory: any;
+  export const floatingHelperContentTestkitFactory: any;
   export const sideMenuDrillTestkitFactory: any;
   export const headerTestkitFactory: any;
   export const sideMenuTestkitFactory: any;

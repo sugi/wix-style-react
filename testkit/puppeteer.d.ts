@@ -132,6 +132,7 @@ export const fontUpgradeTestkitFactory: any;
 export const customModalTestkitFactory: any;
 export const statusIndicatorTestkitFactory: any;
 export const floatingHelperTestkitFactory: any;
+export const floatingHelperContentTestkitFactory: any;
 export const drillViewTestkitFactory: any;
 export const cardHeaderTestkitFactory: any;
 export const sideMenuTestkitFactory: any;
