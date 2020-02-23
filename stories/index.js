@@ -53,7 +53,7 @@ require('../src/EndorseContentLayout/docs');
 require('../src/FilePicker/docs/index.story');
 require('../src/FillButton/docs/index.story');
 require('../src/FillPreview/docs/index.story');
-// require('../src/FloatingHelper/FloatingHelperContent/docs/index.story');
+require('../src/FloatingHelper/FloatingHelperContent/docs/index.story');
 require('../src/FloatingHelper/docs/index.story');
 require('../src/FloatingNotification/docs/index.story');
 require('../src/FloatingNotification/docs/index.story');
@@ -191,6 +191,3 @@ require('../src/MessageBox/docs');
 require('./FieldWithSelectionComposite');
 require('../src/Deprecated/SideMenu/docs');
 require('../src/Deprecated/SideMenu/docs/SideMenu');
-
-// TODO: move to correct position
-require('../src/FloatingHelperContent/docs/index.story');
