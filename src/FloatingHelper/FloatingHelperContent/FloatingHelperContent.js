@@ -49,7 +49,7 @@ const FloatingHelperContent = props => {
           <div className={styles.title}>
             <Text
               data-hook={dataHooks.title}
-              bold
+              weight="bold"
               light={appearance === floatingHelperAppearance.dark}
             >
               {title}
@@ -98,7 +98,7 @@ FloatingHelperContent.propTypes = {
   /** Adds text as the title */
   title: PropTypes.string,
   /** Adds text as the body */
-  body: PropTypes.string,
+  body: PropTypes.string.isRequired,
   /** Sets the text of the action button. Needs to be a non-empty string (and onActionClick prop has to be passed) in order for the action button to appear */
   actionText: PropTypes.string,
   /** Sets the theme of the action button */
