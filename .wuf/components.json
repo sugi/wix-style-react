@@ -465,6 +465,6 @@
     "path": "src/FloatingHelper"
   },
   "FloatingHelperContent": {
-    "path": "src/FloatingHelperContent"
+    "path": "src/FloatingHelper/FloatingHelperContent"
   }
 }
