@@ -163,3 +163,4 @@ export const SidebarSectionItem: any;
 export { default as SidePanel, SidePanelProps } from './SidePanel';
 export { default as FontUpgrade, FontUpgradeProps } from './FontUpgrade';
 export { default as StatusIndicator, StatusIndicatorProps } from './StatusIndicator';
+export { default as FloatingHelper, FloatingHelperProps } from './FloatingHelper';

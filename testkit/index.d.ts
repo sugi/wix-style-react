@@ -67,7 +67,6 @@ declare namespace VanillaTestkit {
   export const emptyStateTestkitFactory: any;
   export const errorIndicatorTestkitFactory: any;
   export const filePickerTestkitFactory: any;
-  export const floatingHelperTestkitFactory: any;
   export const floatingNotificationTestkitFactory: any;
   export const formFieldTestkitFactory: any;
   export const genericModalLayoutTestkitFactory: any;
@@ -159,6 +158,7 @@ declare namespace VanillaTestkit {
   export const fontUpgradeTestkitFactory: any;
   export const customModalTestkitFactory: VanillaUniTestkitFactory<CustomModalDriver>;
   export const statusIndicatorTestkitFactory: any;
+  export const floatingHelperTestkitFactory: any;
   export const sideMenuDrillTestkitFactory: any;
   export const headerTestkitFactory: any;
   export const sideMenuTestkitFactory: any;

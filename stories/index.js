@@ -54,7 +54,7 @@ require('../src/FilePicker/docs/index.story');
 require('../src/FillButton/docs/index.story');
 require('../src/FillPreview/docs/index.story');
 // require('../src/FloatingHelper/FloatingHelperContent/docs/index.story');
-// require('../src/FloatingHelper/docs/index.story');
+require('../src/FloatingHelper/docs/index.story');
 require('../src/FloatingNotification/docs/index.story');
 require('../src/FloatingNotification/docs/index.story');
 require('../src/FormField/docs/index.story');
