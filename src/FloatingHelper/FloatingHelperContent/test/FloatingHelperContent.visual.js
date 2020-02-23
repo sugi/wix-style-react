@@ -10,7 +10,7 @@ const title = 'Don’t forget to setup payments';
 const body =
   'In order to sell your music you need to choose a payment method. ';
 const action = { actionText: 'Ok, Take Me There', onActionClick: () => null };
-const image = <Image width="102" height="102" />;
+const image = <Image style={{ color: 'white' }} width="102" height="102" />;
 
 const actionThemes = Object.values(actionButtonTheme);
 const appearances = Object.values(floatingHelperAppearance);
