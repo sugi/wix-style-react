@@ -164,4 +164,4 @@ export { default as SidePanel, SidePanelProps } from './SidePanel';
 export { default as FontUpgrade, FontUpgradeProps } from './FontUpgrade';
 export { default as StatusIndicator, StatusIndicatorProps } from './StatusIndicator';
 export { default as FloatingHelper, FloatingHelperProps } from './FloatingHelper';
-export { default as FloatingHelperContent, FloatingHelperContentProps } from './FloatingHelperContent/';
+export { default as FloatingHelperContent, FloatingHelperContentProps } from './FloatingHelper/FloatingHelperContent/FloatingHelperContent';
