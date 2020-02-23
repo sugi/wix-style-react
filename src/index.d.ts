@@ -66,7 +66,6 @@ export const StatsWidget: any;
 export { default as Card, CardProps } from './Card';
 export const ColorPicker: any;
 export const CounterBadge: any;
-export const FloatingHelper: any;
 export const FormField: any;
 export const HBox: any;
 export { VBox, VBoxProps } from './VBox';

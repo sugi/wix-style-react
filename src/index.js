@@ -70,7 +70,6 @@ export { default as StatsWidget } from './StatsWidget';
 export { default as Card } from './Card';
 export { default as ColorPicker } from './ColorPicker';
 export { default as CounterBadge } from './CounterBadge';
-export { default as FloatingHelper } from './FloatingHelper';
 export { default as FormField } from './FormField';
 export { HBox } from './HBox';
 export { VBox } from './VBox';
