@@ -1,6 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FloatingHelperContent.st.css';
+import { floatingHelperAppearance } from '../constants';
+import { dataHooks, actionButtonTheme } from './constants';
+import Text from '../../Text';
+import Button from '../../Button';
+import {
+  SKINS as ButtonSkin,
+  PRIORITY as ButtonPriority,
+} from '../../Button/constants';
+
+const themeToButtonProps = {
+  [actionButtonTheme.white]: {
+    skin: ButtonSkin.white,
+    priority: ButtonPriority.secondary,
+  },
+  [actionButtonTheme.standard]: {
+    skin: ButtonSkin.standard,
+    priority: ButtonPriority.secondary,
+  },
+  [actionButtonTheme.premium]: {
+    skin: ButtonSkin.premium,
+    priority: ButtonPriority.primary,
+  },
+  [actionButtonTheme.lightPrimary]: {
+    skin: ButtonSkin.white,
+    priority: ButtonPriority.primary,
+  },
+};
 
 /** FloatingHelperContent */
 export const FloatingHelperContent = props => {
@@ -13,10 +40,56 @@ export const FloatingHelperContent = props => {
     image,
     appearance,
     footer,
-    dataHook,
   } = props;
 
-  return <div {...styles('root', {}, this.props)} data-hook={dataHook} />;
+  return (
+    <div {...styles('root', { hasBody: !!props.body }, props)}>
+      <div>
+        {title && (
+          <div className={styles.title}>
+            <Text
+              data-hook={dataHooks.title}
+              bold
+              light={appearance === floatingHelperAppearance.dark}
+            >
+              {title}
+            </Text>
+          </div>
+        )}
+        {body && (
+          <div>
+            <Text
+              data-hook={dataHooks.body}
+              light={appearance === floatingHelperAppearance.dark}
+            >
+              {body}
+            </Text>
+          </div>
+        )}
+
+        {actionText && onActionClick && actionText.length > 0 && (
+          <Button
+            {...themeToButtonProps[actionTheme]}
+            data-hook={dataHooks.actionButton}
+            onClick={onActionClick}
+            size="small"
+          >
+            {actionText}
+          </Button>
+        )}
+        {footer && (
+          <div data-hook={dataHooks.footer} className={styles.footer}>
+            {footer}
+          </div>
+        )}
+      </div>
+      {image && (
+        <div data-hook={dataHooks.image} className={styles.image}>
+          {image}
+        </div>
+      )}
+    </div>
+  );
 };
 
 FloatingHelperContent.displayName = 'FloatingHelperContent';
@@ -45,4 +118,7 @@ FloatingHelperContent.propTypes = {
   appearance: PropTypes.oneOf(['dark', 'light']),
 };
 
-FloatingHelperContent.defaultProps = {};
+FloatingHelperContent.defaultProps = {
+  actionTheme: 'white',
+  appearance: 'dark',
+};
