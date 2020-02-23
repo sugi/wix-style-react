@@ -464,7 +464,4 @@
   "StatusIndicator": {
     "path": "src/StatusIndicator"
   },
-  "FloatingHelper2": {
-    "path": "src/FloatingHelper2"
-  }
 }

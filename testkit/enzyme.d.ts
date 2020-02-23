@@ -163,7 +163,6 @@ declare namespace EnzymeTestkit {
   export const fontUpgradeTestkitFactory: any;
   export const customModalTestkitFactory: EnzymeUniTestkitFactory<CustomModalDriver>;
   export const statusIndicatorTestkitFactory: any;
-  export const floatingHelper2TestkitFactory: any;
   export const sideMenuDrillTestkitFactory: any;
   export const headerTestkitFactory: any;
   export const sideMenuTestkitFactory: any;
