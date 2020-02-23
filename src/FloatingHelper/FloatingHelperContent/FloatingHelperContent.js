@@ -12,7 +12,7 @@ import {
 
 const themeToButtonProps = {
   [actionButtonTheme.white]: {
-    skin: ButtonSkin.white,
+    skin: ButtonSkin.light,
     priority: ButtonPriority.secondary,
   },
   [actionButtonTheme.standard]: {
@@ -24,7 +24,7 @@ const themeToButtonProps = {
     priority: ButtonPriority.primary,
   },
   [actionButtonTheme.lightPrimary]: {
-    skin: ButtonSkin.white,
+    skin: ButtonSkin.light,
     priority: ButtonPriority.primary,
   },
 };
@@ -68,14 +68,16 @@ const FloatingHelperContent = props => {
         )}
 
         {actionText && onActionClick && actionText.length > 0 && (
-          <Button
-            {...themeToButtonProps[actionTheme]}
-            data-hook={dataHooks.actionButton}
-            onClick={onActionClick}
-            size="small"
-          >
-            {actionText}
-          </Button>
+          <div className={styles.action}>
+            <Button
+              {...themeToButtonProps[actionTheme]}
+              data-hook={dataHooks.actionButton}
+              onClick={onActionClick}
+              size="small"
+            >
+              {actionText}
+            </Button>
+          </div>
         )}
         {footer && (
           <div data-hook={dataHooks.footer} className={styles.footer}>
