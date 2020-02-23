@@ -80,16 +80,19 @@ tests.forEach(({ describe, its }) => {
       `FloatingHelperContent${describe ? '/' + describe : ''}`,
       module,
     ).add(it, () => (
-      <Box
-        backgroundColor={props.appearance === 'light' ? 'D80' : 'D20'}
-        padding="20px"
+      <div
+        style={{
+          padding: '20px',
+          display: 'inline-block',
+          backgroundColor: props.appearance === 'light' ? '#ffffff' : '#162d3d',
+        }}
       >
         <FloatingHelperContent
           {...defaultProps}
           {...requiredProps}
           {...props}
         />
-      </Box>
+      </div>
     ));
   });
 });
