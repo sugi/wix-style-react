@@ -82,7 +82,6 @@ export const editableTitleTestkitFactory = protractorUniTestkitFactoryCreator(lo
 export const emptyStateTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/EmptyState/EmptyState.protractor.driver')));
 export const errorIndicatorTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/ErrorIndicator/ErrorIndicator.uni.driver')));
 export const filePickerTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/FilePicker/FilePicker.protractor.driver')));
-export const floatingHelperTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/FloatingHelper/FloatingHelper.protractor.driver')));
 export const floatingNotificationTestkitFactory = protractorUniTestkitFactoryCreator(load(require('../src/FloatingNotification/FloatingNotification.uni.driver')));
 export const formFieldTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/FormField/FormField.protractor.driver')));
 export const genericModalLayoutTestkitFactory = protractorTestkitFactoryCreator(load(require('../src/GenericModalLayout/GenericModalLayout.protractor.driver')));

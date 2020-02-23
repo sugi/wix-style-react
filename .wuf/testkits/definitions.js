@@ -429,13 +429,6 @@ module.exports = {
     protractorLegacyTestkit: true,
   },
 
-  FloatingHelper: {
-    vanillaLegacyTestkit: true,
-    enzymeLegacyTestkit: true,
-    protractorLegacyTestkit: true,
-    noPuppeteerTestkit: true,
-  },
-
   FormField: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,

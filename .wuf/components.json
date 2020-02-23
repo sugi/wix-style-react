@@ -131,9 +131,6 @@
   "FilePicker": {
     "path": "src/FilePicker"
   },
-  "FloatingHelper": {
-    "path": "src/FloatingHelper"
-  },
   "FloatingNotification": {
     "path": "src/FloatingNotification"
   },
