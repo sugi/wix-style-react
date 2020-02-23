@@ -7,7 +7,7 @@ import MultiSelect from '../src/MultiSelect';
 import AutoComplete from '../src/AutoComplete';
 import Input from '../src/Input';
 import Notification from '../src/Notification';
-
+import FloatingHelper from '../src/FloatingHelper';
 import GoogleAddressInput from '../src/GoogleAddressInput';
 import VerticalTabs from '../src/VerticalTabs';
 import SegmentedToggle from '../src/SegmentedToggle';
@@ -65,13 +65,13 @@ export default {
     },
   },
 
-  // FloatingHelper: {
-  //   props: {
-  //     content: <FloatingHelper.Content title="title" body="body" />,
-  //     target: <div>target</div>,
-  //     placement: 'left',
-  //   },
-  // },
+  FloatingHelper: {
+    props: {
+      content: <FloatingHelper.Content title="title" body="body" />,
+      target: <div>target</div>,
+      placement: 'left',
+    },
+  },
 
   Range: {
     props: {
