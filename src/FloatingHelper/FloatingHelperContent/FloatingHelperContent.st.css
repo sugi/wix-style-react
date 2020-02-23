@@ -1,22 +1,23 @@
-:import {
-  -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: G30,R30;
-}
-
 .root {
-  -st-states: odd, even;
-  text-align: center;
-}
-
-.root:even .number {
-  background: value(G30);
-}
-
-.root:odd .number {
-  background: value(R30);
-}
-
-.button {
+  -st-states: hasBody(boolean), appearance(enum(dark,light));
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.root:hasBody .title {
+  margin-bottom: 6px;
+}
+
+.action {
+  margin-top: 18px;
+}
+
+.image {
+  margin-left: 18px;
+  display: flex;
+}
+
+.footer {
+  margin-top: 12px;
+  display: flex;
 }

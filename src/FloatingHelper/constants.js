@@ -1,4 +1,10 @@
 export const dataHooks = {
-  floatingHelperCount: 'floatingHelper-count',
-  floatingHelperButton: 'floatingHelper-button',
+  innerContent: 'inner-content',
+  closeButton: 'close-button',
+  contentWrapper: 'content-wrapper',
+};
+
+export const floatingHelperAppearance = {
+  dark: 'dark',
+  light: 'light',
 };

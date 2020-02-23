@@ -1,64 +1,126 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import styles from './FloatingHelperContent.st.css';
+import { floatingHelperAppearance } from '../constants';
+import { dataHooks, actionButtonTheme } from './constants';
 import Text from '../../Text';
 import Button from '../../Button';
-import styles from './FloatingHelperContent.st.css';
-import { dataHooks } from './constants';
+import {
+  SKINS as ButtonSkin,
+  PRIORITY as ButtonPriority,
+} from '../../Button/constants';
+
+const themeToButtonProps = {
+  [actionButtonTheme.white]: {
+    skin: ButtonSkin.white,
+    priority: ButtonPriority.secondary,
+  },
+  [actionButtonTheme.standard]: {
+    skin: ButtonSkin.standard,
+    priority: ButtonPriority.secondary,
+  },
+  [actionButtonTheme.premium]: {
+    skin: ButtonSkin.premium,
+    priority: ButtonPriority.primary,
+  },
+  [actionButtonTheme.lightPrimary]: {
+    skin: ButtonSkin.white,
+    priority: ButtonPriority.primary,
+  },
+};
 
 /** FloatingHelperContent */
-class FloatingHelperContent extends React.PureComponent {
-  state = {
-    count: 0,
-  };
+const FloatingHelperContent = props => {
+  const {
+    title,
+    body,
+    actionText,
+    onActionClick,
+    actionTheme,
+    image,
+    appearance,
+    footer,
+  } = props;
 
-  _handleClick = () => {
-    this.setState(({ count }) => ({
-      count: count + 1,
-    }));
-  };
+  return (
+    <div {...styles('root', { hasBody: !!props.body }, props)}>
+      <div>
+        {title && (
+          <div className={styles.title}>
+            <Text
+              data-hook={dataHooks.title}
+              bold
+              light={appearance === floatingHelperAppearance.dark}
+            >
+              {title}
+            </Text>
+          </div>
+        )}
+        {body && (
+          <div>
+            <Text
+              data-hook={dataHooks.body}
+              light={appearance === floatingHelperAppearance.dark}
+            >
+              {body}
+            </Text>
+          </div>
+        )}
 
-  render() {
-    const { count } = this.state;
-    const { dataHook, buttonText } = this.props;
-    const isEven = count % 2 === 0;
-
-    return (
-      <div
-        {...styles('root', { even: isEven, odd: !isEven }, this.props)}
-        data-hook={dataHook}
-      >
-        <Text dataHook={dataHooks.floatingHelperContentCount}>
-          You clicked this button {isEven ? 'even' : 'odd'} number (
-          <span className={styles.number}>{count}</span>) of times
-        </Text>
-
-        <div className={styles.button}>
+        {actionText && onActionClick && actionText.length > 0 && (
           <Button
-            onClick={this._handleClick}
-            dataHook={dataHooks.floatingHelperContentButton}
+            {...themeToButtonProps[actionTheme]}
+            data-hook={dataHooks.actionButton}
+            onClick={onActionClick}
+            size="small"
           >
-            {buttonText}
+            {actionText}
           </Button>
-        </div>
+        )}
+        {footer && (
+          <div data-hook={dataHooks.footer} className={styles.footer}>
+            {footer}
+          </div>
+        )}
       </div>
-    );
-  }
-}
+      {image && (
+        <div data-hook={dataHooks.image} className={styles.image}>
+          {image}
+        </div>
+      )}
+    </div>
+  );
+};
 
 FloatingHelperContent.displayName = 'FloatingHelperContent';
 
 FloatingHelperContent.propTypes = {
-  /** Applied as data-hook HTML attribute that can be used in the tests */
-  dataHook: PropTypes.string,
-
-  /** A css class to be applied to the component's root element */
-  className: PropTypes.string,
-
-  /** Text for the button */
-  buttonText: PropTypes.string,
+  /** Adds text as the title */
+  title: PropTypes.string,
+  /** Adds text as the body */
+  body: PropTypes.string,
+  /** Sets the text of the action button. Needs to be a non-empty string (and onActionClick prop has to be passed) in order for the action button to appear */
+  actionText: PropTypes.string,
+  /** Sets the theme of the action button */
+  actionTheme: PropTypes.oneOf([
+    'standard',
+    'white',
+    'premium',
+    'lightPrimary',
+  ]),
+  /** Custom footer node */
+  footer: PropTypes.node,
+  /** When both onActionClick & actionText are provided, will make an action button appear and invoke onActionClick() upon click */
+  onActionClick: PropTypes.func,
+  /** Adds an image */
+  image: PropTypes.node,
+  /** Appearance : `dark` or `light`. */
+  appearance: PropTypes.oneOf(['dark', 'light']),
 };
 
-FloatingHelperContent.defaultProps = {};
+FloatingHelperContent.defaultProps = {
+  actionTheme: 'white',
+  appearance: 'dark',
+};
 
 export default FloatingHelperContent;
