@@ -5,15 +5,9 @@ import { dataHooks, floatingHelperAppearance } from './constants';
 
 /** FloatingHelper */
 class FloatingHelper extends React.PureComponent {
-  state = {
-    count: 0,
-  };
+  closablePopoverRef;
 
-  _handleClick = () => {
-    this.setState(({ count }) => ({
-      count: count + 1,
-    }));
-  };
+  static FloatingHelperContent;
 
   render() {
     const { dataHook } = this.props;
@@ -50,6 +44,11 @@ FloatingHelper.propTypes = {
   appearance: PropTypes.oneOf(['dark', 'light']),
 };
 
-FloatingHelper.defaultProps = {};
+FloatingHelper.defaultProps = {
+  appendTo: 'window',
+  width: '444px',
+  initiallyOpened: true,
+  appearance: 'dark',
+};
 
 export default FloatingHelper;
