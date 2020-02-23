@@ -30,7 +30,7 @@ const themeToButtonProps = {
 };
 
 /** FloatingHelperContent */
-export const FloatingHelperContent = props => {
+const FloatingHelperContent = props => {
   const {
     title,
     body,
@@ -122,3 +122,5 @@ FloatingHelperContent.defaultProps = {
   actionTheme: 'white',
   appearance: 'dark',
 };
+
+export default FloatingHelperContent;
