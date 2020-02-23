@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FloatingHelper.st.css';
-import { dataHooks, floatingHelperAppearance } from './constants';
+//import { dataHooks, floatingHelperAppearance } from './constants';
+import { FloatingHelperContent } from 'FloatingHelperContent/FloatingHelperConent';
 
 /** FloatingHelper */
 class FloatingHelper extends React.PureComponent {
   closablePopoverRef;
 
-  static FloatingHelperContent;
+  static FloatingHelperContent = FloatingHelperContent;
 
   render() {
     const { dataHook } = this.props;
