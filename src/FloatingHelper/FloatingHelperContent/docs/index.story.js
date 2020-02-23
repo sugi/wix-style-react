@@ -15,7 +15,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from '../test/storySettings';
-import allComponents from '../../../stories/utils/allComponents';
+import allComponents from '../../../../stories/utils/allComponents';
 
 import FloatingHelperContent from '..';
 

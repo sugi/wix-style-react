@@ -1,7 +1,10 @@
 import React from 'react';
-import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
+import {
+  createRendererWithUniDriver,
+  cleanup,
+} from '../../../../test/utils/unit';
 
-import FloatingHelperContent from '../FloatingHelperContent';
+import FloatingHelperContent from '../FloatingHelperConent';
 import { floatingHelperContentPrivateDriverFactory } from './FloatingHelperContent.private.uni.driver';
 
 describe('FloatingHelperContent', () => {
