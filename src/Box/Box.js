@@ -151,7 +151,7 @@ Box.displayName = 'Box';
 
 Box.propTypes = {
   /** Any element to be rendered inside */
-  children: PropTypes.node,
+  children: PropTypes.string,
   /** Define styles through a classname */
   className: PropTypes.string,
   /** Defines if the box behaves as an inline element */
