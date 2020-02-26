@@ -127,7 +127,7 @@ Tag.propTypes = {
   dataHook: PropTypes.string,
 
   /** The text of the tag */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 
   /** when set to true this component is disabled */
   disabled: PropTypes.bool,

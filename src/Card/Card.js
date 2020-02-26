@@ -29,7 +29,7 @@ const Card = ({
   </div>
 );
 
-Card.displayName = 'Card';
+Card.displayName = 'NewCard';
 
 Card.propTypes = {
   /** any node to render inside card */

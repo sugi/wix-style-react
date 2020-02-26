@@ -30,6 +30,7 @@ class IconButton extends PureComponent {
     disabled: bool,
     /** String based data hook */
     dataHook: string,
+    myNewProp: object,
   };
 
   static defaultProps = {

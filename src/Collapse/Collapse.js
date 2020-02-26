@@ -14,7 +14,7 @@ Collapse.displayName = 'Collapse';
 
 Collapse.propTypes = {
   children: PropTypes.node,
-  open: PropTypes.bool,
+  open: PropTypes.string,
   dataHook: PropTypes.string,
 };
 

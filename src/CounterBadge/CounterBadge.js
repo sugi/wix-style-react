@@ -47,7 +47,8 @@ CounterBadge.propTypes = {
 };
 
 CounterBadge.defaultProps = {
-  skin: 'general',
+  skin: 'NewGeneral',
+  className: 'newDefaultProp',
 };
 
 export default CounterBadge;
