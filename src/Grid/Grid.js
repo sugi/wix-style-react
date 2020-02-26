@@ -41,7 +41,7 @@ class Columns extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    rtl: PropTypes.bool,
+    rtl: PropTypes.bool.isRequired,
     stretchViewsVertically: PropTypes.bool,
     dataHook: PropTypes.string,
   };
