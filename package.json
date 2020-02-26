@@ -179,6 +179,7 @@
     "storybook-addon-i18n": "^5.1.13",
     "storybook-chromatic": "^3.5.0",
     "storybook-snapper": "^1.0.8",
+    "sync-ts": "^1.0.16",
     "typescript": "~3.7.5",
     "velocity": "^0.7.2",
     "wait-for-cond": "^1.0.3",
