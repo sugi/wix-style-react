@@ -9,8 +9,6 @@ const containerProps = {
   children: PropTypes.node,
   fluid: PropTypes.bool,
   className: PropTypes.string,
-  /** Applies min-height in order to fit to `<Page.Content/>`  */
-  stretchVertically: PropTypes.bool,
 };
 
 const RawContainer = ({ children, fluid, className, stretchVertically }) => (
@@ -102,7 +100,7 @@ class Col extends Component {
     sm: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     md: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    xl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    xl: PropTypes.oneOfType([PropTypes.string]),
     dataHook: PropTypes.string,
   };
 
