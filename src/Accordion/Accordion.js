@@ -14,6 +14,8 @@ class Accordion extends React.Component {
     /** allow multiple rows to be opened simultaneously */
     multiple: PropTypes.bool,
 
+    randomNewProp: PropTypes.string,
+
     /** Accordion skin color */
     skin: PropTypes.oneOf(['standard', 'light']),
 
