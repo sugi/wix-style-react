@@ -1,0 +1,23 @@
+:vars {
+  closeButtonPadding: 6px;
+}
+
+.closeButton {
+  position: absolute;
+  top: value(closeButtonPadding);
+
+  /* default dir=ltr */
+  right: value(closeButtonPadding);
+  left: initial;
+}
+
+:global([dir="rtl"]) .closeButton {
+  right: initial;
+  left: value(closeButtonPadding);
+}
+
+.innerContent {
+  padding: 30px 36px;
+}
+
+

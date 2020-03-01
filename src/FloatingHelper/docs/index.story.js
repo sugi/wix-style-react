@@ -2,7 +2,7 @@ import * as React from 'react';
 import FloatingHelper from '..';
 import Image from 'wix-ui-icons-common/Image';
 
-import { storySettings } from './storySettings';
+import { storySettings } from '../test/storySettings';
 import { storySettings as helperStorySettings } from '../FloatingHelperContent/docs/storySettings';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
@@ -99,7 +99,7 @@ export default {
         See story:
         <br />
         <p style={{ fontSize: 25, fontWeight: 'bold' }}>
-          {helperStorySettings.story}
+          {helperStorySettings.storyName}
         </p>
       </p>
 
