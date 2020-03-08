@@ -213,7 +213,7 @@ MultiSelect.propTypes = {
   /** Callback predicate for the filtering options function */
   predicate: PropTypes.func,
 
-  /** Optional list of strings that are selected suggestions. */
+  /** Optional list of strings that are selected suggestions, array object must contain `label` key to be shown correctly*/
   tags: PropTypes.array,
 
   /** Max number of visible lines */
