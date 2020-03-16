@@ -4,8 +4,19 @@ import { tooltipDriverFactory } from '../Tooltip/TooltipNext/Tooltip.uni.driver'
 export const toggleButtonDriverFactory = (base, body) => {
   const tooltipDriver = tooltipDriverFactory(base, body);
 
-  const buttonBaseElement = base.$('[data-hook="togglebutton-trigger"]');
+  const buttonBaseElement = body.$('[data-hook="togglebutton-trigger"]');
   const buttonDriver = buttonNextDriverFactory(buttonBaseElement);
+
+  function getLabelPlacement() {
+    return body
+      .$$('[data-placement]')
+      .get(0)
+      .attr('data-placement');
+  }
+
+  function getTooltipText() {
+    return tooltipDriver.getTooltipText();
+  }
 
   // Not using Omit so that AutoDocs will generate properly
   return {
@@ -22,6 +33,19 @@ export const toggleButtonDriverFactory = (base, body) => {
     /** returns true if button is selected */
     isButtonSelected: async () =>
       (await buttonBaseElement.attr('data-selected')) === 'true',
-    getTooltipText: async () => tooltipDriver.getTooltipText(),
+    /** @deprecated use `getLabelValue` instead */
+    getTooltipText,
+    /** returns label placement value */
+    getLabelPlacement,
+    /** returns label value */
+    getLabelValue: async () => {
+      const placement = await getLabelPlacement();
+
+      if (placement === 'tooltip') {
+        return getTooltipText();
+      }
+
+      return base.$('[data-hook="togglebutton-label"]').text();
+    },
   };
 };

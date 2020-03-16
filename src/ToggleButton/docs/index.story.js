@@ -37,12 +37,11 @@ export default {
     as: 'button',
     children: <CropRotate />,
     skin: 'standard',
-    priority: 'primary',
     size: 'medium',
-    tooltip: 'I am a tooltip',
     selected: false,
     disabled: false,
-    tooltipContent: 'Crop & Rotate',
+    labelValue: 'Crop & Rotate',
+    labelPlacement: 'tooltip',
     tooltipProps: { placement: 'top' },
   },
   exampleProps: {
@@ -55,7 +54,7 @@ export default {
     header({
       component: (
         <Layout gap={0}>
-          <ToggleButton tooltipContent="Crop & Rotate">
+          <ToggleButton labelValue="Crop & Rotate">
             <CropRotate />
           </ToggleButton>
         </Layout>
@@ -80,6 +79,13 @@ export default {
             divider(),
 
             columns([title('Examples')]),
+
+            example({
+              title: 'Size',
+              text:
+                'Toggle Button supports 4 sizes: `tiny`, `small`, `medium` (default) and `large`',
+              source: examples.sizes,
+            }),
 
             example({
               title: 'Skin',
@@ -113,6 +119,13 @@ export default {
                   - as a \`<Link/>\` from react router, the component can have props like \`to\`, \`replace\`, etc.
                 `,
               source: examples.custom,
+            }),
+
+            example({
+              title: 'Label placement',
+              text:
+                'Toggle Button supports 3 label placements: `tooltip` (default), `end` and `bottom`',
+              source: examples.labelPlacements,
             }),
           ],
         }),

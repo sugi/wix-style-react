@@ -1,25 +1,17 @@
 :import {
-  -st-from: "wix-ui-core/index.st.css";
-  -st-named: ButtonNext;
+  -st-from: 'wix-ui-core/hocs.st.css';
+  -st-named: Focusable;
 }
 
 :import {
-  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-from: '../Foundation/stylable/colors.st.css';
   -st-named: B10, D55, D80, B20, B50, B40, F00, D10, D20, D30;
 }
 
+/* root */
 .root {
-  
-}
+  -st-states: selected, disabled;
 
-.root {
-  -st-extends: ButtonNext;
-  -st-states: skin(enum(standard, dark)), selected, size(enum(medium));
-  
-  min-width: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
   padding: 0;
 
   box-sizing: border-box;
@@ -29,70 +21,61 @@
   outline: none;
   transition: all 100ms linear;
 
-  background-color: value(D80);
+  background-color: transparent;
   color: value(D10);
 }
 
-.root:hover:not(:disabled) {
+/* icon */
+.icon {
+  -st-extends: Focusable;
+  -st-states: size;
+
+  display: flex;
+  align-items: center;
+
+  outline: none;
   background-color: value(D80);
-  color: value(B10);
 }
 
-.root:active:not(:disabled),
-.root:selected:not(:disabled) {
-  background-color: value(B40);
-  color: value(B20);
-}
-
-.root:active:hover:not(:disabled),
-.root:selected:hover:not(:disabled) {
-  background-color: value(B50);
-  color: value(B20);
-}
-
-.root:disabled {
-  background-color: value(D80);
-  color: value(D55);
-}
-
-.root:focus-visible {
+.icon:focus-visible {
   box-shadow: 0 0 0 3px value(F00);
 }
 
-.root::content {
-  line-height: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.icon:size(tiny) {
+  border-radius: 4px;
+  padding: 3px;
 }
 
-/* skin Dark */
-
-.root:skin(dark) {
-  background-color: value(D80);
-  color: value(D10);
+.icon:size(small) {
+  border-radius: 4px;
+  padding: 6px;
 }
 
-.root:skin(dark):hover:not(:disabled) {
-  background-color: value(D80);
-  color: value(D30);
+.icon:size(medium) {
+  border-radius: 6px;
+  padding: 6px;
 }
 
-.root:skin(dark):active:not(:disabled),
-.root:skin(dark):selected:not(:disabled) {
-  background-color: value(D10);
-  color: value(D80);
+.icon:size(large) {
+  border-radius: 6px;
+  padding: 9px;
 }
 
-.root:skin(dark):active:hover:not(:disabled),
-.root:skin(dark):selected:hover:not(:disabled) {
-  background-color: value(D20);
-  color: value(D80);
+/* label */
+.label {
+  -st-states: placement(enum(tooltip, end, bottom)),
+    size(enum(tiny, small, medium, large));
 }
 
-.root:skin(dark):disabled {
-  background-color: value(D80);
-  color: value(D55);
+.label:placement(end):size(tiny) {
+  padding: 0 3px;
+}
+
+.label:placement(end):size(small),
+.label:placement(end):size(medium) {
+  padding: 0 6px;
+}
+
+.label:placement(end):size(large) {
+  padding: 0 9px;
 }

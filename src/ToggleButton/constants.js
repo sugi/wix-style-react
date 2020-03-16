@@ -3,14 +3,13 @@ export const SKINS = {
   dark: 'dark',
 };
 
-export const SIZES = {
-  medium: 'medium',
-};
-
 export const PRIORITY = {
   primary: 'primary',
 };
 
 export const iconChildSize = {
-  [SIZES.medium]: '24px',
+  tiny: '18px',
+  small: '18px',
+  medium: '24px',
+  large: '24px',
 };

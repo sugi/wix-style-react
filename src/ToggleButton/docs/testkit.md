@@ -11,7 +11,8 @@
 | click            | -         | `Promise<void>`    | clicks on the button               |
 | isButtonDisabled | -         | `Promise<boolean>` | returns true if button is disabled |
 | isButtonSelected | -         | `Promise<boolean>` | returns true if button is selected |
-| getTooltipText   | -         | `Promise<string>`  | returns text content of tooltip    |
+| getLabelPlacement| -         | `Promise<string>`  | returns label placement value      |
+| getLabelValue    | -         | `Promise<string>`  | returns label value                |
 
 ## ReactTestUtils Example
 

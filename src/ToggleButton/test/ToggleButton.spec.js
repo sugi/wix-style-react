@@ -18,7 +18,7 @@ describe('ToggleButton', () => {
     it.each(['standard', 'dark'])('should apply %s skin', async skin => {
       const props = {
         skin,
-        tooltipContent: 'crop&rotate',
+        labelValue: 'crop&rotate',
         children: <CropRotate />,
       };
       const { driver } = render(<ToggleButton {...props} />);
@@ -30,15 +30,20 @@ describe('ToggleButton', () => {
   describe('Icon size ', () => {
     const dataHook = dataHooks.iconOfToggleButton;
 
-    it.each(['medium'])('should be 24px when given size- %s', async size => {
+    it.each([
+      ['18px', 'tiny'],
+      ['18px', 'small'],
+      ['24px', 'medium'],
+      ['24px', 'large'],
+    ])('should be %s when given size - %s', async (expected, size) => {
       const props = {
         size,
-        tooltipContent: 'crop&rotate',
+        labelValue: 'crop&rotate',
         children: <CropRotate data-hook={dataHook} />,
       };
       const { driver } = render(<ToggleButton {...props} />);
 
-      expect(await driver.getIconSize()).toEqual('24px');
+      expect(await driver.getIconSize()).toEqual(expected);
     });
   });
 
@@ -46,7 +51,7 @@ describe('ToggleButton', () => {
     it('should apply className when selected', async () => {
       const props = {
         selected: true,
-        tooltipContent: 'crop&rotate',
+        labelValue: 'crop&rotate',
         children: <CropRotate />,
       };
       const { driver } = render(<ToggleButton {...props} />);
@@ -55,7 +60,7 @@ describe('ToggleButton', () => {
     });
   });
 
-  describe('`tooltipContent` prop', () => {
+  describe('deprecated `tooltipContent` prop', () => {
     it('should set tooltip content from `tooltipContent` prop', async () => {
       const props = {
         tooltipContent: 'crop&rotate',
@@ -63,7 +68,47 @@ describe('ToggleButton', () => {
       };
       const { driver } = render(<ToggleButton {...props} />);
 
-      expect(await driver.getTooltipText()).toEqual('crop&rotate');
+      expect(await driver.getLabelValue()).toEqual('crop&rotate');
     });
+  });
+
+  describe('Label placement ', () => {
+    const dataHook = dataHooks.iconOfToggleButton;
+
+    it.each(['tooltip', 'end', 'bottom'])(
+      'should be %s',
+      async labelPlacement => {
+        const props = {
+          labelPlacement,
+          labelValue: 'crop&rotate',
+          children: <CropRotate data-hook={dataHook} />,
+        };
+        const { driver } = render(<ToggleButton {...props} />);
+
+        expect(await driver.getLabelPlacement()).toEqual(labelPlacement);
+      },
+    );
+  });
+
+  describe('Label value ', () => {
+    const dataHook = dataHooks.iconOfToggleButton;
+
+    it.each([
+      ['Tooltip label', 'tooltip'],
+      ['End label', 'end'],
+      ['Bottom label', 'bottom'],
+    ])(
+      'should be "%s" when placement is "%s"',
+      async (labelValue, labelPlacement) => {
+        const props = {
+          labelPlacement,
+          labelValue,
+          children: <CropRotate data-hook={dataHook} />,
+        };
+        const { driver } = render(<ToggleButton {...props} />);
+
+        expect(await driver.getLabelValue()).toEqual(labelValue);
+      },
+    );
   });
 });

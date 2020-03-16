@@ -5,17 +5,54 @@ import ToggleButton from '../ToggleButton';
 
 const tests = [
   {
+    describe: 'size',
+    its: [
+      {
+        it: 'tiny',
+        props: {
+          size: 'tiny',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'small',
+        props: {
+          size: 'small',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'medium',
+        props: {
+          size: 'medium',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'large',
+        props: {
+          size: 'large',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+    ],
+  },
+  {
     describe: 'skin',
     its: [
       {
         it: 'standard',
-        props: { tooltipContent: 'Crop & Rotate', children: <CropRotate /> },
+        props: { labelValue: 'Crop & Rotate', children: <CropRotate /> },
       },
       {
         it: 'dark',
         props: {
           skin: 'dark',
-          tooltipContent: 'Crop & Rotate',
+          labelValue: 'Crop & Rotate',
           children: <CropRotate />,
         },
       },
@@ -26,13 +63,13 @@ const tests = [
     its: [
       {
         it: 'false',
-        props: { tooltipContent: 'Crop & Rotate', children: <CropRotate /> },
+        props: { labelValue: 'Crop & Rotate', children: <CropRotate /> },
       },
       {
         it: 'true',
         props: {
           selected: true,
-          tooltipContent: 'Crop & Rotate',
+          labelValue: 'Crop & Rotate',
           children: <CropRotate />,
         },
       },
@@ -44,7 +81,7 @@ const tests = [
       {
         it: 'false',
         props: {
-          tooltipContent: 'Crop & Rotate',
+          labelValue: 'Crop & Rotate',
           children: <CropRotate />,
         },
       },
@@ -53,7 +90,36 @@ const tests = [
         props: {
           disabled: true,
           selected: true,
-          tooltipContent: 'Crop & Rotate',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+    ],
+  },
+  {
+    describe: 'labelPosition',
+    its: [
+      {
+        it: 'tooltip',
+        props: {
+          labelPosition: 'tooltip',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'end',
+        props: {
+          labelPosition: 'end',
+          labelValue: 'Crop & Rotate',
+          children: <CropRotate />,
+        },
+      },
+      {
+        it: 'bottom',
+        props: {
+          labelPosition: 'bottom',
+          labelValue: 'Crop & Rotate',
           children: <CropRotate />,
         },
       },
