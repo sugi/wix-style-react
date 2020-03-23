@@ -30,8 +30,6 @@ export const editableListItemDriverFactory = (base, body) => {
     ...baseUniDriverFactory(base, body),
 
     /** Get the current count */
-    getCountText: async () =>
-      base.$(`[data-hook="${dataHooks.editableListItemCount}"]`).text(),
     inputDriver,
     approveButtonDriver,
     cancelButtonDriver,

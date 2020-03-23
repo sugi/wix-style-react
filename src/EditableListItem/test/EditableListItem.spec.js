@@ -147,4 +147,18 @@ describe('EditableListItem', () => {
       );
     });
   });
+
+  // describe('size prop', () => {
+  //   it('should render all in small size', async () => {
+  //     const { driver } = render(
+  //       <EditableListItem
+  //         size="small"
+  //         onApprove={jest.fn()}
+  //         onCancel={jest.fn()}
+  //       />,
+  //     );
+  //     expect(await driver.inputDriver.getSize()).toBe(true);
+  //     // cant check icon button size
+  //   });
+  // });
 });
