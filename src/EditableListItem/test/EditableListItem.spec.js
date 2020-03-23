@@ -16,7 +16,9 @@ describe('EditableListItem', () => {
   });
 
   it('should render', async () => {
-    const { driver } = render(<EditableListItem />);
+    const { driver } = render(
+      <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+    );
 
     expect(await driver.exists()).toBe(true);
     expect(await driver.inputDriver.exists()).toBe(true);
@@ -25,26 +27,38 @@ describe('EditableListItem', () => {
   });
 
   it('should show disabled confirm button when have no value', async () => {
-    const { driver } = render(<EditableListItem />);
+    const { driver } = render(
+      <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+    );
     expect(await driver.approveButtonDriver.isButtonDisabled()).toBe(true);
   });
 
   it('should render placeholder text when have no value', async () => {
     const placeholder = 'some placeholder';
-    const { driver } = render(<EditableListItem placeholder={placeholder} />);
+    const { driver } = render(
+      <EditableListItem
+        onApprove={jest.fn()}
+        onCancel={jest.fn()}
+        placeholder={placeholder}
+      />,
+    );
     expect(await driver.inputDriver.getPlaceholder()).toBe(placeholder);
   });
 
   it('should call onCancel when clicking cancel', async () => {
     const onCancel = jest.fn();
-    const { driver } = render(<EditableListItem onCancel={onCancel} />);
+    const { driver } = render(
+      <EditableListItem onApprove={jest.fn()} onCancel={onCancel} />,
+    );
     await driver.cancelButtonDriver.click();
     expect(onCancel).toHaveBeenCalled();
   });
 
   describe('when value is entered', () => {
     it('should show enabled confirm button', async () => {
-      const { driver } = render(<EditableListItem />);
+      const { driver } = render(
+        <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+      );
       await driver.inputDriver.enterText('some text');
       expect(await driver.approveButtonDriver.isButtonDisabled()).toBe(false);
     });
@@ -52,7 +66,9 @@ describe('EditableListItem', () => {
     it('should call onConfirm with the value when clicking approve', async () => {
       const value = 'some val';
       const onApprove = jest.fn();
-      const { driver } = render(<EditableListItem onApprove={onApprove} />);
+      const { driver } = render(
+        <EditableListItem onCancel={jest.fn()} onApprove={onApprove} />,
+      );
       await driver.inputDriver.enterText(value);
       await driver.approveButtonDriver.click();
       expect(onApprove).toHaveBeenCalledWith(value);
@@ -63,7 +79,11 @@ describe('EditableListItem', () => {
     it('should show cancel button tooltip', async () => {
       const cancelButtonTooltip = 'cancel tooltip';
       const { driver } = render(
-        <EditableListItem cancelButtonTooltip={cancelButtonTooltip} />,
+        <EditableListItem
+          cancelButtonTooltip={cancelButtonTooltip}
+          onApprove={jest.fn()}
+          onCancel={jest.fn()}
+        />,
       );
       await driver.cancelButtonTooltipDriver.mouseEnter();
       expect(await driver.cancelButtonTooltipDriver.tooltipExists()).toBe(true);
@@ -73,7 +93,9 @@ describe('EditableListItem', () => {
     });
 
     it('should show cancel button tooltip if tooltip prop is not provided', async () => {
-      const { driver } = render(<EditableListItem />);
+      const { driver } = render(
+        <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+      );
       await driver.cancelButtonTooltipDriver.mouseEnter();
       expect(await driver.cancelButtonTooltipDriver.tooltipExists()).toBe(
         false,
@@ -83,7 +105,11 @@ describe('EditableListItem', () => {
     it('should not show tooltip when approve button is disabled', async () => {
       const approveButtonTooltip = 'approve tooltip';
       const { driver } = render(
-        <EditableListItem approveButtonTooltip={approveButtonTooltip} />,
+        <EditableListItem
+          approveButtonTooltip={approveButtonTooltip}
+          onApprove={jest.fn()}
+          onCancel={jest.fn()}
+        />,
       );
       await driver.approveButtonTooltipDriver.mouseEnter();
       expect(await driver.approveButtonTooltipDriver.tooltipExists()).toBe(
@@ -94,7 +120,11 @@ describe('EditableListItem', () => {
     it('should show tooltip when approve button is enabled', async () => {
       const approveButtonTooltip = 'approve tooltip';
       const { driver } = render(
-        <EditableListItem approveButtonTooltip={approveButtonTooltip} />,
+        <EditableListItem
+          approveButtonTooltip={approveButtonTooltip}
+          onApprove={jest.fn()}
+          onCancel={jest.fn()}
+        />,
       );
       await driver.inputDriver.enterText('some text');
       await driver.approveButtonTooltipDriver.mouseEnter();
@@ -107,7 +137,9 @@ describe('EditableListItem', () => {
     });
 
     it('should not show tooltip when approve button is enabled and tooltip prop is not provided', async () => {
-      const { driver } = render(<EditableListItem />);
+      const { driver } = render(
+        <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+      );
       await driver.inputDriver.enterText('some text');
       await driver.approveButtonTooltipDriver.mouseEnter();
       expect(await driver.approveButtonTooltipDriver.tooltipExists()).toBe(
