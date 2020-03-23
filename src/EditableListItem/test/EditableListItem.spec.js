@@ -35,6 +35,13 @@ describe('EditableListItem', () => {
     expect(await driver.inputDriver.getPlaceholder()).toBe(placeholder);
   });
 
+  it('should call onCancel when clicking cancel', async () => {
+    const onCancel = jest.fn();
+    const { driver } = render(<EditableListItem onCancel={onCancel} />);
+    await driver.cancelButtonDriver.click();
+    expect(onCancel).toHaveBeenCalled();
+  });
+
   describe('when value is entered', () => {
     it('should show enabled confirm button', async () => {
       const { driver } = render(<EditableListItem />);

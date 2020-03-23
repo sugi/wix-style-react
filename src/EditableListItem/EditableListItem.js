@@ -19,7 +19,7 @@ class EditableListItem extends React.PureComponent {
   };
 
   render() {
-    const { dataHook, placeholder } = this.props;
+    const { dataHook, placeholder, onCancel } = this.props;
     return (
       <div data-hook={dataHook}>
         <div data-hook={dataHooks.editableListInputWrapper}>
@@ -29,7 +29,10 @@ class EditableListItem extends React.PureComponent {
             placeholder={placeholder}
           />
         </div>
-        <IconButton dataHook={dataHooks.editableListCancelButton} />
+        <IconButton
+          dataHook={dataHooks.editableListCancelButton}
+          onClick={onCancel}
+        />
         <IconButton
           onClick={this.onApproveClicked}
           dataHook={dataHooks.editableListApproveButton}
@@ -51,6 +54,9 @@ EditableListItem.propTypes = {
 
   /** A function that will be called when the user approves the changes */
   onApprove: PropTypes.func,
+
+  /** A function that will be called when the user cancels the changes */
+  onCancel: PropTypes.func,
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
