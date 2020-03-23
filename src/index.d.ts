@@ -427,4 +427,8 @@ export {default as PopoverMenuNext} from './beta/PopoverMenu';
 export * from './beta/PopoverMenu';
 
 export {default as TextLink} from './TextLink';
+
+export { default as EditableListItem } from './EditableListItem';
+export * from './EditableListItem'
+
 export * from './TextLink';

@@ -472,5 +472,8 @@
   },
   "MessageModalLayout": {
     "path": "src/MessageModalLayout"
+  },
+  "EditableListItem": {
+    "path": "src/EditableListItem"
   }
 }

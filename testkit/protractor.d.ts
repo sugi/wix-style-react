@@ -131,6 +131,7 @@ export const fontUpgradeTestkitFactory: any;
 export const customModalLayoutTestkitFactory: any;
 export const statusIndicatorTestkitFactory: any;
 export const messageModalLayoutTestkitFactory: any;
+export const editableListItemTestkitFactory: any;
 export const drillViewTestkitFactory: any;
 export const cardHeaderTestkitFactory: any;
 export const sideMenuTestkitFactory: any;

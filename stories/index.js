@@ -192,3 +192,6 @@ require('../src/MessageBox/docs');
 require('./FieldWithSelectionComposite');
 require('../src/Deprecated/SideMenu/docs');
 require('../src/Deprecated/SideMenu/docs/SideMenu');
+
+// TODO: move to correct position
+require('../src/EditableListItem/docs/index.story');

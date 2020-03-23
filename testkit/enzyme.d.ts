@@ -274,6 +274,8 @@ import {StatusIndicatorUniDriver} from '../src/StatusIndicator/StatusIndicator.u
 export const statusIndicatorTestkitFactory: EnzymeUniTestkitFactory<StatusIndicatorUniDriver>;
 import {MessageModalLayoutUniDriver} from '../src/MessageModalLayout/MessageModalLayout.uni.driver';
 export const messageModalLayoutTestkitFactory: EnzymeUniTestkitFactory<MessageModalLayoutUniDriver>;
+import {EditableListItemUniDriver} from '../src/EditableListItem/EditableListItem.uni.driver';
+export const editableListItemTestkitFactory: EnzymeUniTestkitFactory<EditableListItemUniDriver>;
 import {HeaderDriver} from '../src/Card/Header/Header.driver';
 export const headerTestkitFactory: EnzymeTestkitFactory<HeaderDriver>;
 import {EditableRowDriver} from '../src/EditableSelector/EditableRow/EditableRow.driver';

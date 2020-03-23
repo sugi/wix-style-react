@@ -120,6 +120,7 @@ const files = [
   ['BaseModalLayout.bundle.min.js', 20],
   ['CustomModalLayout.bundle.min.js', 20],
   ['MessageModalLayout.bundle.min.js', 20],
+  ['EditableListItem.bundle.min.js', 10],
 ];
 
 module.exports = {
