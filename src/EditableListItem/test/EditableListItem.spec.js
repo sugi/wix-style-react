@@ -23,4 +23,15 @@ describe('EditableListItem', () => {
     expect(await driver.approveButtonDriver.exists()).toBe(true);
     expect(await driver.cancelButtonDriver.exists()).toBe(true);
   });
+
+  it('should show disabled confirm button when have no value', async () => {
+    const { driver } = render(<EditableListItem />);
+    expect(await driver.approveButtonDriver.isButtonDisabled()).toBe(true);
+  });
+
+  it('should render placeholder text when have no value', async () => {
+    const placeholder = 'some placeholder';
+    const { driver } = render(<EditableListItem placeholder={placeholder} />);
+    expect(await driver.inputDriver.getPlaceholder()).toBe(placeholder);
+  });
 });
