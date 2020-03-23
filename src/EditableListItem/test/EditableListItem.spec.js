@@ -60,7 +60,7 @@ describe('EditableListItem', () => {
   });
 
   describe('tooltips', () => {
-    it('should render cancel button tooltip', async () => {
+    it('should show cancel button tooltip', async () => {
       const cancelButtonTooltip = 'cancel tooltip';
       const { driver } = render(
         <EditableListItem cancelButtonTooltip={cancelButtonTooltip} />,
@@ -69,6 +69,14 @@ describe('EditableListItem', () => {
       expect(await driver.cancelButtonTooltipDriver.tooltipExists()).toBe(true);
       expect(await driver.cancelButtonTooltipDriver.getTooltipText()).toBe(
         cancelButtonTooltip,
+      );
+    });
+
+    it('should show cancel button tooltip if tooltip prop is not provided', async () => {
+      const { driver } = render(<EditableListItem />);
+      await driver.cancelButtonTooltipDriver.mouseEnter();
+      expect(await driver.cancelButtonTooltipDriver.tooltipExists()).toBe(
+        false,
       );
     });
 
@@ -83,7 +91,7 @@ describe('EditableListItem', () => {
       );
     });
 
-    it('should show tooltip when approve button is enalbed', async () => {
+    it('should show tooltip when approve button is enabled', async () => {
       const approveButtonTooltip = 'approve tooltip';
       const { driver } = render(
         <EditableListItem approveButtonTooltip={approveButtonTooltip} />,
@@ -95,6 +103,15 @@ describe('EditableListItem', () => {
       );
       expect(await driver.approveButtonTooltipDriver.getTooltipText()).toBe(
         approveButtonTooltip,
+      );
+    });
+
+    it('should not show tooltip when approve button is enabled and tooltip prop is not provided', async () => {
+      const { driver } = render(<EditableListItem />);
+      await driver.inputDriver.enterText('some text');
+      await driver.approveButtonTooltipDriver.mouseEnter();
+      expect(await driver.approveButtonTooltipDriver.tooltipExists()).toBe(
+        false,
       );
     });
   });
