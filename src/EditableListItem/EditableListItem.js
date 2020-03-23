@@ -2,12 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './EditableListItem.st.css';
 import { dataHooks } from './constants';
+import Input from '../Input/Input';
+import IconButton from '../IconButton';
 
 /** EditableListItem */
 class EditableListItem extends React.PureComponent {
   render() {
     const { dataHook } = this.props;
-    return <div {...styles('root', this.props)} data-hook={dataHook}></div>;
+    return (
+      <div {...styles('root', this.props)} data-hook={dataHook}>
+        <div data-hook={dataHooks.editableListInputWrapper}>
+          <Input />
+        </div>
+        <IconButton dataHook={dataHooks.editableListCancelButton} />
+        <IconButton dataHook={dataHooks.editableListApproveButton} />
+      </div>
+    );
   }
 }
 
