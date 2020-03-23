@@ -34,4 +34,21 @@ describe('EditableListItem', () => {
     const { driver } = render(<EditableListItem placeholder={placeholder} />);
     expect(await driver.inputDriver.getPlaceholder()).toBe(placeholder);
   });
+
+  describe('when value is entered', () => {
+    it('should show enabled confirm button', async () => {
+      const { driver } = render(<EditableListItem />);
+      await driver.inputDriver.enterText('some text');
+      expect(await driver.approveButtonDriver.isButtonDisabled()).toBe(false);
+    });
+
+    it('should call onConfirm with the value when clicking approve', async () => {
+      const value = 'some val';
+      const onApprove = jest.fn();
+      const { driver } = render(<EditableListItem onApprove={onApprove} />);
+      await driver.inputDriver.enterText(value);
+      await driver.approveButtonDriver.click();
+      expect(onApprove).toHaveBeenCalledWith(value);
+    });
+  });
 });

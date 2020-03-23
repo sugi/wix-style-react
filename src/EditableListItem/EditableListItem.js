@@ -1,21 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './EditableListItem.st.css';
 import { dataHooks } from './constants';
 import Input from '../Input/Input';
 import IconButton from '../IconButton';
 
 /** EditableListItem */
 class EditableListItem extends React.PureComponent {
+  state = {
+    value: '',
+  };
+
+  onValueChanged = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  onApproveClicked = () => {
+    this.props.onApprove(this.state.value);
+  };
+
   render() {
     const { dataHook, placeholder } = this.props;
     return (
-      <div {...styles('root', this.props)} data-hook={dataHook}>
+      <div data-hook={dataHook}>
         <div data-hook={dataHooks.editableListInputWrapper}>
-          <Input placeholder={placeholder} />
+          <Input
+            onChange={this.onValueChanged}
+            value={this.state.value}
+            placeholder={placeholder}
+          />
         </div>
         <IconButton dataHook={dataHooks.editableListCancelButton} />
-        <IconButton dataHook={dataHooks.editableListApproveButton} disabled />
+        <IconButton
+          onClick={this.onApproveClicked}
+          dataHook={dataHooks.editableListApproveButton}
+          disabled={!this.state.value}
+        />
       </div>
     );
   }
@@ -29,6 +48,9 @@ EditableListItem.propTypes = {
 
   /** Placeholder for the input box */
   placeholder: PropTypes.string,
+
+  /** A function that will be called when the user approves the changes */
+  onApprove: PropTypes.func,
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
