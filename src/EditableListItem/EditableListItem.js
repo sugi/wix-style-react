@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dataHooks } from './constants';
-import Input from '../Input/Input';
+import Input from '../Input';
 import IconButton from '../IconButton';
+import Tooltip from '../Tooltip';
 
 /** EditableListItem */
 class EditableListItem extends React.PureComponent {
@@ -19,7 +20,13 @@ class EditableListItem extends React.PureComponent {
   };
 
   render() {
-    const { dataHook, placeholder, onCancel } = this.props;
+    const {
+      dataHook,
+      placeholder,
+      onCancel,
+      cancelButtonTooltip,
+      approveButtonTooltip,
+    } = this.props;
     return (
       <div data-hook={dataHook}>
         <div data-hook={dataHooks.editableListInputWrapper}>
@@ -29,15 +36,27 @@ class EditableListItem extends React.PureComponent {
             placeholder={placeholder}
           />
         </div>
-        <IconButton
-          dataHook={dataHooks.editableListCancelButton}
-          onClick={onCancel}
-        />
-        <IconButton
-          onClick={this.onApproveClicked}
-          dataHook={dataHooks.editableListApproveButton}
-          disabled={!this.state.value}
-        />
+        <Tooltip
+          upgrade
+          dataHook={dataHooks.editableListCancelButtonTooltip}
+          content={cancelButtonTooltip}
+        >
+          <IconButton
+            dataHook={dataHooks.editableListCancelButton}
+            onClick={onCancel}
+          />
+        </Tooltip>
+        <Tooltip
+          upgrade
+          dataHook={dataHooks.editableListApproveButtonTooltip}
+          content={approveButtonTooltip}
+        >
+          <IconButton
+            onClick={this.onApproveClicked}
+            dataHook={dataHooks.editableListApproveButton}
+            disabled={!this.state.value}
+          />
+        </Tooltip>
       </div>
     );
   }
@@ -57,6 +76,12 @@ EditableListItem.propTypes = {
 
   /** A function that will be called when the user cancels the changes */
   onCancel: PropTypes.func,
+
+  /** Cancel button tooltip text */
+  cancelButtonTooltip: PropTypes.string,
+
+  /** Approve button tooltip text */
+  approveButtonTooltip: PropTypes.string,
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,

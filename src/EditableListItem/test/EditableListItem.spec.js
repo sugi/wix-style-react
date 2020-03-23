@@ -58,4 +58,44 @@ describe('EditableListItem', () => {
       expect(onApprove).toHaveBeenCalledWith(value);
     });
   });
+
+  describe('tooltips', () => {
+    it('should render cancel button tooltip', async () => {
+      const cancelButtonTooltip = 'cancel tooltip';
+      const { driver } = render(
+        <EditableListItem cancelButtonTooltip={cancelButtonTooltip} />,
+      );
+      await driver.cancelButtonTooltipDriver.mouseEnter();
+      expect(await driver.cancelButtonTooltipDriver.tooltipExists()).toBe(true);
+      expect(await driver.cancelButtonTooltipDriver.getTooltipText()).toBe(
+        cancelButtonTooltip,
+      );
+    });
+
+    it('should not show tooltip when approve button is disabled', async () => {
+      const approveButtonTooltip = 'approve tooltip';
+      const { driver } = render(
+        <EditableListItem approveButtonTooltip={approveButtonTooltip} />,
+      );
+      await driver.approveButtonTooltipDriver.mouseEnter();
+      expect(await driver.approveButtonTooltipDriver.tooltipExists()).toBe(
+        false,
+      );
+    });
+
+    it('should show tooltip when approve button is enalbed', async () => {
+      const approveButtonTooltip = 'approve tooltip';
+      const { driver } = render(
+        <EditableListItem approveButtonTooltip={approveButtonTooltip} />,
+      );
+      await driver.inputDriver.enterText('some text');
+      await driver.approveButtonTooltipDriver.mouseEnter();
+      expect(await driver.approveButtonTooltipDriver.tooltipExists()).toBe(
+        true,
+      );
+      expect(await driver.approveButtonTooltipDriver.getTooltipText()).toBe(
+        approveButtonTooltip,
+      );
+    });
+  });
 });
