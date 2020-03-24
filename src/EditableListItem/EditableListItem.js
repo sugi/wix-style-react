@@ -27,6 +27,7 @@ class EditableListItem extends React.PureComponent {
       cancelButtonTooltip,
       approveButtonTooltip,
       status,
+      statusMessage,
       size,
     } = this.props;
 
@@ -38,6 +39,7 @@ class EditableListItem extends React.PureComponent {
           value={this.state.value}
           status={status}
           size={size}
+          statusMessage={statusMessage}
           placeholder={placeholder}
         />
         <Tooltip
@@ -102,6 +104,8 @@ EditableListItem.propTypes = {
     Input.StatusWarning,
     Input.StatusLoading,
   ]),
+
+  statusMessage: PropTypes.string,
 };
 
 EditableListItem.defaultProps = {

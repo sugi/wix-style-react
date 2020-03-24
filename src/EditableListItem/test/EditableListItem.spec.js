@@ -195,5 +195,19 @@ describe('EditableListItem', () => {
       );
       expect(await driver.inputDriver.hasError()).toBe(true);
     });
+
+    // it('should accept input status message prop', async () => {
+    //   const status = Input.StatusError;
+    //   const statusMessage = 'some error';
+    //   const { driver } = render(
+    //     <EditableListItem
+    //       onApprove={jest.fn()}
+    //       status={status}
+    //       statusMessage={statusMessage}
+    //       onCancel={jest.fn()}
+    //     />,
+    //   );
+    //   expect(await driver.inputDriver.hasError()).toBe(true);
+    // });
   });
 });
