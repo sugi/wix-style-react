@@ -6,6 +6,7 @@ import IconButton from '../IconButton';
 import Tooltip from '../Tooltip';
 import Box from '../Box';
 import { Check, X } from 'wix-ui-icons-common';
+import styles from './EditableListItem.st.css';
 
 /** EditableListItem */
 class EditableListItem extends React.PureComponent {
@@ -34,9 +35,10 @@ class EditableListItem extends React.PureComponent {
     } = this.props;
 
     return (
-      <Box dataHook={dataHook}>
-        <Box marginRight={3}>
+      <Box dataHook={dataHook} width="100%">
+        <Box marginRight={3} flex={1}>
           <Input
+            className={styles.input}
             dataHook={dataHooks.editableListInput}
             onChange={this.onValueChanged}
             value={this.state.value}
@@ -82,6 +84,38 @@ class EditableListItem extends React.PureComponent {
     );
   }
 }
+
+export const editableListItemBuilder = ({
+  id,
+  dataHook,
+  className,
+  size,
+  placeholder,
+  onApprove,
+  onCancel,
+  cancelButtonTooltip,
+  approveButtonTooltip,
+  status,
+  statusMessage,
+}) => ({
+  id,
+  disabled: true,
+  value: props => (
+    <EditableListItem
+      {...props}
+      dataHook={dataHook}
+      className={className}
+      size={size}
+      placeholder={placeholder}
+      onApprove={onApprove}
+      onCancel={onCancel}
+      cancelButtonTooltip={cancelButtonTooltip}
+      approveButtonTooltip={approveButtonTooltip}
+      statusMessage={statusMessage}
+      status={status}
+    />
+  ),
+});
 
 EditableListItem.displayName = 'EditableListItem';
 

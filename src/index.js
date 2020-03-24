@@ -186,3 +186,4 @@ export { default as StatusIndicator } from './StatusIndicator';
 export { default as CustomModalLayout } from './CustomModalLayout';
 export { default as MessageModalLayout } from './MessageModalLayout';
 export { default as EditableListItem } from './EditableListItem';
+export { editableListItemBuilder } from './EditableListItem';
