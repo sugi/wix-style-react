@@ -36,7 +36,7 @@ class EditableListItem extends React.PureComponent {
 
     return (
       <Box dataHook={dataHook} width="100%">
-        <Box marginRight={3} flex={1}>
+        <Box marginRight={3} flex={1} minWidth={0}>
           <Input
             className={styles.input}
             dataHook={dataHooks.editableListInput}
