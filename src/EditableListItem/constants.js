@@ -1,5 +1,5 @@
 export const dataHooks = {
-  editableListInputWrapper: 'editable-list-input-wrapper',
+  editableListInput: 'editable-list-input',
   editableListApproveButton: 'editable-list-approve-button',
   editableListApproveButtonTooltip: 'editable-list-approve-button-tooltip',
   editableListCancelButton: 'editable-list-cancel-button',

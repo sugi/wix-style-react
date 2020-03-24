@@ -1,6 +1,7 @@
 // file.only
 
 import React from 'react';
+import Input from '../../Input';
 import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
 
 import EditableListItem from '../EditableListItem';
@@ -148,17 +149,51 @@ describe('EditableListItem', () => {
     });
   });
 
-  // describe('size prop', () => {
-  //   it('should render all in small size', async () => {
-  //     const { driver } = render(
-  //       <EditableListItem
-  //         size="small"
-  //         onApprove={jest.fn()}
-  //         onCancel={jest.fn()}
-  //       />,
-  //     );
-  //     expect(await driver.inputDriver.getSize()).toBe(true);
-  //     // cant check icon button size
-  //   });
-  // });
+  describe('size prop', () => {
+    it('should render all in small size', async () => {
+      const { driver } = render(
+        <EditableListItem
+          size="small"
+          onApprove={jest.fn()}
+          onCancel={jest.fn()}
+        />,
+      );
+      expect(await driver.inputDriver.isOfSize('small')).toBe(true);
+      // cant check icon button size
+    });
+
+    it('should render all in medium size', async () => {
+      const { driver } = render(
+        <EditableListItem
+          size="medium"
+          onApprove={jest.fn()}
+          onCancel={jest.fn()}
+        />,
+      );
+      expect(await driver.inputDriver.isOfSize('medium')).toBe(true);
+      // cant check icon button size
+    });
+
+    it('should render all in medium size when no size prop is passed', async () => {
+      const { driver } = render(
+        <EditableListItem onApprove={jest.fn()} onCancel={jest.fn()} />,
+      );
+      expect(await driver.inputDriver.isOfSize('medium')).toBe(true);
+      // cant check icon button size
+    });
+  });
+
+  describe('status prop', () => {
+    it('should accept input status prop', async () => {
+      const status = Input.StatusError;
+      const { driver } = render(
+        <EditableListItem
+          onApprove={jest.fn()}
+          status={status}
+          onCancel={jest.fn()}
+        />,
+      );
+      expect(await driver.inputDriver.hasError()).toBe(true);
+    });
+  });
 });

@@ -5,7 +5,7 @@ import { iconButtonDriverFactory as iconButtonUniDriver } from '../IconButton/Ic
 import { tooltipDriverFactory as tooltipUniDriver } from '../Tooltip/TooltipNext/Tooltip.uni.driver';
 
 export const editableListItemDriverFactory = (base, body) => {
-  const inputSelector = `[data-hook="${dataHooks.editableListInputWrapper}"]`;
+  const inputSelector = `[data-hook="${dataHooks.editableListInput}"]`;
   const approveButtonSelector = `[data-hook="${dataHooks.editableListApproveButton}"]`;
   const cancelButtonSelector = `[data-hook="${dataHooks.editableListCancelButton}"]`;
   const cancelButtonTooltipSelector = `[data-hook="${dataHooks.editableListCancelButtonTooltip}"]`;

@@ -26,18 +26,20 @@ class EditableListItem extends React.PureComponent {
       onCancel,
       cancelButtonTooltip,
       approveButtonTooltip,
+      status,
       size,
     } = this.props;
+
     return (
       <div data-hook={dataHook}>
-        <div data-hook={dataHooks.editableListInputWrapper}>
-          <Input
-            onChange={this.onValueChanged}
-            value={this.state.value}
-            size={size}
-            placeholder={placeholder}
-          />
-        </div>
+        <Input
+          dataHook={dataHooks.editableListInput}
+          onChange={this.onValueChanged}
+          value={this.state.value}
+          status={status}
+          size={size}
+          placeholder={placeholder}
+        />
         <Tooltip
           upgrade
           disabled={!cancelButtonTooltip}
@@ -94,8 +96,16 @@ EditableListItem.propTypes = {
 
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
+
+  status: PropTypes.oneOf([
+    Input.StatusError,
+    Input.StatusWarning,
+    Input.StatusLoading,
+  ]),
 };
 
-EditableListItem.defaultProps = {};
+EditableListItem.defaultProps = {
+  size: 'medium',
+};
 
 export default EditableListItem;
