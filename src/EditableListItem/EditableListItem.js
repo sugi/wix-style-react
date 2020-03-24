@@ -4,6 +4,8 @@ import { dataHooks } from './constants';
 import Input from '../Input';
 import IconButton from '../IconButton';
 import Tooltip from '../Tooltip';
+import Box from '../Box';
+import { Check, X } from 'wix-ui-icons-common';
 
 /** EditableListItem */
 class EditableListItem extends React.PureComponent {
@@ -32,28 +34,35 @@ class EditableListItem extends React.PureComponent {
     } = this.props;
 
     return (
-      <div data-hook={dataHook}>
-        <Input
-          dataHook={dataHooks.editableListInput}
-          onChange={this.onValueChanged}
-          value={this.state.value}
-          status={status}
-          size={size}
-          statusMessage={statusMessage}
-          placeholder={placeholder}
-        />
-        <Tooltip
-          upgrade
-          disabled={!cancelButtonTooltip}
-          dataHook={dataHooks.editableListCancelButtonTooltip}
-          content={cancelButtonTooltip}
-        >
-          <IconButton
+      <Box dataHook={dataHook}>
+        <Box marginRight={3}>
+          <Input
+            dataHook={dataHooks.editableListInput}
+            onChange={this.onValueChanged}
+            value={this.state.value}
+            status={status}
             size={size}
-            dataHook={dataHooks.editableListCancelButton}
-            onClick={onCancel}
+            statusMessage={statusMessage}
+            placeholder={placeholder}
           />
-        </Tooltip>
+        </Box>
+        <Box marginRight={2}>
+          <Tooltip
+            upgrade
+            disabled={!cancelButtonTooltip}
+            dataHook={dataHooks.editableListCancelButtonTooltip}
+            content={cancelButtonTooltip}
+          >
+            <IconButton
+              size={size}
+              priority="secondary"
+              dataHook={dataHooks.editableListCancelButton}
+              onClick={onCancel}
+            >
+              <X />
+            </IconButton>
+          </Tooltip>
+        </Box>
         <Tooltip
           upgrade
           disabled={!approveButtonTooltip || !this.state.value}
@@ -65,9 +74,11 @@ class EditableListItem extends React.PureComponent {
             onClick={this.onApproveClicked}
             dataHook={dataHooks.editableListApproveButton}
             disabled={!this.state.value}
-          />
+          >
+            <Check />
+          </IconButton>
         </Tooltip>
-      </div>
+      </Box>
     );
   }
 }
