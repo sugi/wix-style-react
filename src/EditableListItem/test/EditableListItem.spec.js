@@ -1,5 +1,3 @@
-// file.only
-
 import React from 'react';
 import Input from '../../Input';
 import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
