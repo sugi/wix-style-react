@@ -200,6 +200,12 @@ export default {
       initialValue: 'Some Title',
     },
   },
+  EditableListItem: {
+    props: {
+      onApprove: () => null,
+      onCancel: () => null,
+    },
+  },
   EmptyState: {
     props: {
       subtitle:
