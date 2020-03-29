@@ -83,7 +83,10 @@ function typedTable() {
       name: 'Joe',
       age: 42,
     }]}
-    columns={[]}
+    columns={[{
+      title: 'name',
+      render: (row: TableRowData) => row.name,
+    }]}
   />;
 }
 
