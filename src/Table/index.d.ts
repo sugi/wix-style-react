@@ -12,7 +12,7 @@ export interface TableProps<RowData = RowDataDefaultType> extends UsedDataTableP
   selectionDisabled?: boolean;
   deselectRowsByDefault?: boolean;
   withWrapper?: boolean;
-  onSortClick?(colData: TableColumn<RowData>, colNum: number): void;
+  onSortClick?(colData: TableColumn, colNum: number): void;
   totalSelectableCount?: number;
   columns: TableColumn<RowData>[];
 }

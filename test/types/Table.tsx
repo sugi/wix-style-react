@@ -85,7 +85,7 @@ function typedTable() {
     }]}
     columns={[{
       title: 'name',
-      render: (row: TableRowData) => row.name,
+      render: row => row.name,
     }]}
   />;
 }
