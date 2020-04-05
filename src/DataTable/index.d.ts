@@ -77,9 +77,9 @@ export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableRowDataHookFn<RowData = RowDataDefaultType> = (rowData: RowData, rowNum: number) => string;
 export type DataTableSkin = 'standard' | 'neutral';
 export type DataTableRowVerticalPadding = 'medium' | 'large';
-export type DataTableColumn<RowData = RowDataDefaultType> = {
+export type DataTableColumn<RowDataType = RowDataDefaultType> = {
   title: React.ReactNode;
-  render: (row: RowData, rowNum: number) => React.ReactNode;
+  render: (row: RowDataType, rowNum: number) => React.ReactNode;
   width?: string;
   important?: boolean;
   sortable?: boolean;
