@@ -18,7 +18,8 @@ if (process.env.NODE_ENV === 'test') {
   requestAnimationFramePolyfill.install();
 }
 
-const ANIMATION_DURATION = 300;
+const ANIMATION_ENTER = 150;
+const ANIMATION_EXIT = 100;
 
 class Popover extends React.Component {
   static displayName = 'Popover';
@@ -80,7 +81,7 @@ class Popover extends React.Component {
     const { dataHook, animate, theme, ...rest } = this.props;
 
     const timeout = animate
-      ? { enter: ANIMATION_DURATION, exit: 0 }
+      ? { enter: ANIMATION_ENTER, exit: ANIMATION_EXIT }
       : undefined;
 
     return (
