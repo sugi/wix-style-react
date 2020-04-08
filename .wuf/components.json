@@ -5,8 +5,14 @@
   "AddItem": {
     "path": "src/AddItem"
   },
+  "AnnouncementModalLayout": {
+    "path": "src/AnnouncementModalLayout"
+  },
   "AutoComplete": {
     "path": "src/AutoComplete"
+  },
+  "AutoCompleteWithLabel": {
+    "path": "src/AutoCompleteWithLabel"
   },
   "Avatar": {
     "path": "src/Avatar"
@@ -23,11 +29,23 @@
       "docs/index.story.js"
     ]
   },
+  "BarChart": {
+    "path": "src/BarChart"
+  },
+  "BaseModalLayout": {
+    "path": "src/BaseModalLayout",
+    "missingFiles": [
+      "docs"
+    ]
+  },
   "Box": {
     "path": "src/Box"
   },
   "Breadcrumbs": {
     "path": "src/Breadcrumbs"
+  },
+  "BrowserPreviewWidget": {
+    "path": "src/BrowserPreviewWidget"
   },
   "Button": {
     "path": "src/Button"
@@ -68,6 +86,9 @@
   "ColorPicker": {
     "path": "src/ColorPicker"
   },
+  "ComposerHeader": {
+    "path": "src/ComposerHeader"
+  },
   "ContactItemBuilder": {
     "path": "src/ContactItemBuilder",
     "missingFiles": [
@@ -77,11 +98,17 @@
   "CounterBadge": {
     "path": "src/CounterBadge"
   },
+  "CustomModalLayout": {
+    "path": "src/CustomModalLayout"
+  },
   "DateInput": {
     "path": "src/DateInput"
   },
   "DatePicker": {
     "path": "src/DatePicker"
+  },
+  "Divider": {
+    "path": "src/Divider"
   },
   "Dropdown": {
     "path": "src/Dropdown"
@@ -113,11 +140,20 @@
   "FilePicker": {
     "path": "src/FilePicker"
   },
+  "FillButton": {
+    "path": "src/FillButton"
+  },
+  "FillPreview": {
+    "path": "src/FillPreview"
+  },
   "FloatingHelper": {
     "path": "src/FloatingHelper"
   },
   "FloatingNotification": {
     "path": "src/FloatingNotification"
+  },
+  "FontUpgrade": {
+    "path": "src/FontUpgrade"
   },
   "FormField": {
     "path": "src/FormField"
@@ -146,11 +182,14 @@
   "IconButton": {
     "path": "src/IconButton"
   },
-  "ToggleButton": {
-    "path": "src/ToggleButton"
+  "Image": {
+    "path": "src/Image"
   },
   "ImageViewer": {
     "path": "src/ImageViewer"
+  },
+  "InfoIcon": {
+    "path": "src/InfoIcon"
   },
   "Input": {
     "path": "src/Input"
@@ -158,8 +197,14 @@
   "InputArea": {
     "path": "src/InputArea"
   },
+  "InputWithLabel": {
+    "path": "src/InputWithLabel"
+  },
   "InputWithOptions": {
     "path": "src/InputWithOptions"
+  },
+  "LabelledElement": {
+    "path": "src/LabelledElement"
   },
   "Layout": {
     "path": "src/Layout",
@@ -173,11 +218,35 @@
   "ListItemAction": {
     "path": "src/ListItemAction"
   },
+  "ListItemSection": {
+    "path": "src/ListItemSection"
+  },
+  "ListItemSelect": {
+    "path": "src/ListItemSelect"
+  },
   "Loader": {
     "path": "src/Loader"
   },
+  "MarketingLayout": {
+    "path": "src/MarketingLayout"
+  },
+  "MediaOverlay": {
+    "path": "src/MediaOverlay"
+  },
+  "MessageModalLayout": {
+    "path": "src/MessageModalLayout"
+  },
+  "MobilePreviewWidget": {
+    "path": "src/MobilePreviewWidget"
+  },
   "Modal": {
     "path": "src/Modal"
+  },
+  "ModalMobileLayout": {
+    "path": "src/ModalMobileLayout"
+  },
+  "ModalPreviewLayout": {
+    "path": "src/ModalPreviewLayout"
   },
   "ModalSelectorLayout": {
     "path": "src/ModalSelectorLayout"
@@ -209,8 +278,20 @@
   "PageHeader": {
     "path": "src/PageHeader"
   },
+  "Pagination": {
+    "path": "src/Pagination"
+  },
+  "Palette": {
+    "path": "src/Palette"
+  },
   "Popover": {
     "path": "src/Popover"
+  },
+  "PopoverMenu": {
+    "path": "src/PopoverMenu"
+  },
+  "PreviewWidget": {
+    "path": "src/PreviewWidget"
   },
   "Proportion": {
     "path": "src/Proportion"
@@ -239,8 +320,23 @@
       "docs"
     ]
   },
+  "SidePanel": {
+    "path": "src/SidePanel"
+  },
   "Sidebar": {
     "path": "src/Sidebar"
+  },
+  "SidebarBackButton": {
+    "path": "src/SidebarBackButton"
+  },
+  "SidebarDivider": {
+    "path": "src/SidebarDivider"
+  },
+  "SidebarHeader": {
+    "path": "src/SidebarHeader"
+  },
+  "SidebarSectionItem": {
+    "path": "src/SidebarSectionItem"
   },
   "SidebarSectionTitle": {
     "path": "src/SidebarSectionTitle"
@@ -251,6 +347,9 @@
   "Slider": {
     "path": "src/Slider"
   },
+  "SocialButton": {
+    "path": "src/SocialButton"
+  },
   "SocialPreview": {
     "path": "src/SocialPreview"
   },
@@ -259,6 +358,12 @@
     "missingFiles": [
       "docs"
     ]
+  },
+  "StatisticsWidget": {
+    "path": "src/StatisticsWidget"
+  },
+  "StatusIndicator": {
+    "path": "src/StatusIndicator"
   },
   "Stepper": {
     "path": "src/Stepper"
@@ -296,130 +401,25 @@
   "TimeInput": {
     "path": "src/TimeInput"
   },
+  "TimeTable": {
+    "path": "src/TimeTable"
+  },
+  "ToggleButton": {
+    "path": "src/ToggleButton"
+  },
   "ToggleSwitch": {
     "path": "src/ToggleSwitch"
   },
   "Tooltip": {
     "path": "src/Tooltip"
   },
-  "SidebarSectionItem": {
-    "path": "src/SidebarSectionItem"
-  },
-  "SidebarDivider": {
-    "path": "src/SidebarDivider"
-  },
-  "SidebarBackButton": {
-    "path": "src/SidebarBackButton"
-  },
-  "SidebarHeader": {
-    "path": "src/SidebarHeader"
-  },
-  "ModalPreviewLayout": {
-    "path": "src/ModalPreviewLayout"
-  },
-  "StatisticsWidget": {
-    "path": "src/StatisticsWidget"
-  },
-  "ComposerHeader": {
-    "path": "src/ComposerHeader"
-  },
-  "FillPreview": {
-    "path": "src/FillPreview"
-  },
-  "FillButton": {
-    "path": "src/FillButton"
-  },
-  "BarChart": {
-    "path": "src/BarChart"
-  },
-  "InputWithLabel": {
-    "path": "src/InputWithLabel"
-  },
-  "AutoCompleteWithLabel": {
-    "path": "src/AutoCompleteWithLabel"
-  },
-  "Divider": {
-    "path": "src/Divider"
-  },
-  "LabelledElement": {
-    "path": "src/LabelledElement"
-  },
-  "PreviewWidget": {
-    "path": "src/PreviewWidget"
-  },
-  "ModalMobileLayout": {
-    "path": "src/ModalMobileLayout"
-  },
-  "MediaOverlay": {
-    "path": "src/MediaOverlay"
-  },
-  "InfoIcon": {
-    "path": "src/InfoIcon"
-  },
-  "SocialButton": {
-    "path": "src/SocialButton"
+  "VariableInput": {
+    "path": "src/VariableInput"
   },
   "VerticalTabs": {
     "path": "src/VerticalTabs"
   },
   "VerticalTabsItem": {
     "path": "src/VerticalTabsItem"
-  },
-  "MobilePreviewWidget": {
-    "path": "src/MobilePreviewWidget"
-  },
-  "ListItemSection": {
-    "path": "src/ListItemSection"
-  },
-  "BrowserPreviewWidget": {
-    "path": "src/BrowserPreviewWidget"
-  },
-  "ListItemSelect": {
-    "path": "src/ListItemSelect"
-  },
-  "TimeTable": {
-    "path": "src/TimeTable"
-  },
-  "MarketingLayout": {
-    "path": "src/MarketingLayout"
-  },
-  "Palette": {
-    "path": "src/Palette"
-  },
-  "VariableInput": {
-    "path": "src/VariableInput"
-  },
-  "Image": {
-    "path": "src/Image"
-  },
-  "SidePanel": {
-    "path": "src/SidePanel"
-  },
-  "FontUpgrade": {
-    "path": "src/FontUpgrade"
-  },
-  "CustomModalLayout": {
-    "path": "src/CustomModalLayout"
-  },
-  "StatusIndicator": {
-    "path": "src/StatusIndicator"
-  },
-  "BaseModalLayout": {
-    "path": "src/BaseModalLayout",
-    "missingFiles": [
-      "docs"
-    ]
-  },
-  "MessageModalLayout": {
-    "path": "src/MessageModalLayout"
-  },
-  "AnnouncementModalLayout": {
-    "path": "src/AnnouncementModalLayout"
-  },
-  "PopoverMenu": {
-    "path": "src/PopoverMenu"
-  },
-  "Pagination": {
-    "path": "src/Pagination"
   }
 }
