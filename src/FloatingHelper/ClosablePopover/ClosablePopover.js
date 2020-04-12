@@ -85,7 +85,7 @@ class ClosablePopover extends PureComponent {
 
     const popoverProps = {
       ...rest,
-      timeout: 0,
+      animate: true,
       theme: appearance,
       shown: open,
       onMouseEnter: this._handleMouseEnter,
