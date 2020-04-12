@@ -337,6 +337,7 @@ class DropdownBase extends React.PureComponent {
         showArrow={showArrow}
         zIndex={zIndex}
         moveBy={moveBy}
+        animate
         onKeyDown={this._handleKeyDown}
         onMouseEnter={this._handlePopoverMouseEnter}
         onMouseLeave={this._handlePopoverMouseLeave}
