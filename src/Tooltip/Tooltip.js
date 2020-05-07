@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Tooltip as CoreTooltip } from 'wix-ui-core/dist/src/components/tooltip';
 import Text from '../Text';
-import styles from './Tooltip.st.css';
+import { st, classes } from './Tooltip.st.css';
 import { dataHooks, TIMEOUT } from './constants';
 import { FontUpgradeContext } from '../FontUpgrade/context';
 import FontUpgrade from '../FontUpgrade';
@@ -58,6 +58,7 @@ class Tooltip extends React.PureComponent {
     'aria-describedby': PropTypes.string,
     /** tooltips content zindex */
     zIndex: PropTypes.number,
+    className: PropTypes.string,
   };
 
   state = {
@@ -116,14 +117,15 @@ class Tooltip extends React.PureComponent {
       size,
       dataHook,
       disabled,
+      className,
       ...rest
     } = this.props;
 
     return (
       <CoreTooltip
         {...rest}
-        {...(dataHook ? { 'data-hook': dataHook } : {})}
-        {...styles('root', { size }, this.props)}
+        data-hook={dataHook}
+        className={st(classes.root, { size }, className)}
         content={this._renderContent()}
         hideDelay={exitDelay}
         showDelay={enterDelay}
