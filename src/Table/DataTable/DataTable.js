@@ -306,8 +306,14 @@ class DataTable extends React.Component {
         key={key}
         {...optionalRowProps}
       >
-        {columns.map((column, colNum) =>
-          this.renderCell(rowData, column, rowNum, colNum),
+        {rowData.render ? (
+          <td colSpan={columns.length} className={this.style.details}>
+            {rowData.render()}
+          </td>
+        ) : (
+          columns.map((column, colNum) =>
+            this.renderCell(rowData, column, rowNum, colNum),
+          )
         )}
       </tr>,
     ];
