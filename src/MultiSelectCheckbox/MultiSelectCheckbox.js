@@ -17,6 +17,11 @@ class MultiSelectCheckbox extends InputWithOptions {
           overrideStyle: true,
           value: <ListItemSection type="divider" />,
         };
+      } else if (typeof option.value === 'function') {
+        return {
+          ...option,
+          overrideStyle: true,
+        };
       } else {
         return {
           ...option,
