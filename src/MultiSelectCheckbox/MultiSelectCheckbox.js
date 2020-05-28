@@ -54,13 +54,15 @@ class MultiSelectCheckbox extends InputWithOptions {
   }
 
   selectedOptionsToText() {
-    return this.props.selectedOptions
-      .map(selectedOption =>
-        this.props.options.find(option => option.id === selectedOption),
-      )
-      .filter(selectedOption => selectedOption)
-      .map(this.props.valueParser)
-      .join(this.props.delimiter);
+    return this.props.selectedOptions.length > 0
+      ? this.props.selectedOptions
+          .map(selectedOption =>
+            this.props.options.find(option => option.id === selectedOption),
+          )
+          .filter(selectedOption => selectedOption)
+          .map(this.props.valueParser)
+          .join(this.props.delimiter)
+      : this.props.defaultValue;
   }
 
   inputAdditionalProps() {
@@ -141,6 +143,9 @@ MultiSelectCheckbox.propTypes = {
 
   /** delimiter between the selected options that will be displayed in the input. */
   delimiter: PropTypes.string,
+
+  /** value to show when no options are selected */
+  defaultValue: PropTypes.string,
 };
 
 MultiSelectCheckbox.defaultProps = {
