@@ -420,6 +420,10 @@ export * from './clients';
 export { default as ComposerSidebar } from './ComposerSidebar';
 
 export { default as SortableGrid } from './SortableGrid';
+
+export { default as ThemeProvider } from './ThemeProvider';
+export * from './ThemeProvider';
+
 export * from './SortableGrid';
 
 export * from './ComposerSidebar';
