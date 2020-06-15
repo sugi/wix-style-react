@@ -25,7 +25,7 @@
 
 .root {
   -st-extends: Focusable;
-  -st-states: clickable;
+  -st-states: clickable, removeRadius;
 
   display: block;
   position: relative;
@@ -45,6 +45,9 @@
 
 .root:clickable {
   cursor: pointer;
+}
+.root:removeRadius {
+  border-radius: 0;
 }
 
 .root:focus-visible {

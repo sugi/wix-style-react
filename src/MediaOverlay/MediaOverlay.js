@@ -53,6 +53,9 @@ class MediaOverlay extends React.PureComponent {
 
     /** Toggle hovered state in a controlled mode. */
     hovered: PropTypes.bool,
+
+    /** clear borders radius when displayed in sharp-edges containers */
+    removeRoundedBorders: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -228,7 +231,7 @@ class MediaOverlay extends React.PureComponent {
   };
 
   render() {
-    const { dataHook, skin, media, onClick } = this.props;
+    const { dataHook, skin, media, onClick, removeRoundedBorders } = this.props;
     const isMediaImageUrl = typeof media === 'string';
     const Component = onClick ? 'button' : 'div';
 
@@ -239,7 +242,11 @@ class MediaOverlay extends React.PureComponent {
         onMouseLeave={this._onMouseLeave}
         onClick={onClick}
         {...this._getFocusProps()}
-        {...styles('root', { clickable: !!onClick }, this.props)}
+        {...styles(
+          'root',
+          { clickable: !!onClick, removeRadius: removeRoundedBorders },
+          this.props,
+        )}
         data-skin={skin}
         data-hoverskin={this._getHoverSkin()}
         style={{ backgroundImage: isMediaImageUrl && `url(${media})` }}
