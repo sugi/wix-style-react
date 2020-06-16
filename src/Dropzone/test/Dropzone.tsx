@@ -6,18 +6,23 @@ import { dropzoneTestkitFactory as dropzonePuppeteerTestkitFactory } from '../..
 import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
-function dropzoneWithMandatoryProps() {
-  return <Dropzone />;
+type OnDropHandler = (files: File[]) => void;
+
+function dropzoneWithMandatoryProps(onDrop: OnDropHandler) {
+  return (
+    <Dropzone onDrop={onDrop}>
+      <Dropzone.Overlay>
+        <span />
+      </Dropzone.Overlay>
+      <Dropzone.Content>
+        <span />
+      </Dropzone.Content>
+    </Dropzone>
+  );
 }
 
-function dropzoneWithAllProps() {
-  return (
-    <Dropzone
-      dataHook="dataHook"
-      className="className"
-      buttonText="buttonText"
-    />
-  );
+function dropzoneWithAllProps(onDrop: OnDropHandler) {
+  return <Dropzone dataHook="dataHook" className="className" onDrop={onDrop} />;
 }
 
 async function testkits() {
