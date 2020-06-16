@@ -1,4 +1,4 @@
 export const dataHooks = {
-  dropzoneCount: 'dropzone-count',
-  dropzoneButton: 'dropzone-button',
+  dropzoneOverlay: 'dropzone-overlay',
+  dropzoneContent: 'dropzone-content',
 };
