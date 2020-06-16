@@ -121,12 +121,12 @@
 }
 
 .notificationAnimationEnterActive .notificationContent {
-  margin-top: 0;
+  margin-top: 3px;
   transition: margin-top 150ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .notificationAnimationExit .notificationContent {
-  margin-top: 0;
+  margin-top: 3px;
 }
 
 .notificationAnimationExitActive  .notificationContent {
