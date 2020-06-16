@@ -9,6 +9,7 @@
 
 .root {
   -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
+  position: relative;
 }
 
 .notification {
