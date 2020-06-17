@@ -10,6 +10,7 @@
 .root {
   -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
   position: relative;
+  z-index: value(zIndex_NOTIFICATION);
 }
 
 .notification {
@@ -61,7 +62,6 @@
   justify-content: center;
   margin: 3px 12px;
   position: relative;
-  z-index: value(zIndex_NOTIFICATION);
 }
 
 .labelWrapper {

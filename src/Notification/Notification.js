@@ -127,6 +127,7 @@ class Notification extends React.PureComponent {
     return (
       <div
         {...styles('root', { theme, type })}
+        style={{ zIndex }}
         data-hook={dataHook}
         data-theme={theme}
         data-type={type}
@@ -146,7 +147,6 @@ class Notification extends React.PureComponent {
           <div
             data-hook={dataHooks.notificationWrapper}
             className={styles.notification}
-            style={{ zIndex }}
             role="alert"
             aria-labelledby="notification-label"
             aria-live="polite"
