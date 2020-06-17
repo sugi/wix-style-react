@@ -34,14 +34,19 @@ export default {
   },
 
   exampleProps: {
-    // Put here presets of props, for more info:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
+    onDrop: files => {},
   },
 
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${Dropzone.displayName}/`,
-      component: <Dropzone buttonText="Click me!" />,
+      component: (
+        <Dropzone>
+          <Dropzone.Overlay></Dropzone.Overlay>
+
+          <Dropzone.Content></Dropzone.Content>
+        </Dropzone>
+      ),
     }),
 
     tabs([
@@ -50,26 +55,28 @@ export default {
         sections: [
           description({
             title: 'Description',
-            text:
-              'This line here should briefly describe component in just a sentence or two. It should be short and easy to read.',
+            text: 'Defines a region in the page where files can be dropped.',
           }),
 
           importExample(),
 
           divider(),
 
-          title('Examples'),
+          title('Example'),
 
           example({
-            title: 'Simple Usage',
-            text: 'A simple example with compact preview',
-            source: '<Dropzone buttonText="Hello World!"/>',
-          }),
-
-          code({
-            title: 'Full Interactive Preview',
-            description: 'A non compact version of same code example as above',
-            source: '<Dropzone buttonText="Hello World!"/>',
+            title: 'Usage',
+            text:
+              'Sample usage for the Dropzone component. This will create a region in the page where you could drop files onto and do with them as you please.',
+            source: [
+              '<Dropzone onDrop={files => doSomethingWithFiles(files)}>',
+              '  <Dropzone.Overlay>',
+              '    <div>Drop your files here!</div>',
+              '  </Dropzone.Overlay>',
+              '  <Dropzone.Content>',
+              '    <div>This is some component or something</div>',
+              '  </Dropzone.Overlay>',
+            ].join('\n'),
           }),
         ],
       }),
