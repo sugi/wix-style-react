@@ -36,7 +36,7 @@ export const notificationUniDriverFactory = base => {
     clickOnCloseButton: () => closeButton.click(),
     clickOnActionButton: () => actionButton.click(),
     getZIndex: async () => {
-      const style = await notificationWrapper._prop('style');
+      const style = await base._prop('style');
       return Number(style['z-index']);
     },
   };

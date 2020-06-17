@@ -34,7 +34,7 @@ const notificationDriverFactory = ({ element }) => {
     isAbsolutePositioned: () => getType() === TYPE_POSITIONS_MAP.absolute,
     clickOnCloseButton: () => ReactTestUtils.Simulate.click(closeButton()),
     clickOnActionButton: () => ReactTestUtils.Simulate.click(actionButton()),
-    getZIndex: () => Number(notificationWrapper().style['z-index']),
+    getZIndex: () => Number(element.style['z-index']),
   };
 };
 
