@@ -8,7 +8,7 @@
   enteringDuration: 200ms;
   exitingDuration: 150ms;
   timingFunction: cubic-bezier(0.4, 0, 0.2, 1 );
-  horizontalContentMargin: 3px;
+  verticalContentMargin: 3px;
   maxHeight: 72px; /* considering that notification label should be no longer than two lines */
 }
 
@@ -65,7 +65,7 @@
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  margin: value(horizontalContentMargin) 12px;
+  margin: value(verticalContentMargin) 12px;
   position: relative;
 }
 
@@ -127,12 +127,12 @@
 }
 
 .notificationAnimationEnterActive .notificationContent {
-  margin-top: value(horizontalContentMargin);
+  margin-top: value(verticalContentMargin);
   transition: margin-top value(enteringDuration) value(timingFunction);
 }
 
 .notificationAnimationExit .notificationContent {
-  margin-top: value(horizontalContentMargin);
+  margin-top: value(verticalContentMargin);
 }
 
 .notificationAnimationExitActive  .notificationContent {
