@@ -57,7 +57,6 @@ describe(Dropzone.displayName, () => {
     await driver.hover(someFiles);
 
     expect(await driver.getOverlayElement().exists()).toBe(true);
-    expect(await driver.getContentElement().exists()).toBe(false);
   });
 
   it("should not render the overlay when hover event happens and it doesn't have files", async () => {

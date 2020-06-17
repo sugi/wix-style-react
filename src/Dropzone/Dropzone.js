@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { buildChildrenObject } from 'wix-ui-core/dist/src/utils';
 import { dataHooks } from './constants';
+import classNames from 'classnames';
 
 /** Defines a region in the page where files can be dropped */
 class Dropzone extends React.PureComponent {
@@ -58,11 +59,15 @@ class Dropzone extends React.PureComponent {
   };
 
   static Overlay = ({ children }) => (
-    <div data-hook={dataHooks.dropzoneOverlay}>{children}</div>
+    <div data-hook={dataHooks.dropzoneOverlay} className={'dropzoneOverlay'}>
+      {children}
+    </div>
   );
 
   static Content = ({ children }) => (
-    <div data-hook={dataHooks.dropzoneContent}>{children}</div>
+    <div data-hook={dataHooks.dropzoneContent} className={'dropzoneContent'}>
+      {children}
+    </div>
   );
 
   _eventHasFiles = event => {
@@ -108,13 +113,13 @@ class Dropzone extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        className={className}
+        className={classNames(className, 'dropzone')}
         onDrop={this._onDrop}
         onDragEnter={this._onDragEnter}
         onDragLeave={this._onDragLeave}
       >
         {isDragActive && childrenObj.Overlay}
-        {!isDragActive && childrenObj.Content}
+        {childrenObj.Content}
       </div>
     );
   }
