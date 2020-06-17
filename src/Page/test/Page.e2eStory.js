@@ -4,12 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 
-import Page from 'wix-style-react/Page';
-import Card from 'wix-style-react/Card';
-import Box from 'wix-style-react/Box';
-import Notification from 'wix-style-react/Notification';
-import PopoverMenu from 'wix-style-react/PopoverMenu';
-import IconButton from 'wix-style-react/IconButton';
 import More from 'wix-ui-icons-common/More';
 
 import * as s from '../docs/PageTestStories.scss';
@@ -18,6 +12,15 @@ import classNames from 'classnames';
 import { header, tail, fixedContent, content } from '../docs/PageChildren';
 import { storySettings } from '../docs/storySettings';
 import { LongTextContent } from '../docs/SomeContentComponent';
+
+import {
+  Page,
+  Card,
+  Box,
+  Notification,
+  PopoverMenu,
+  IconButton,
+} from 'wix-style-react';
 
 const PageContainer = props => {
   return (
