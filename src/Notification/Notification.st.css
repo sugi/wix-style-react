@@ -109,7 +109,7 @@
 
 .notificationAnimationEnterActive .notification {
   max-height: value(maxHeight);
-  transition: max-height value(enteringDuration) cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: max-height value(enteringDuration) value(timingFunction);
 }
 
 .notificationAnimationExit .notification  {
