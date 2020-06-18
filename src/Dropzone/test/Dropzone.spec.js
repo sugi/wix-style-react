@@ -128,6 +128,7 @@ describe(Dropzone.displayName, () => {
         render(
           <Dropzone onDrop={jest.fn()}>
             <Dropzone.Content />
+            <Dropzone.Overlay />
             <div />
           </Dropzone>,
         );
