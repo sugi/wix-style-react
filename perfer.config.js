@@ -38,6 +38,7 @@ const javascriptFiles = [
   ['Dropdown.bundle.min.js', 78],
   ['DropdownBase.bundle.min.js', 50],
   ['DropdownLayout.bundle.min.js', 48],
+  ['Dropzone.bundle.min.js', 4],
   ['EditableSelector.bundle.min.js', 75],
   ['EditableTitle.bundle.min.js', 63],
   ['EmptyState.bundle.min.js', 10],
@@ -137,7 +138,6 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 13],
   ['VerticalTabsItem.bundle.min.js', 13],
   ['WarningIndicator.bundle.min.js', 40],
-  ['Dropzone.bundle.min.js', 10],
 ];
 
 const cssFiles = [
@@ -169,6 +169,7 @@ const cssFiles = [
   ['Dropdown.min.css', 7],
   ['DropdownBase.min.css', 3],
   ['DropdownLayout.min.css', 3],
+  ['Dropzone.min.css', 1],
   ['EditableSelector.min.css', 7],
   ['EditableTitle.min.css', 6],
   ['EmptyState.min.css', 1],
@@ -241,7 +242,6 @@ const cssFiles = [
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
-  ['Dropzone.min.css', 1],
 ];
 
 const getJS = () =>
