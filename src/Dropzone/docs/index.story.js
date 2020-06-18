@@ -29,9 +29,7 @@ export default {
   component: Dropzone,
   componentPath: '..',
 
-  componentProps: {
-    buttonText: 'Hello World!',
-  },
+  componentProps: {},
 
   exampleProps: {
     onDrop: files => {},
@@ -40,13 +38,6 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${Dropzone.displayName}/`,
-      component: (
-        <Dropzone>
-          <Dropzone.Overlay></Dropzone.Overlay>
-
-          <Dropzone.Content></Dropzone.Content>
-        </Dropzone>
-      ),
     }),
 
     tabs([
@@ -69,13 +60,15 @@ export default {
             text:
               'Sample usage for the Dropzone component. This will create a region in the page where you could drop files onto and do with them as you please.',
             source: [
-              '<Dropzone onDrop={files => doSomethingWithFiles(files)}>',
+              // eslint-disable-next-line no-template-curly-in-string
+              '<Dropzone onDrop={files => alert(`${files.length} files were dropped!`)}>',
               '  <Dropzone.Overlay>',
               '    <div>Drop your files here!</div>',
               '  </Dropzone.Overlay>',
               '  <Dropzone.Content>',
               '    <div>This is some component or something</div>',
-              '  </Dropzone.Overlay>',
+              '  </Dropzone.Content>',
+              '</Dropzone>',
             ].join('\n'),
           }),
         ],
