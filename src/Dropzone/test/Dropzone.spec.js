@@ -101,7 +101,7 @@ describe(Dropzone.displayName, () => {
       consoleErrorStub.mockRestore();
     });
 
-    it('should throw an error when only Overlay is provided', async () => {
+    it('should throw an error when only Overlay is provided', () => {
       const renderFactory = () =>
         render(
           <Dropzone onDrop={jest.fn()}>
@@ -112,7 +112,7 @@ describe(Dropzone.displayName, () => {
       expect(renderFactory).toThrow('<Dropzone.Content /> must be provided');
     });
 
-    it('should throw an error when only Content is provided', async () => {
+    it('should throw an error when only Content is provided', () => {
       const renderFactory = () =>
         render(
           <Dropzone onDrop={jest.fn()}>
@@ -123,7 +123,7 @@ describe(Dropzone.displayName, () => {
       expect(renderFactory).toThrow('<Dropzone.Overlay /> must be provided');
     });
 
-    it('should throw an error when an element which is not Overlay nor Content is present', async () => {
+    it('should throw an error when an element which is not Overlay nor Content is present', () => {
       const renderFactory = () =>
         render(
           <Dropzone onDrop={jest.fn()}>
@@ -134,6 +134,21 @@ describe(Dropzone.displayName, () => {
         );
 
       expect(renderFactory).toThrow('unknown child <div />');
+    });
+
+    it('should throw an error when there are two Content elements', () => {
+      const renderFactory = () =>
+        render(
+          <Dropzone onDrop={jest.fn()}>
+            <Dropzone.Content />
+            <Dropzone.Content />
+            <Dropzone.Overlay />
+          </Dropzone>,
+        );
+
+      expect(renderFactory).toThrow(
+        'only one of type <Dropzone.Content /> is allowed',
+      );
     });
   });
 });
