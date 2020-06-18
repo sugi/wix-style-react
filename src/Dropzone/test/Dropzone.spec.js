@@ -135,20 +135,5 @@ describe(Dropzone.displayName, () => {
 
       expect(renderFactory).toThrow('unknown child <div />');
     });
-
-    it('should throw an error when there are two Content elements', () => {
-      const renderFactory = () =>
-        render(
-          <Dropzone onDrop={jest.fn()}>
-            <Dropzone.Content />
-            <Dropzone.Content />
-            <Dropzone.Overlay />
-          </Dropzone>,
-        );
-
-      expect(renderFactory).toThrow(
-        'only one of type <Dropzone.Content /> is allowed',
-      );
-    });
   });
 });
