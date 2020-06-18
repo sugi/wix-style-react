@@ -50,14 +50,25 @@ function mapChildren(children) {
 class Notification extends React.PureComponent {
   closeTimeout;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      hideByCloseClick: false,
-      hideByTimer: false,
-    };
+  state = {
+    hideByCloseClick: false,
+    hideByTimer: false,
+  };
 
-    this._startCloseTimer(props);
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.show) {
+      this._bypassCloseFlags();
+      this._clearCloseTimeout();
+      this._startCloseTimer(nextProps);
+    }
+  }
+
+  componentDidMount() {
+    this._startCloseTimer(this.props);
+  }
+
+  componentWillUnmount() {
+    this._clearCloseTimeout();
   }
 
   _startCloseTimer({ autoHideTimeout }) {
@@ -99,18 +110,6 @@ class Notification extends React.PureComponent {
       hideByCloseClick: false,
       hideByTimer: false,
     });
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this._bypassCloseFlags();
-      this._clearCloseTimeout();
-      this._startCloseTimer(nextProps);
-    }
-  }
-
-  componentWillUnmount() {
-    this._clearCloseTimeout();
   }
 
   _shouldShowNotification() {
