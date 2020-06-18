@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { buildChildrenObject } from 'wix-ui-core/dist/src/utils';
 import { dataHooks } from './constants';
-import classNames from 'classnames';
+import style from './Dropzone.st.css';
 
 /** Defines a region in the page where files can be dropped */
 class Dropzone extends React.PureComponent {
@@ -13,15 +13,16 @@ class Dropzone extends React.PureComponent {
   static displayName = 'Dropzone';
 
   static propTypes = {
-    /** Applied as data-hook HTML attribute that can be used for testing purposes */
+    /** Applied as data-hook HTML attribute that can be used for testing purposes. */
     dataHook: PropTypes.string,
 
-    /** A class to be appended to the root dropzone element */
+    /** A class to be appended to the root dropzone element. */
     className: PropTypes.string,
 
-    /** An event handler for files dropped over the dropzone */
+    /** An event handler for files dropped over the dropzone. The dropped files are supplied as an argument to the function. */
     onDrop: PropTypes.func.isRequired,
 
+    /** Either `<Dropzone.Overlay />` or `<Dropzone.Content />` components. */
     children: (props, propName) => {
       const childrenArr = React.Children.toArray(props[propName]);
       const childrenObj = buildChildrenObject(childrenArr, {
@@ -59,7 +60,10 @@ class Dropzone extends React.PureComponent {
   };
 
   static Overlay = ({ children }) => (
-    <div data-hook={dataHooks.dropzoneOverlay} className={'dropzoneOverlay'}>
+    <div
+      data-hook={dataHooks.dropzoneOverlay}
+      className={style.dropzoneOverlay}
+    >
       {children}
     </div>
   );
@@ -70,6 +74,14 @@ class Dropzone extends React.PureComponent {
     </div>
   );
 
+  static _overrideEventDefaults = event => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  /** https://spin.atomicobject.com/2018/09/13/file-uploader-react-typescript/ */
+  _dragEventCounter = 0;
+
   _eventHasFiles = event => {
     /** DataTransfer object is defined here: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer */
     return event.dataTransfer
@@ -78,21 +90,25 @@ class Dropzone extends React.PureComponent {
   };
 
   _onDragEnter = event => {
-    event.preventDefault();
+    Dropzone._overrideEventDefaults(event);
+    this._dragEventCounter++;
 
     /** We only want to show the overlay when files are dragged over the dropzone */
     return this._eventHasFiles(event) && this.setState({ isDragActive: true });
   };
 
   _onDragLeave = event => {
-    event.preventDefault();
+    Dropzone._overrideEventDefaults(event);
+    this._dragEventCounter--;
 
-    return this.setState({ isDragActive: false });
+    return (
+      this._dragEventCounter === 0 && this.setState({ isDragActive: false })
+    );
   };
 
   _onDrop = event => {
-    event.preventDefault();
-    event.persist();
+    Dropzone._overrideEventDefaults(event);
+    this._dragEventCounter = 0;
 
     if (this._eventHasFiles(event)) {
       const files = event.dataTransfer
@@ -104,7 +120,7 @@ class Dropzone extends React.PureComponent {
   };
 
   render() {
-    const { children, dataHook, className } = this.props;
+    const { children, dataHook } = this.props;
     const { isDragActive } = this.state;
 
     const childrenObj = buildChildrenObject(children, {
@@ -115,10 +131,11 @@ class Dropzone extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        className={classNames(className, 'dropzone')}
+        className={style('dropzone', {}, this.props)}
         onDrop={this._onDrop}
         onDragEnter={this._onDragEnter}
         onDragLeave={this._onDragLeave}
+        onDragOver={Dropzone._overrideEventDefaults}
       >
         {isDragActive && childrenObj.Overlay}
         {childrenObj.Content}
