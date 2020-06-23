@@ -6,7 +6,7 @@ import styles from './StarsRatingBar.st.css';
 import {
   dataHooks,
   starRatingBarSizes,
-  starRatingBarValues,
+  starRatingBarSizesInPx,
 } from './constants';
 import StarFilledIcon from 'wix-ui-icons-common/StarFilled';
 import StarIcon from 'wix-ui-icons-common/Star';
@@ -53,62 +53,79 @@ class StarsRatingBar extends React.PureComponent {
   //   }));
   // };
 
-  renderStars() {
+  _renderStars = () => {
     const { readOnly, value } = this.props;
+    const { starsRatingBarSize } = this.state;
 
     return Object.values(starIndexes).map(ratingValue => {
       if (!readOnly) {
         return ratingValue <= value ? (
-          <StarFilledIcon className={styles.star} />
+          <StarFilledIcon
+            key={ratingValue}
+            dataHook={`${dataHooks.star}-${ratingValue}`}
+            className={styles.star}
+            {...styles('root', { empty: true }, this.props)}
+            size={starRatingBarSizesInPx[starsRatingBarSize]}
+          />
         ) : (
-          <StarIcon className={styles.star} />
+          <StarIcon
+            key={ratingValue}
+            dataHook={`${dataHooks.star}-${ratingValue}`}
+            className={styles.star}
+            {...styles('root', { isFilled: true }, this.props)}
+            size={starRatingBarSizesInPx[starsRatingBarSize]}
+          />
         );
       }
-      return ratingValue <= value ? (
-        <StarFilledIcon className={styles.star} />
-      ) : (
-        <StarFilledIcon className={styles.star} />
+
+      return (
+        <StarFilledIcon
+          key={ratingValue}
+          dataHook={`${dataHooks.star}-${ratingValue}`}
+          className={styles.star}
+          size={starRatingBarSizesInPx[starsRatingBarSize]}
+        />
       );
     });
-  }
+  };
+
+  _shouldShowRateCaption = () => {
+    const { rateCaptions, readOnly } = this.props;
+
+    // todo: Sivan: add error message when the array is not empty but its size is less than 5
+
+    return (
+      !readOnly &&
+      rateCaptions &&
+      Array.isArray(rateCaptions) &&
+      rateCaptions.length === 5
+    );
+  };
+
+  _renderRateCaption = () => {
+    const { rateCaptions, value } = this.props;
+    const rateCaptionCurrentLabel = value === 0 ? '' : rateCaptions[value - 1];
+
+    return (
+      <Text
+        dataHook={dataHooks.rateCaption}
+        className={styles.rateCaption}
+        ellipsis
+      >
+        {rateCaptionCurrentLabel}
+      </Text>
+    );
+  };
 
   render() {
     const { dataHook } = this.props;
 
     return (
       <div data-hook={dataHook}>
-        {this.renderStars()}
-        <Text ellipsis>rate caption text</Text>
+        {this._renderStars()}
+        {this._shouldShowRateCaption() ? this._renderRateCaption() : null}
       </div>
     );
-
-    // const { count } = this.state;
-    // const { dataHook, buttonText } = this.props;
-    // const isEven = count % 2 === 0;
-    //
-    // return (
-    //   <div
-    //     {...styles('root', { even: isEven, odd: !isEven }, this.props)}
-    //     data-hook={dataHook}
-    //   >
-    //     <Text dataHook={dataHooks.starsRatingBarCount}>
-    //       You clicked this button {isEven ? 'even' : 'odd'} number (
-    //       <span className={styles.number}>
-    //         {count}
-    //       </span>
-    //       ) of times
-    //     </Text>
-    //
-    //     <div className={styles.button}>
-    //       <Button
-    //         onClick={this._handleClick}
-    //         dataHook={dataHooks.starsRatingBarButton}
-    //       >
-    //         {buttonText}
-    //       </Button>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 

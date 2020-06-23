@@ -1,6 +1,6 @@
 export const dataHooks = {
-  starsRatingBarCount: 'starsRatingBar-count',
-  starsRatingBarButton: 'starsRatingBar-button',
+  rateCaption: 'rate-caption',
+  star: 'star',
 };
 
 export const starRatingBarSizes = {
@@ -16,4 +16,11 @@ export const starRatingBarValues = {
   3: 3,
   4: 4,
   5: 5,
+};
+
+export const starRatingBarSizesInPx = {
+  tiny: 12,
+  small: 18,
+  medium: 24,
+  large: 36,
 };

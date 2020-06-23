@@ -16,24 +16,24 @@ export const basicExample = `
  }
 `;
 
-export const readOnlyExample = `<StarsRatingBar readOnly={true} />`;
+export const readOnlyExample = `<StarsRatingBar value={3} readOnly={true} />`;
 
 export const sizesExample = `
       <Layout>
         <Cell>
-          <StarsRatingBar readOnly={true} size="tiny" />
+          <StarsRatingBar value={2} readOnly={true} size="tiny" />
         </Cell>
         <Cell>
-          <StarsRatingBar readOnly={true} size="small" />
+          <StarsRatingBar value={2} readOnly={true} size="small" />
         </Cell>
         <Cell>
-          <StarsRatingBar readOnly={true} size="medium" />
+          <StarsRatingBar value={2} readOnly={true} size="medium" />
         </Cell>
         <Cell>
-          <StarsRatingBar readOnly={true} size="large" />
+          <StarsRatingBar value={2} readOnly={true} size="large" />
         </Cell>
         <Cell>
-          <StarsRatingBar size="large" />
+          <StarsRatingBar value={2} size="large" />
         </Cell>
       </Layout>
 `;
@@ -41,7 +41,7 @@ export const sizesExample = `
 export const rateCaptionsExample = `
   class MyComponent extends React.Component {
 
-    state= { value: 0 };
+    state= { value: 4 };
 
     render() {
       const rateCaptions = ['bad', 'not good', "ok", "good", "excellent" ];

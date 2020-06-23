@@ -22,6 +22,10 @@
   color: D10-20;
 }
 
+.rateCaption {
+  padding: 10px 0 8px 18px;
+}
+
 
 /*:import {*/
 /*  -st-from: "../Foundation/stylable/colors.st.css";*/

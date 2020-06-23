@@ -42,7 +42,7 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${StarsRatingBar.displayName}/`,
-      component: <StarsRatingBar />,
+      component: <StarsRatingBar value={3} />,
     }),
 
     tabs([
@@ -83,13 +83,6 @@ export default {
             title: 'With rate captions',
             text: 'A simple examples.js with compact preview',
             source: examples.rateCaptionsExample,
-          }),
-
-          code({
-            title: 'Full Interactive Preview',
-            description:
-              'A non compact version of same code examples.js as above',
-            source: '<StarsRatingBar />',
           }),
         ],
       }),
