@@ -5,19 +5,12 @@ import Text from '../Text';
 import styles from './StarsRatingBar.st.css';
 import {
   dataHooks,
+  starIndexes,
   starRatingBarSizes,
   starRatingBarSizesInPx,
 } from './constants';
 import StarFilledIcon from 'wix-ui-icons-common/StarFilled';
 import StarIcon from 'wix-ui-icons-common/Star';
-
-const starIndexes = {
-  1: 1,
-  2: 2,
-  3: 3,
-  4: 4,
-  5: 5,
-};
 
 /** Star Rating Component  */
 class StarsRatingBar extends React.PureComponent {

@@ -9,8 +9,8 @@ export const starRatingBarSizes = {
   medium: 'medium',
   large: 'large',
 };
-export const starRatingBarValues = {
-  0: 0,
+
+export const starIndexes = {
   1: 1,
   2: 2,
   3: 3,
