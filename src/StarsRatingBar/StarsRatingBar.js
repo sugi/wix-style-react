@@ -24,7 +24,7 @@ class StarsRatingBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const starsRatingBarSize = this.getStarsRatingBarSize();
+    const starsRatingBarSize = this._getStarsRatingBarSize();
 
     this.state = {
       starsRatingBarSize,
@@ -33,73 +33,102 @@ class StarsRatingBar extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.size !== this.props.size) {
-      const starsRatingBarSize = this.getStarsRatingBarSize();
+      const starsRatingBarSize = this._getStarsRatingBarSize();
       this.setState({ starsRatingBarSize });
     }
   }
 
-  getStarsRatingBarSize() {
-    const starsRatingBarSize = this.props.size
-      ? this.props.size
-      : this.props.readOnly
-      ? starRatingBarSizes.medium
-      : starRatingBarSizes.large;
-    return starsRatingBarSize;
-  }
+  onStarIconClick = id => {
+    this.setState({ value: id });
+  };
 
-  // _handleClick = () => {
-  //   this.setState(({ count }) => ({
-  //     count: count + 1,
-  //   }));
-  // };
+  _getStarsRatingBarSize = () => {
+    return this.props.readOnly
+      ? this._getReadOnlyModeStarsSize()
+      : this._getInteractiveModeStarsSize();
+  };
+
+  _getInteractiveModeStarsSize = () => {
+    if (this.props.size && this.props.size !== starRatingBarSizes.large) {
+      throw new Error(
+        `The size ${this.props.size} is not valid. In interactive mode the size must be 'large'.`,
+      );
+    }
+    return starRatingBarSizes.large;
+  };
+
+  _getReadOnlyModeStarsSize = () => {
+    return this.props.size ? this.props.size : starRatingBarSizes.medium;
+  };
 
   _renderStars = () => {
-    const { readOnly, value } = this.props;
-    const { starsRatingBarSize } = this.state;
+    const { readOnly } = this.props;
 
     return Object.values(starIndexes).map(ratingValue => {
-      if (!readOnly) {
-        return ratingValue <= value ? (
-          <StarFilledIcon
-            key={ratingValue}
-            dataHook={`${dataHooks.star}-${ratingValue}`}
-            className={styles.star}
-            {...styles('root', { empty: true }, this.props)}
-            size={starRatingBarSizesInPx[starsRatingBarSize]}
-          />
-        ) : (
-          <StarIcon
-            key={ratingValue}
-            dataHook={`${dataHooks.star}-${ratingValue}`}
-            className={styles.star}
-            {...styles('root', { isFilled: true }, this.props)}
-            size={starRatingBarSizesInPx[starsRatingBarSize]}
-          />
-        );
-      }
-
-      return (
-        <StarFilledIcon
-          key={ratingValue}
-          dataHook={`${dataHooks.star}-${ratingValue}`}
-          className={styles.star}
-          size={starRatingBarSizesInPx[starsRatingBarSize]}
-        />
-      );
+      return readOnly
+        ? this._renderInteractiveModeStar(ratingValue)
+        : this._renderReadOnlyModeStar(ratingValue);
     });
   };
 
-  _shouldShowRateCaption = () => {
-    const { rateCaptions, readOnly } = this.props;
+  _renderInteractiveModeStar = ratingValue => {
+    const { readOnly, value } = this.props;
+    const { starsRatingBarSize } = this.state;
 
-    // todo: Sivan: add error message when the array is not empty but its size is less than 5
-
+    const isFilledStar = ratingValue <= value;
     return (
-      !readOnly &&
-      rateCaptions &&
-      Array.isArray(rateCaptions) &&
-      rateCaptions.length === 5
+      <StarFilledIcon
+        key={ratingValue}
+        data-hook={`${dataHooks.star}-${ratingValue}`}
+        {...styles(
+          'star',
+          { readOnly, filled: isFilledStar, empty: !isFilledStar },
+          this.props,
+        )}
+        size={starRatingBarSizesInPx[starsRatingBarSize]}
+      />
     );
+  };
+
+  _renderReadOnlyModeStar = ratingValue => {
+    const { value } = this.props;
+    const { starsRatingBarSize } = this.state;
+    const isFilledStar = ratingValue <= value;
+
+    return isFilledStar ? (
+      <StarFilledIcon
+        key={ratingValue}
+        data-hook={`${dataHooks.star}-${ratingValue}`}
+        {...styles('star', { empty: true }, this.props)}
+        size={starRatingBarSizesInPx[starsRatingBarSize]}
+      />
+    ) : (
+      <StarIcon
+        key={ratingValue}
+        data-hook={`${dataHooks.star}-${ratingValue}`}
+        {...styles('star', { filled: true }, this.props)}
+        size={starRatingBarSizesInPx[starsRatingBarSize]}
+      />
+    );
+  };
+
+  _shouldShowRateCaption = () => {
+    const { readOnly, rateCaptions } = this.props;
+    let shouldShowRateCaption = false;
+
+    if (rateCaptions) {
+      const isValidRateCaption =
+        Array.isArray(rateCaptions) && rateCaptions.length === 5;
+
+      if (readOnly) {
+        throw new Error('Rate caption is not available in read only mode.');
+      } else if (!isValidRateCaption) {
+        throw new Error('Rate caption must be an array at size 5.');
+      }
+      shouldShowRateCaption = true;
+    }
+
+    return shouldShowRateCaption;
   };
 
   _renderRateCaption = () => {
@@ -111,6 +140,9 @@ class StarsRatingBar extends React.PureComponent {
         dataHook={dataHooks.rateCaption}
         className={styles.rateCaption}
         ellipsis
+        size="small"
+        weight="bold"
+        secondary
       >
         {rateCaptionCurrentLabel}
       </Text>

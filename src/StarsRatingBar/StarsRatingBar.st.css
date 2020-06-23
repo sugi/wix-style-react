@@ -1,29 +1,30 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: Y10, D10-20;
+  -st-named: Y10, D10-20, D20;
 }
 
 .root {
 }
 
 .star {
-  -st-states: isFilled, empty, filledReadOnly;
+  -st-states: filled, empty, readOnly;
 }
 
-.star:isFilled {
-  color: Y10;
+.star:filled {
+  color: value(Y10);
 }
 
 .star:empty {
-  background-color: Y10;
+  color: value(Y10);
 }
 
-.star:filledReadOnly {
-  color: D10-20;
+.star:readOnly:empty {
+  color: value(D10-20);
 }
 
 .rateCaption {
   padding: 10px 0 8px 18px;
+  vertical-align: initial;
 }
 
 
