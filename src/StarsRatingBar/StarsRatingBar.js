@@ -102,30 +102,35 @@ class StarsRatingBar extends React.PureComponent {
   _renderInteractiveModeStar = ratingValue => {
     const { value } = this.props;
     const { starsRatingBarSize, hoveredStarIndex } = this.state;
+
     const isStarHovered = hoveredStarIndex != -1;
     const isFilledStar = isStarHovered
       ? ratingValue <= hoveredStarIndex
       : ratingValue <= value;
 
+    const commonProps = {
+      key: ratingValue,
+      size: starRatingBarSizesInPx[starsRatingBarSize],
+      onMouseEnter: () => this._onMouseEnter(ratingValue),
+      onMouseLeave: () => this._onMouseLeave(),
+      onClick: () => this._onStarIconClick(ratingValue),
+    };
+
     return isFilledStar ? (
       <StarFilledIcon
-        key={ratingValue}
+        {...commonProps}
         data-hook={`${dataHooks.star}-${ratingValue}`}
         {...styles('star', { empty: true, hovered: isStarHovered }, this.props)}
-        size={starRatingBarSizesInPx[starsRatingBarSize]}
-        onClick={() => this._onStarIconClick(ratingValue)}
-        onMouseEnter={() => this._onMouseEnter(ratingValue)}
-        onMouseLeave={() => this._onMouseLeave()}
       />
     ) : (
       <StarIcon
-        key={ratingValue}
+        {...commonProps}
         data-hook={`${dataHooks.star}-${ratingValue}`}
-        {...styles('star', { filled: true }, this.props)}
-        size={starRatingBarSizesInPx[starsRatingBarSize]}
-        onClick={() => this._onStarIconClick(ratingValue)}
-        onMouseEnter={() => this._onMouseEnter(ratingValue)}
-        onMouseLeave={() => this._onMouseLeave()}
+        {...styles(
+          'star',
+          { filled: true, hovered: isStarHovered },
+          this.props,
+        )}
       />
     );
   };
