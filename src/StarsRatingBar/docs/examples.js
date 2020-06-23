@@ -21,16 +21,16 @@ export const readOnlyExample = `<StarsRatingBar value={3} readOnly={true} />`;
 export const sizesExample = `
       <Layout>
         <Cell>
-          <StarsRatingBar value={2} readOnly={true} size="tiny" />
+          <StarsRatingBar value={2} readOnly size="tiny" />
         </Cell>
         <Cell>
-          <StarsRatingBar value={2} readOnly={true} size="small" />
+          <StarsRatingBar value={2} readOnly size="small" />
         </Cell>
         <Cell>
-          <StarsRatingBar value={2} readOnly={true} size="medium" />
+          <StarsRatingBar value={2} readOnly size="medium" />
         </Cell>
         <Cell>
-          <StarsRatingBar value={2} readOnly={true} size="large" />
+          <StarsRatingBar value={2} readOnly size="large" />
         </Cell>
         <Cell>
           <StarsRatingBar value={2} size="large" />
