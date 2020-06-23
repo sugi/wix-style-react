@@ -38,8 +38,8 @@ class StarsRatingBar extends React.PureComponent {
     }
   }
 
-  onStarIconClick = id => {
-    this.setState({ value: id });
+  onStarIconClick = rateValue => {
+    this.props.onChange(rateValue);
   };
 
   _getStarsRatingBarSize = () => {
@@ -101,6 +101,7 @@ class StarsRatingBar extends React.PureComponent {
         data-hook={`${dataHooks.star}-${ratingValue}`}
         {...styles('star', { empty: true }, this.props)}
         size={starRatingBarSizesInPx[starsRatingBarSize]}
+        onClick={() => this.onStarIconClick(ratingValue)}
       />
     ) : (
       <StarIcon
@@ -108,6 +109,7 @@ class StarsRatingBar extends React.PureComponent {
         data-hook={`${dataHooks.star}-${ratingValue}`}
         {...styles('star', { filled: true }, this.props)}
         size={starRatingBarSizesInPx[starsRatingBarSize]}
+        onClick={() => this.onStarIconClick(ratingValue)}
       />
     );
   };
