@@ -81,7 +81,7 @@ class StarsRatingBar extends React.PureComponent {
     return (
       <StarFilledIcon
         key={ratingValue}
-        data-hook={`${dataHooks.star}-${ratingValue}`}
+        data-hook={dataHooks.filledStar}
         {...styles(
           'star',
           { readOnly, filled: isFilledStar, empty: !isFilledStar },
@@ -112,13 +112,14 @@ class StarsRatingBar extends React.PureComponent {
     return isFilledStar ? (
       <StarFilledIcon
         {...commonProps}
-        data-hook={`${dataHooks.star}-${ratingValue}`}
+        data-hook={dataHooks.filledStar}
+        data-index={ratingValue}
         {...styles('star', { empty: true, hovered: isStarHovered }, this.props)}
       />
     ) : (
       <StarIcon
         {...commonProps}
-        data-hook={`${dataHooks.star}-${ratingValue}`}
+        data-index={ratingValue}
         {...styles(
           'star',
           { filled: true, hovered: isStarHovered },

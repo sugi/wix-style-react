@@ -1,6 +1,6 @@
 export const dataHooks = {
   rateCaption: 'rate-caption',
-  star: 'star',
+  filledStar: 'filled-star',
 };
 
 export const starRatingBarSizes = {
