@@ -31,7 +31,7 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    buttonText: 'Hello World!',
+    PrimaryProp: 'Hello World!',
   },
 
   exampleProps: {
@@ -63,25 +63,31 @@ export default {
 
           example({
             title: 'Simple Usage',
-            text: 'A simple examples.js with compact preview',
+            text: 'A simple examples',
             source: examples.basicExample,
           }),
 
           example({
             title: 'readOnly',
-            text: 'An examples.js for the read only mode',
+            text: 'An examples for the read only mode',
             source: examples.readOnlyExample,
           }),
 
           example({
-            title: 'Sizes',
-            text: 'A simple examples.js with compact preview',
-            source: examples.sizesExample,
+            title: 'Sizes for interactive mode',
+            text: 'The only size for this mode is large (default).',
+            source: examples.interactiveModeSizesExample,
+          }),
+
+          example({
+            title: 'Sizes for read only mode',
+            text: 'There are 4 sizes: tiny, small , medium (default) and large',
+            source: examples.readOnlyModeSizesExample,
           }),
 
           example({
             title: 'With rate captions',
-            text: 'A simple examples.js with compact preview',
+            text: 'Support only in the interactive mode.',
             source: examples.rateCaptionsExample,
           }),
         ],

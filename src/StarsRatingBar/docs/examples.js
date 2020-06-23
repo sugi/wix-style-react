@@ -18,7 +18,15 @@ export const basicExample = `
 
 export const readOnlyExample = `<StarsRatingBar value={3} readOnly={true} />`;
 
-export const sizesExample = `
+export const interactiveModeSizesExample = `
+      <Layout>
+        <Cell>
+          <StarsRatingBar value={2} size="large" />
+        </Cell>
+      </Layout>
+`;
+
+export const readOnlyModeSizesExample = `
       <Layout>
         <Cell>
           <StarsRatingBar value={2} readOnly size="tiny" />
@@ -27,13 +35,10 @@ export const sizesExample = `
           <StarsRatingBar value={2} readOnly size="small" />
         </Cell>
         <Cell>
-          <StarsRatingBar value={2} readOnly size="medium" />
+          <StarsRatingBar value={2} readOnly />
         </Cell>
         <Cell>
           <StarsRatingBar value={2} readOnly size="large" />
-        </Cell>
-        <Cell>
-          <StarsRatingBar value={2} size="large" />
         </Cell>
       </Layout>
 `;
