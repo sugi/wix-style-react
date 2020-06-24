@@ -1,5 +1,4 @@
 export const dataHooks = {
-  rateCaption: 'rate-caption',
   filledStar: 'filled-star',
 };
 

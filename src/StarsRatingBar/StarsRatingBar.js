@@ -100,8 +100,10 @@ class StarsRatingBar extends React.PureComponent {
     const { value } = this.props;
     const { starsRatingBarSize, hoveredStarIndex } = this.state;
 
-    const isStarHovered = hoveredStarIndex !== 0;
-    const isFilledStar = isStarHovered
+    const isStarsHovered = hoveredStarIndex !== 0;
+    const isCurrentStarHovered = hoveredStarIndex === ratingValue;
+
+    const isFilledStar = isStarsHovered
       ? ratingValue <= hoveredStarIndex
       : ratingValue <= value;
 
@@ -120,7 +122,7 @@ class StarsRatingBar extends React.PureComponent {
         data-index={ratingValue}
         {...styles(
           'star',
-          { filled: true, hovered: isStarHovered },
+          { filled: true, hovered: isCurrentStarHovered },
           this.props,
         )}
       />
@@ -128,7 +130,11 @@ class StarsRatingBar extends React.PureComponent {
       <StarIcon
         {...commonProps}
         data-index={ratingValue}
-        {...styles('star', { empty: true, hovered: isStarHovered }, this.props)}
+        {...styles(
+          'star',
+          { empty: true, hovered: isCurrentStarHovered },
+          this.props,
+        )}
       />
     );
   };
@@ -154,24 +160,28 @@ class StarsRatingBar extends React.PureComponent {
 
   _renderRateCaption = () => {
     const { rateCaptions, value } = this.props;
-    const rateCaptionCurrentLabel = value === 0 ? '' : rateCaptions[value - 1];
+    const { hoveredStarIndex } = this.state;
+    const isStarsHovered = hoveredStarIndex !== 0;
+
+    let rateCaptionCurrentLabel = '';
+
+    if (isStarsHovered) {
+      rateCaptionCurrentLabel = rateCaptions[hoveredStarIndex - 1];
+    } else {
+      rateCaptionCurrentLabel = value === 0 ? '' : rateCaptions[value - 1];
+    }
 
     return (
-      <Text
-        dataHook={dataHooks.rateCaption}
-        className={styles.rateCaption}
-        ellipsis
-        size="small"
-        weight="bold"
-        secondary
-      >
-        {rateCaptionCurrentLabel}
-      </Text>
+      <div className={styles.rateCaption}>
+        <Text ellipsis size="small" weight="bold" secondary>
+          {rateCaptionCurrentLabel}
+        </Text>
+      </div>
     );
   };
 
   render() {
-    const { dataHook } = this.props;
+    const { dataHook, className } = this.props;
 
     return (
       <div data-hook={dataHook} {...styles('root', {}, { className })}>

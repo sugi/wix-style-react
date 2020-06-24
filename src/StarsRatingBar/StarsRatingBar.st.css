@@ -24,6 +24,7 @@
 }
 
 .rateCaption {
-  padding: 10px 0 8px 18px;
-  vertical-align: initial;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 0 0 18px;
 }
