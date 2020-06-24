@@ -103,6 +103,8 @@ class StarsRatingBar extends React.PureComponent {
     const isStarsHovered = hoveredStarIndex !== 0;
     const isCurrentStarHovered = hoveredStarIndex === ratingValue;
 
+    // If the user hovers on a star the value should be compatible to the value of the hovered star
+    // otherwise the value should be compatible to the selected value.
     const isFilledStar = isStarsHovered
       ? ratingValue <= hoveredStarIndex
       : ratingValue <= value;
@@ -165,6 +167,8 @@ class StarsRatingBar extends React.PureComponent {
 
     let rateCaptionCurrentLabel = '';
 
+    // If the user hovers on a star the label should be compatible to the value of the hovered star
+    // otherwise the label should be compatible to the selected value.
     if (isStarsHovered) {
       rateCaptionCurrentLabel = rateCaptions[hoveredStarIndex - 1];
     } else {
