@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition } from 'react-transition-group';
+import { Animator } from 'wix-animations';
 import CloseButton from '../CloseButton';
 import TextLabel from './TextLabel';
 import ActionButton from './ActionButton';
@@ -46,6 +46,12 @@ function mapChildren(children) {
     return childrenAsMap;
   }, {});
 }
+
+const heightCalculation = e => {
+  const { height } = window.getComputedStyle(e.firstChild);
+  e.style.height = height;
+  return Number(height.replace(/px$/, ''));
+};
 
 class Notification extends React.PureComponent {
   closeTimeout;
@@ -131,26 +137,20 @@ class Notification extends React.PureComponent {
         data-theme={theme}
         data-type={type}
       >
-        <CSSTransition
-          in={show}
-          classNames={{
-            enter: styles.notificationAnimationEnter,
-            enterActive: styles.notificationAnimationEnterActive,
-            exit: styles.notificationAnimationExit,
-            exitActive: styles.notificationAnimationExitActive,
-          }}
-          timeout={animationsTimeouts}
-          mountOnEnter
-          unmountOnExit
+        <Animator
+          show={show}
+          childClassName={styles.animatorContent}
+          timing="medium"
+          height={heightCalculation}
         >
-          <div
-            data-hook={dataHooks.notificationWrapper}
-            className={styles.notification}
-            role="alert"
-            aria-labelledby="notification-label"
-            aria-live="polite"
-          >
-            <div className={styles.notificationContent}>
+          <div className={styles.wrapper}>
+            <div
+              data-hook={dataHooks.notificationContent}
+              className={styles.notification}
+              role="alert"
+              aria-labelledby="notification-label"
+              aria-live="polite"
+            >
               {themeIcon[theme] && <div>{themeIcon[theme]}</div>}
 
               <div className={styles.labelWrapper}>
@@ -168,7 +168,7 @@ class Notification extends React.PureComponent {
               )}
             </div>
           </div>
-        </CSSTransition>
+        </Animator>
       </div>
     );
   }

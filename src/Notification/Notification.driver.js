@@ -5,8 +5,8 @@ const notificationDriverFactory = ({ element }) => {
   const getElementByDataHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
 
-  const notificationWrapper = () =>
-    getElementByDataHook(dataHooks.notificationWrapper);
+  const notificationContent = () =>
+    getElementByDataHook(dataHooks.notificationContent);
   const labelText = () => getElementByDataHook(dataHooks.notificationLabel);
   const actionButton = () =>
     getElementByDataHook(dataHooks.notificationCtaButton);
@@ -18,7 +18,7 @@ const notificationDriverFactory = ({ element }) => {
 
   return {
     exists: () => !!element,
-    visible: () => !!notificationWrapper(),
+    visible: () => !!notificationContent(),
     hasTheme: () => !!getTheme(),
     isStandardNotification: () => getTheme() === THEMES.standard,
     isErrorNotification: () => getTheme() === THEMES.error,

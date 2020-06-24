@@ -5,21 +5,30 @@
 
 :vars {
   zIndex_NOTIFICATION: 4000;
-  enteringDuration: 200ms;
-  exitingDuration: 150ms;
-  timingFunction: cubic-bezier(0.4, 0, 0.2, 1 );
-  verticalContentMargin: 3px;
   maxHeight: 72px; /* considering that notification label should be no longer than two lines */
 }
 
 .root {
   -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
-  position: relative;
-  z-index: value(zIndex_NOTIFICATION);
+  /*position: relative;*/
+  /*z-index: value(zIndex_NOTIFICATION);*/
 }
 
+.animatorContent > * {
+  position: relative;
+}
+
+.wrapper{}
+
 .notification {
-  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  padding: 3px 12px;
 }
 
 .root:theme(standard) .notification{
@@ -42,32 +51,25 @@
   background-color: value(P20);
 }
 
-/* Positions */
-.root:type(local) .notification {
-  position: absolute;
-  right: 0;
-  left: 0;
-}
+/*!* Positions *!*/
+/*.root:type(local) .notification {*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  left: 0;*/
+/*}*/
 
-.root:type(global) .notification{
-  position: relative;
-  width: 100%;
-}
+/*.root:type(global) .notification{*/
+/*  position: relative;*/
+/*  width: 100%;*/
+/*}*/
 
-.root:type(sticky) .notification{
-  position: fixed;
-  right: 0;
-  width: 100%;
-  top: 0;
-}
+/*.root:type(sticky) .notification{*/
+/*  position: fixed;*/
+/*  right: 0;*/
+/*  width: 100%;*/
+/*  top: 0;*/
+/*}*/
 
-.notificationContent{
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  margin: value(verticalContentMargin) 12px;
-  position: relative;
-}
 
 .labelWrapper {
   display: flex;
@@ -97,45 +99,6 @@
 
 .closeButton {
   position: absolute;
-  top: 11px; /* 3px (margin top of content) + 11px top = 14px */
-  right: -1px; /*  12px (margin right of content) - 1px = 11px*/
-}
-
-/* Animations */
-/* Bounding Box */
-.notificationAnimationEnter .notification {
-  max-height: 0;
-}
-
-.notificationAnimationEnterActive .notification {
-  max-height: value(maxHeight);
-  transition: max-height value(enteringDuration) value(timingFunction);
-}
-
-.notificationAnimationExit .notification  {
-  max-height: value(maxHeight);
-}
-
-.notificationAnimationExitActive .notification {
-  max-height: 0;
-  transition: max-height value(exitingDuration)  value(timingFunction);
-}
-
-/* Content */
-.notificationAnimationEnter .notificationContent {
-  margin-top: calc(value(maxHeight) * (-1));
-}
-
-.notificationAnimationEnterActive .notificationContent {
-  margin-top: value(verticalContentMargin);
-  transition: margin-top value(enteringDuration) value(timingFunction);
-}
-
-.notificationAnimationExit .notificationContent {
-  margin-top: value(verticalContentMargin);
-}
-
-.notificationAnimationExitActive  .notificationContent {
-  margin-top: calc(value(maxHeight) * (-1));
-  transition: margin-top value(exitingDuration) value(timingFunction);
+  top: 12px;
+  right: 12px;
 }

@@ -14,7 +14,7 @@ export const ACTION_BUTTON_TYPES = {
 const prefix = 'notification';
 
 export const dataHooks = {
-  notificationWrapper: `${prefix}-wrapper`,
+  notificationContent: `${prefix}-content`,
   notificationCloseButton: `${prefix}-close-button`,
   notificationLabel: `${prefix}-label`,
   notificationCtaButton: `${prefix}-cta-button`,
