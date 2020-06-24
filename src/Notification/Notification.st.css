@@ -25,7 +25,6 @@
   bottom: 0;
   box-sizing: border-box;
   width: 100%;
-
   display: flex;
   justify-content: center;
   padding: 3px 12px;
@@ -43,7 +42,7 @@
   background-color: value(G20);
 }
 
-.root:theme(warning) .notification{
+.root:theme(warning) .notification {
   background-color: value(Y10);
 }
 
@@ -52,18 +51,18 @@
 }
 
 /*!* Positions *!*/
-/*.root:type(local) .notification {*/
+/*.root:type(local) .animatorContent {*/
 /*  position: absolute;*/
 /*  right: 0;*/
 /*  left: 0;*/
 /*}*/
 
-/*.root:type(global) .notification{*/
+/*.root:type(global) .animatorContent{*/
 /*  position: relative;*/
 /*  width: 100%;*/
 /*}*/
 
-/*.root:type(sticky) .notification{*/
+/*.root:type(sticky) .animatorContent{*/
 /*  position: fixed;*/
 /*  right: 0;*/
 /*  width: 100%;*/
