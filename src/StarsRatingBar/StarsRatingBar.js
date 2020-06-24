@@ -32,35 +32,39 @@ class StarsRatingBar extends React.PureComponent {
     }
   }
 
-  _onStarIconClick = rateValue => {
-    this.props.onChange(rateValue);
+  _getStarsRatingBarSize = () => {
+    const { readOnly } = this.props;
+
+    return readOnly
+      ? this._getReadOnlyModeStarsSize()
+      : this._getInteractiveModeStarsSize();
   };
 
-  _onMouseLeave = () => {
-    this.setState({ hoveredStarIndex: -1 });
+  _getReadOnlyModeStarsSize = () => {
+    const { size } = this.props;
+    return size ? size : starRatingBarSizes.medium;
+  };
+
+  _getInteractiveModeStarsSize = () => {
+    const { size } = this.props;
+    if (size && size !== starRatingBarSizes.large) {
+      throw new Error(
+        `The size ${size} is not valid. In interactive mode the size must be 'large'.`,
+      );
+    }
+    return starRatingBarSizes.large;
   };
 
   _onMouseEnter = ratingValue => {
     this.setState({ hoveredStarIndex: ratingValue });
   };
 
-  _getStarsRatingBarSize = () => {
-    return this.props.readOnly
-      ? this._getReadOnlyModeStarsSize()
-      : this._getInteractiveModeStarsSize();
+  _onMouseLeave = () => {
+    this.setState({ hoveredStarIndex: -1 });
   };
 
-  _getInteractiveModeStarsSize = () => {
-    if (this.props.size && this.props.size !== starRatingBarSizes.large) {
-      throw new Error(
-        `The size ${this.props.size} is not valid. In interactive mode the size must be 'large'.`,
-      );
-    }
-    return starRatingBarSizes.large;
-  };
-
-  _getReadOnlyModeStarsSize = () => {
-    return this.props.size ? this.props.size : starRatingBarSizes.medium;
+  _onStarIconClick = ratingValue => {
+    this.props.onChange(ratingValue);
   };
 
   _renderStars = () => {
@@ -114,17 +118,17 @@ class StarsRatingBar extends React.PureComponent {
         {...commonProps}
         data-hook={dataHooks.filledStar}
         data-index={ratingValue}
-        {...styles('star', { empty: true, hovered: isStarHovered }, this.props)}
-      />
-    ) : (
-      <StarIcon
-        {...commonProps}
-        data-index={ratingValue}
         {...styles(
           'star',
           { filled: true, hovered: isStarHovered },
           this.props,
         )}
+      />
+    ) : (
+      <StarIcon
+        {...commonProps}
+        data-index={ratingValue}
+        {...styles('star', { empty: true, hovered: isStarHovered }, this.props)}
       />
     );
   };
@@ -140,7 +144,7 @@ class StarsRatingBar extends React.PureComponent {
       if (readOnly) {
         throw new Error('Rate caption is not available in read only mode.');
       } else if (!isValidRateCaption) {
-        throw new Error('Rate caption must be an array at size 5.');
+        throw new Error('Rate caption must be an array of strings at size 5.');
       }
       shouldShowRateCaption = true;
     }

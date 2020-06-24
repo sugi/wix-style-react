@@ -87,7 +87,7 @@ export default {
 
           example({
             title: 'With rate captions',
-            text: 'Support only in the interactive mode.',
+            text: 'Supported only in the interactive mode.',
             source: examples.rateCaptionsExample,
           }),
         ],
