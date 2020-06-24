@@ -174,7 +174,7 @@ class StarsRatingBar extends React.PureComponent {
     const { dataHook } = this.props;
 
     return (
-      <div data-hook={dataHook}>
+      <div data-hook={dataHook} {...styles('root', {}, { className })}>
         {this._renderStars()}
         {this._shouldShowRateCaption() ? this._renderRateCaption() : null}
       </div>
