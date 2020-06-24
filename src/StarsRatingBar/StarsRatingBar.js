@@ -203,7 +203,11 @@ StarsRatingBar.propTypes = {
   /** The star rating bar’s selected rate. */
   value: PropTypes.oneOf([0, 1, 2, 3, 4, 5]).isRequired,
 
-  /** Called upon every value change. */
+  /** A Handler for rating changes
+   * ##### Signature:
+   * function(rating: number) => void
+   * * `rating`: 1 | 2 | 3 | 4 | 5
+   */
   onChange: PropTypes.func,
 };
 

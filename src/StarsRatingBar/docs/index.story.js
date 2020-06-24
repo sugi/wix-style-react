@@ -52,7 +52,7 @@ export default {
           description({
             title: 'Description',
             text:
-              'This line here should briefly describe component in just a sentence or two. It should be short and easy to read.',
+              'This component let the users the ability to share their opinion about any requested subject.',
           }),
 
           importExample(),
