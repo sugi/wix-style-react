@@ -178,7 +178,12 @@ describe('Breadcrumbs', () => {
       const { driver } = render(
         <Breadcrumbs {...{ items: [{ id: 0, value: 'Option 1' }] }} />,
       );
-      expect(await driver.isItemFullWidthAt(0)).toBe(true);
+      expect(await driver.isItemFullWidthAt()).toBe(true);
+    });
+    it('should not take full width', async () => {
+      const render = createRendererWithDriver(breadcrumbsPrivateDriverFactory);
+      const { driver } = render(<Breadcrumbs {...{ items }} />);
+      expect(await driver.isItemFullWidthAt()).toBe(false);
     });
   });
 });

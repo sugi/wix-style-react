@@ -48,8 +48,7 @@ class Breadcrumbs extends React.PureComponent {
     onClick: () => {},
   };
 
-  createItem({ item, isActive, onClick, className, id }) {
-    const fullWidth = className !== '';
+  createItem({ item, isActive, onClick, fullWidth, id }) {
     const active = isActive;
     const breadcrumbText = value => {
       const { theme, size } = this.props;
@@ -145,6 +144,7 @@ class Breadcrumbs extends React.PureComponent {
 
   render() {
     const { items, size, theme, dataHook } = this.props;
+    const fullWidth = items.length === 1;
 
     return (
       <div
@@ -166,8 +166,7 @@ class Breadcrumbs extends React.PureComponent {
                 item,
                 isActive: active,
                 onClick: this._handleItemClick(item),
-                className:
-                  i === 0 && allItems.length === 1 ? styles.itemFullWidth : '',
+                fullWidth,
               })}
               {allItems[i + 1] && (
                 <BreadcrumbsChevronRight className={styles.divider} />
