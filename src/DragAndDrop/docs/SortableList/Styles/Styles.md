@@ -35,7 +35,7 @@ we suggest using the [`classnames`](https://github.com/JedWatson/classnames) pac
 ### Example
 ```js
 ...
-import dndStyles from 'wix-style-react/dnd-styles';
+import { dndStyles } from 'wix-style-react';
 import styles from './custom-styles.scss'
 import classNames from 'classnames';
 ...

@@ -5,7 +5,7 @@ As `wix-style-react` provides the building block for creating draggable lists, i
 
 ## Importing
 ```js
-import dndStyles from 'wix-style-react/dnd-styles';
+import { dndStyles } from 'wix-style-react';
 ```
 
 `dndStyles` is an object containing the default class names.
@@ -20,7 +20,7 @@ Your component should use these styles and extend with any custom styles if need
  - `item` - defines a single item resets. should be applied to the root of your item
  - `itemPlaceholder` - defines how an item's placeholder (the empty section after dragging) looks like. should be applied to the root of your item in placeholder mode
  - `itemPreview` - defines how an item should look while it is dragged. should be applied to the root of your item in preview mode
- - `isListInDragState` class - added to all items when any element is under dragging process and removed when process ended 
+ - `isListInDragState` class - added to all items when any element is under dragging process and removed when process ended
  And can fix acknowledged hover bug on items as:
   `&:hover:not(.isListInDragState) {
      ...

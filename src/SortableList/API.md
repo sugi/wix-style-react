@@ -1,6 +1,6 @@
 ```js
   ...
-  import dndStyles from 'wix-style-react/dnd-styles';
+  import { dndStyles } from 'wix-style-react';
   ...
 
   <SortableList

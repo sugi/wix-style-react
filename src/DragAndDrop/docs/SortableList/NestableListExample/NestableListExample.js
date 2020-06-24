@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import NestableList from 'wix-style-react/NestableList';
-import defaultDndStyles from 'wix-style-react/dnd-styles';
+import { dndStyles as defaultDndStyles } from 'wix-style-react';
 import DragDropContextProvider from 'wix-style-react/DragDropContextProvider';
 import styles from './NestableList.scss';
 

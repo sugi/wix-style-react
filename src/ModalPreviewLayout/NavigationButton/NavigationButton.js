@@ -8,52 +8,44 @@ import { arrowsDirection, dataHooks } from '../constants';
 import styles from '../ModalPreviewLayout.st.css';
 import classNames from 'classnames';
 
-const iconButtonArrow = {
-  [arrowsDirection.rightArrow]: <ChevronRight />,
-  [arrowsDirection.leftArrow]: <ChevronLeft />,
-};
-
 const tooltipProps = {
   [arrowsDirection.rightArrow]: {
     dataHook: dataHooks.nextNavigationButtonTooltip,
-    className: styles.modalTooltip,
-    appendTo: 'scrollParent',
     placement: 'right',
   },
   [arrowsDirection.leftArrow]: {
     dataHook: dataHooks.prevNavigationButtonTooltip,
-    className: styles.modalTooltip,
-    appendTo: 'scrollParent',
     placement: 'left',
   },
 };
 
-const NavigationButton = ({ direction, dataHook, tooltipText, onClick }) => (
+const iconButtonProps = {
+  [arrowsDirection.leftArrow]: {
+    dataHook: dataHooks.modalPreviewLeftArrow,
+    children: <ChevronLeft />,
+  },
+  [arrowsDirection.rightArrow]: {
+    dataHook: dataHooks.modalPreviewRightArrow,
+    children: <ChevronRight />,
+  },
+};
+
+const NavigationButton = ({ direction, tooltipText, onClick }) => (
   <div className={classNames(styles.navigationButton, styles[direction])}>
-    {tooltipText ? (
-      <Tooltip
-        content={<Text children={tooltipText} />}
-        {...tooltipProps[direction]}
-      >
-        <IconButton
-          as="button"
-          skin="transparent"
-          dataHook={dataHook}
-          onClick={onClick}
-        >
-          {iconButtonArrow[direction]}
-        </IconButton>
-      </Tooltip>
-    ) : (
+    <Tooltip
+      disabled={!tooltipText}
+      className={styles.modalTooltip}
+      appendTo="scrollParent"
+      content={<Text children={tooltipText} />}
+      {...tooltipProps[direction]}
+    >
       <IconButton
         as="button"
         skin="transparent"
-        dataHook={dataHook}
         onClick={onClick}
-      >
-        {iconButtonArrow[direction]}
-      </IconButton>
-    )}
+        {...iconButtonProps[direction]}
+      />
+    </Tooltip>
   </div>
 );
 

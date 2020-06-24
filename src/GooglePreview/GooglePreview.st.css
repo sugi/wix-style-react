@@ -22,12 +22,11 @@
 
 .googlePreviewTitle {
   -st-extends: Text;
-  display: block;
 }
 
 .googlePreviewTitle:size(medium):weight(bold) {
   color: value(googlePreivewBlue);
-  font-family: Arial; 
+  font-family: Arial;
   font-weight: bold;
 }
 

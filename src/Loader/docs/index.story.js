@@ -56,8 +56,18 @@ export default {
 
           title('Examples'),
 
-          example({ title: 'Size', source: examples.sizes }),
-          example({ title: 'Status', source: examples.status }),
+          example({
+            title: 'Size',
+            text:
+              'There are four possible sizes : `tiny`, `small`, `medium` (default) and `large`',
+            source: examples.sizes,
+          }),
+          example({
+            title: 'Status',
+            text:
+              'There are four statuses types: `loading` (default), `success` and `error`',
+            source: examples.status,
+          }),
         ],
       }),
 

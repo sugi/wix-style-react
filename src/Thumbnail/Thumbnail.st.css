@@ -143,7 +143,6 @@
 
 .bottomTitle {
   -st-states: selected, disabled;
-  display: block;
   text-align: center;
   padding-top: 6px;
 }

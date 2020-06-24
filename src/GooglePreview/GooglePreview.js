@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './GooglePreview.st.css';
-
 import Text from '../Text';
+import Box from '../Box';
 
 /**
  *  A preview of a title, link and description of SEO result as it displayed in Google
@@ -23,7 +23,11 @@ class GooglePreview extends React.PureComponent {
 
   render() {
     return (
-      <div {...style('root', {}, this.props)} data-hook={this.props.dataHook}>
+      <Box
+        {...style('root', {}, this.props)}
+        dataHook={this.props.dataHook}
+        direction="vertical"
+      >
         <Text
           className={style.googlePreviewTitle}
           dataHook={'googlePreview-title'}
@@ -56,7 +60,7 @@ class GooglePreview extends React.PureComponent {
             {this.props.description}
           </Text>
         </div>
-      </div>
+      </Box>
     );
   }
 }

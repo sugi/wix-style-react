@@ -38,6 +38,10 @@
   box-shadow: none;
 }
 
+.root:open:skin(light):hideShadow .header {
+  background-color: initial;
+}
+
 .root:disabled .header .arrow {
   color: value(D10);
 }

@@ -190,7 +190,8 @@ class Modal extends React.PureComponent {
     const { shouldCloseOnOverlayClick, onRequestClose } = this.props;
     if (
       shouldCloseOnOverlayClick &&
-      event.target.id === CHILDREN_WRAPPER_DIV_ID
+      event.target.id === CHILDREN_WRAPPER_DIV_ID &&
+      onRequestClose
     ) {
       onRequestClose();
     }

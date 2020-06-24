@@ -20,7 +20,7 @@ A collection of React components that conform to Wix Style.
 </div>
 
 <div align="center">
- <a href="https://wix-style-react.now.sh">https://wix-style-react.now.sh/</a>
+ <a href="https://wix.com/pages/wix-style-react">https://wix.com/pages/wix-style-react/</a>
 </div>
 
 ## 📦 Install

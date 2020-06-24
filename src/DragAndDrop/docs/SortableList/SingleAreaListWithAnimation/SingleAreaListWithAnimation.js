@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import SortableList from 'wix-style-react/SortableList';
-import defaultDndStyles from 'wix-style-react/dnd-styles';
+import { dndStyles as defaultDndStyles } from 'wix-style-react';
 
 import styles from './SingleAreaListWithAnimation.scss';
 

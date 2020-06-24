@@ -1,0 +1,10 @@
+{
+  "name": "wix-style-react",
+  "rootDir": "storybook-static",
+  "files": [
+    "*"
+  ],
+  "exposure": [
+    "wix.com"
+  ]
+}

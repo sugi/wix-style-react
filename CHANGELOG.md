@@ -14,13 +14,30 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 8.24.0 - 2020-06-24
+
+### Changed
+- `<ModalPreviewLayout/>`- exposed `nextButtonProps` & `prevButtonProps` props [#5595](https://github.com/wix/wix-style-react/pull/5595)
+
+### Fixed
+- Fix dnd-styles import [#5598](https://github.com/wix/wix-style-react/pull/5598)
+- `<Modal/>` - invoke onRequestClose only if passed as prop [#5600](https://github.com/wix/wix-style-react/pull/5600)
+- `<Accordion/>` - changed hover color for with skin="light" when hideShadow is active [#5579](https://github.com/wix/wix-style-react/pull/5579)
+- `<Box/>` - fix styles don't re-render with no value [#5599](https://github.com/wix/wix-style-react/pull/5599)
+
+## 8.23.0 - 2020-06-22
+### Internal
+- `<EllipsisHOC/>` - migrate from wix-ui-core [#5586](https://github.com/wix/wix-style-react/pull/5586)
+### Changed
+- `<Loader/>` - Deleting legacy protructor driver since it was faulty, exposed the uni-driver instead and updated internal usages accordingly.
+
+## 8.22.3 - 2020-06-22
 ### Fixed
 - `<ListItemSelect/>`- fixing item height [#5555](https://github.com/wix/wix-style-react/pull/5555)
 - `<Search/>` - Fix the bug that in some cases the clear button doesn't work. FYI after this fix if you use this component as a controlled component you must pass an onClear callback and update the value you send for the component in order to clear the input. [5576](https://github.com/wix/wix-style-react/pull/5576)
 - `<RichTextArea/>`- update min height [#5512](https://github.com/wix/wix-style-react/pull/5512)
-- `<ImageViewer/>`- fix the bug that it breaks in small sizes. [5573](https://github.com/wix/wix-style-react/pull/5573)
-- `<Input/>` - Change the clear button size according to the input size. [5569](https://github.com/wix/wix-style-react/pull/5569)
+- `<ImageViewer/>`- fix the bug that it breaks in small sizes. [#5573](https://github.com/wix/wix-style-react/pull/5573)
+- `<Input/>` - Change the clear button size according to the input size. [#5569](https://github.com/wix/wix-style-react/pull/5569)
 
 
 ## 8.22.1 - 2020-06-18
@@ -30,11 +47,9 @@ Types of changes:
 
 ### Fixed
 - `<CheckToggle/>` - fix css when box-sizing is set to border-box from outside [#5571](https://github.com/wix/wix-style-react/pull/5571)
-
 - `<Accordion/>` - fix behavior to close an initially opened item when clicked [#5575](https://github.com/wix/wix-style-react/pull/5575)
 
 ## 8.22.0 - 2020-06-16
-
 ### Fixed
 - `<InputArea/>` - counter not updated when value prop is changed [#5566](https://github.com/wix/wix-style-react/pull/5566)
 - `<Card/>` - using classnames with stylable [#5570](https://github.com/wix/wix-style-react/pull/5570)

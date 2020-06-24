@@ -110,7 +110,7 @@ const tests = [
         props: { children: multipleChildren },
         componentDidMount: async () => {
           const driver = createDriver();
-          await driver.clickRightNavigationButton();
+          await driver.clickNextNavigationButton();
         },
       },
       {
@@ -118,8 +118,8 @@ const tests = [
         props: { children: multipleChildren },
         componentDidMount: async () => {
           const driver = createDriver();
-          await driver.clickRightNavigationButton();
-          await driver.clickRightNavigationButton();
+          await driver.clickNextNavigationButton();
+          await driver.clickNextNavigationButton();
         },
       },
     ],

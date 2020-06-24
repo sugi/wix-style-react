@@ -68,9 +68,16 @@ describe('ModalPreviewLayout', () => {
         closeButtonTooltipText={closeButtonTooltipText}
       />,
     );
-    expect(await driver.getCloseButtonTooltipText()).toBe(
-      closeButtonTooltipText,
-    );
+
+    const tooltipDriver = await driver.getCloseTooltipDriver();
+    expect(await tooltipDriver.getTooltipText()).toBe(closeButtonTooltipText);
+  });
+
+  it('should not render tooltip when not given "closeButtonTooltipText"', async () => {
+    const { driver } = render(<ModalPreviewLayout {...requiredProps} />);
+
+    const tooltipDriver = await driver.getCloseTooltipDriver();
+    expect(await tooltipDriver.tooltipExists()).toBe(false);
   });
 
   it('should render the preview content', async () => {
@@ -131,7 +138,7 @@ describe('ModalPreviewLayout', () => {
       const { driver } = render(
         <ModalPreviewLayout {...requiredProps} {...props} />,
       );
-      await driver.clickRightNavigationButton();
+      await driver.clickNextNavigationButton();
       expect(await driver.getCurrentChildIndex()).toBe(1);
     });
 
@@ -139,42 +146,110 @@ describe('ModalPreviewLayout', () => {
       const { driver } = render(
         <ModalPreviewLayout {...requiredProps} {...props} />,
       );
-      await driver.clickRightNavigationButton();
+      await driver.clickNextNavigationButton();
       expect(await driver.getCurrentChildIndex()).toBe(1);
-      await driver.clickLeftNavigationButton();
+      await driver.clickPrevNavigationButton();
       expect(await driver.getCurrentChildIndex()).toBe(0);
     });
 
-    describe('Tooltips', () => {
-      const nextButtonTooltipText = 'Siguiente';
-      const prevButtonTooltipText = 'Previo';
+    describe('"nextButtonProps" prop', () => {
+      it('should not render tooltip when nextButtonProps is undefined', async () => {
+        const { driver } = render(
+          <ModalPreviewLayout {...requiredProps} {...props} />,
+        );
 
-      it('should render tooltip text when given "nextButtonTooltipText"', async () => {
+        const tooltipDriver = await driver.getNextTooltipDriver();
+
+        expect(await tooltipDriver.tooltipExists()).toBe(false);
+      });
+
+      it('should render tooltip text when given "tooltipText"', async () => {
+        const nextButtonProps = { tooltipText: 'Siguiente' };
+
         const { driver } = render(
           <ModalPreviewLayout
             {...requiredProps}
             {...props}
-            nextButtonTooltipText={nextButtonTooltipText}
+            nextButtonProps={nextButtonProps}
           />,
         );
 
-        expect(await driver.getRightNavigationButtonTooltipText()).toBe(
-          nextButtonTooltipText,
+        const tooltipDriver = await driver.getNextTooltipDriver();
+
+        expect(await tooltipDriver.getTooltipText()).toBe(
+          nextButtonProps.tooltipText,
         );
       });
 
-      it('should render tooltip text when given "prevButtonTooltipText"', async () => {
+      it('should execute onClick function when given', async () => {
+        const nextButtonProps = { onClick: jest.fn() };
+
         const { driver } = render(
           <ModalPreviewLayout
             {...requiredProps}
             {...props}
-            prevButtonTooltipText={prevButtonTooltipText}
+            nextButtonProps={nextButtonProps}
           />,
         );
 
-        await driver.clickRightNavigationButton();
-        expect(await driver.getLeftNavigationButtonTooltipText()).toBe(
-          prevButtonTooltipText,
+        await driver.clickNextNavigationButton();
+        const childIndexDisplayed = await driver.getCurrentChildIndex();
+
+        expect(nextButtonProps.onClick).toHaveBeenCalledWith(
+          childIndexDisplayed,
+        );
+      });
+    });
+
+    describe('"prevButtonProps" prop', () => {
+      it('should not render tooltip when prevButtonProps is undefined', async () => {
+        const { driver } = render(
+          <ModalPreviewLayout {...requiredProps} {...props} />,
+        );
+
+        await driver.clickNextNavigationButton();
+        const tooltipDriver = await driver.getPrevTooltipDriver();
+
+        expect(await tooltipDriver.tooltipExists()).toBe(false);
+      });
+
+      it('should render tooltip text when given "tooltipText"', async () => {
+        const prevButtonProps = { tooltipText: 'Previo' };
+
+        const { driver } = render(
+          <ModalPreviewLayout
+            {...requiredProps}
+            {...props}
+            prevButtonProps={prevButtonProps}
+          />,
+        );
+
+        await driver.clickNextNavigationButton();
+
+        const tooltipDriver = await driver.getPrevTooltipDriver();
+
+        expect(await tooltipDriver.getTooltipText()).toBe(
+          prevButtonProps.tooltipText,
+        );
+      });
+
+      it('should execute onClick function when given', async () => {
+        const prevButtonProps = { onClick: jest.fn() };
+
+        const { driver } = render(
+          <ModalPreviewLayout
+            {...requiredProps}
+            {...props}
+            prevButtonProps={prevButtonProps}
+          />,
+        );
+
+        await driver.clickNextNavigationButton();
+        await driver.clickPrevNavigationButton();
+        const childIndexDisplayed = await driver.getCurrentChildIndex();
+
+        expect(prevButtonProps.onClick).toHaveBeenCalledWith(
+          childIndexDisplayed,
         );
       });
     });

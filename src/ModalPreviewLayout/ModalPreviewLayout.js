@@ -7,6 +7,7 @@ import Tooltip from '../Tooltip';
 import styles from './ModalPreviewLayout.st.css';
 import { dataHooks, modalPreviewIDs, arrowsDirection } from './constants';
 import NavigationButton from './NavigationButton/NavigationButton';
+import deprecationLog from '../utils/deprecationLog';
 
 /** This is a fullscreen modal to present a document to the user overlaying the entire view port */
 class ModalPreviewLayout extends React.PureComponent {
@@ -26,60 +27,105 @@ class ModalPreviewLayout extends React.PureComponent {
     /** boolean to determine whether closing the overlay on click */
     shouldCloseOnOverlayClick: PropTypes.bool,
     /** Tooltip close button text */
-    closeButtonTooltipText: PropTypes.string,
-    /** Tooltip prev button text */
+    closeButtonTooltipText: PropTypes.node,
+    /** this prop is deprecated and should not be used
+     * @deprecated
+     */
     prevButtonTooltipText: PropTypes.string,
-    /** Tooltip next button text */
+    /** this prop is deprecated and should not be used
+     * @deprecated
+     */
     nextButtonTooltipText: PropTypes.string,
+    /** Previous button props
+     * ##### onClick signature:
+     * function(childIndexDisplayed: number) => void
+     * * `childIndexDisplayed`: the index of the child component displayed.
+     */
+    prevButtonProps: PropTypes.shape({
+      onClick: PropTypes.func,
+      tooltipText: PropTypes.node,
+    }),
+    /** Next button props
+     * ##### onClick signature:
+     * function(childIndexDisplayed: number) => void
+     * * `childIndexDisplayed`: the index of the child component displayed.
+     */
+    nextButtonProps: PropTypes.shape({
+      onClick: PropTypes.func,
+      tooltipText: PropTypes.node,
+    }),
   };
 
   static defaultProps = {
     shouldCloseOnOverlayClick: true,
+    nextButtonProps: {},
+    prevButtonProps: {},
   };
 
-  state = { childIndexDisplayed: 0 };
+  constructor(props) {
+    super(props);
+    this.state = { childIndexDisplayed: 0 };
 
-  shouldClose(id) {
+    deprecationLog(
+      'nextButtonTooltipText and prevButtonTooltipText props are deprecated and will be removed as part of the next major version, please use nextButtonProps and prevButtonProps.',
+    );
+  }
+
+  _shouldClose(id) {
     return (
       this.props.shouldCloseOnOverlayClick &&
       [modalPreviewIDs.overlay, modalPreviewIDs.innerOverlay].includes(id)
     );
   }
 
-  _onArrowClick(direction) {
+  _onRightNavigationClick = () => {
     const { childIndexDisplayed } = this.state;
-    direction === arrowsDirection.rightArrow
-      ? this.setState({ childIndexDisplayed: childIndexDisplayed + 1 })
-      : this.setState({ childIndexDisplayed: childIndexDisplayed - 1 });
-  }
+    const { onClick } = this.props.nextButtonProps;
+    const newChildIndexDisplayed = childIndexDisplayed + 1;
+
+    this.setState({ childIndexDisplayed: newChildIndexDisplayed }, () => {
+      onClick && onClick(newChildIndexDisplayed);
+    });
+  };
+
+  _onLeftNavigationClick = () => {
+    const { childIndexDisplayed } = this.state;
+    const { onClick } = this.props.prevButtonProps;
+    const newChildIndexDisplayed = childIndexDisplayed - 1;
+
+    this.setState({ childIndexDisplayed: newChildIndexDisplayed }, () => {
+      onClick && onClick(newChildIndexDisplayed);
+    });
+  };
 
   _onOverlayClick(onClose) {
     return ({ target: { id } }) => {
-      if (this.shouldClose(id) && typeof onClose === 'function') {
+      if (this._shouldClose(id) && typeof onClose === 'function') {
         onClose();
       }
     };
   }
 
   _renderNavigationButtons(hasLeft, hasRight) {
+    const { prevButtonProps, nextButtonProps } = this.props;
+
+    /* will be deprecated in next major */
     const { prevButtonTooltipText, nextButtonTooltipText } = this.props;
 
     return (
       <React.Fragment>
         {hasLeft && (
           <NavigationButton
-            tooltipText={prevButtonTooltipText}
-            dataHook={dataHooks.modalPreviewLeftArrow}
+            tooltipText={prevButtonProps.tooltipText || prevButtonTooltipText}
             direction={arrowsDirection.leftArrow}
-            onClick={() => this._onArrowClick(arrowsDirection.leftArrow)}
+            onClick={this._onLeftNavigationClick}
           />
         )}
         {hasRight && (
           <NavigationButton
-            tooltipText={nextButtonTooltipText}
-            dataHook={dataHooks.modalPreviewRightArrow}
+            tooltipText={nextButtonProps.tooltipText || nextButtonTooltipText}
             direction={arrowsDirection.rightArrow}
-            onClick={() => this._onArrowClick(arrowsDirection.rightArrow)}
+            onClick={this._onRightNavigationClick}
           />
         )}
       </React.Fragment>
@@ -121,25 +167,14 @@ class ModalPreviewLayout extends React.PureComponent {
             {actions}
           </div>
           <div className={styles.closeButton}>
-            {closeButtonTooltipText ? (
-              <Tooltip
-                className={styles.modalTooltip}
-                dataHook={dataHooks.closeButtonTooltip}
-                appendTo="scrollParent"
-                content={<Text>{closeButtonTooltipText}</Text>}
-                placement="bottom"
-              >
-                <IconButton
-                  as="button"
-                  onClick={onClose}
-                  priority="secondary"
-                  skin="transparent"
-                  dataHook={dataHooks.modalPreviewCloseButton}
-                >
-                  <X />
-                </IconButton>
-              </Tooltip>
-            ) : (
+            <Tooltip
+              disabled={!closeButtonTooltipText}
+              className={styles.modalTooltip}
+              dataHook={dataHooks.closeButtonTooltip}
+              appendTo="scrollParent"
+              content={<Text>{closeButtonTooltipText}</Text>}
+              placement="bottom"
+            >
               <IconButton
                 as="button"
                 onClick={onClose}
@@ -149,7 +184,7 @@ class ModalPreviewLayout extends React.PureComponent {
               >
                 <X />
               </IconButton>
-            )}
+            </Tooltip>
           </div>
         </div>
         <div

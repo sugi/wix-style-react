@@ -1,0 +1,35 @@
+:import {
+  -st-from: "../../Tooltip/Tooltip.st.css";
+  -st-default: Tooltip;
+}
+
+:import {
+  -st-from: '../../Foundation/stylable/typography.st.css';
+  -st-named: text-small-normal;
+}
+
+.root {
+  -st-extends: Tooltip;
+  display: inline;
+  overflow: hidden;
+  width: auto;
+  height: -moz-max-content;
+  height: -webkit-max-content;
+}
+
+.root::popoverElement {
+  max-width: 100%;
+  line-height: initial;
+}
+
+.text {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.content {
+  -st-mixin: text-small-normal;
+}

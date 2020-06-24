@@ -5,6 +5,7 @@ import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import Text from '../Text';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 import { dataHooks } from './constants';
+import Box from '../Box';
 
 const isString = a => typeof a === 'string';
 
@@ -70,15 +71,17 @@ class Thumbnail extends React.PureComponent {
     const { size, title, selected, disabled } = this.props;
 
     return (
-      <Text
-        {...styles('bottomTitle', { selected, disabled }, this.props)}
-        dataHook={dataHooks.thumbnailBottomTitle}
-        size={size}
-        tagName="div"
-        weight="thin"
-        ellipsis
-        children={title}
-      />
+      <Box align="center">
+        <Text
+          {...styles('bottomTitle', { selected, disabled }, this.props)}
+          dataHook={dataHooks.thumbnailBottomTitle}
+          size={size}
+          tagName="div"
+          weight="thin"
+          ellipsis
+          children={title}
+        />
+      </Box>
     );
   };
 

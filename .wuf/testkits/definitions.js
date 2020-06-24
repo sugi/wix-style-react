@@ -430,7 +430,6 @@ module.exports = {
   Loader: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,
-    protractorLegacyTestkit: true,
   },
 
   InputArea: {

@@ -3,46 +3,30 @@ import { dataHooks } from '../constants';
 import { tooltipDriverFactory } from '../../Tooltip/Tooltip.uni.driver';
 
 export const modalPreviewLayoutPrivateDriverFactory = (base, body) => {
-  const rightArrow = base.$(
-    `[data-hook="${dataHooks.modalPreviewRightArrow}"]`,
-  );
-  const leftArrow = base.$(`[data-hook="${dataHooks.modalPreviewLeftArrow}"]`);
-
-  const getTooltipDriver = dataHook => {
-    const element = base.$(`[data-hook="${dataHook}"]`);
-    return tooltipDriverFactory(element, body);
-  };
-
-  const nextTooltipDriver = getTooltipDriver(
-    dataHooks.nextNavigationButtonTooltip,
-  );
-
-  const prevTooltipDriver = getTooltipDriver(
-    dataHooks.prevNavigationButtonTooltip,
-  );
-  const closeButtonTooltipDriver = getTooltipDriver(
-    dataHooks.closeButtonTooltip,
-  );
+  const getByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
+  const rightArrow = () => getByDataHook(dataHooks.modalPreviewRightArrow);
+  const leftArrow = () => getByDataHook(dataHooks.modalPreviewLeftArrow);
 
   return {
     ...publicDriverFactory(base),
 
-    clickRightNavigationButton: () => rightArrow.click(),
+    clickNextNavigationButton: rightArrow().click,
 
-    clickLeftNavigationButton: () => leftArrow.click(),
+    clickPrevNavigationButton: leftArrow().click,
 
-    hoverCloseButton: () => closeButtonTooltipDriver.mouseEnter(),
+    getNextTooltipDriver: () => {
+      const element = getByDataHook(dataHooks.nextNavigationButtonTooltip);
+      return tooltipDriverFactory(element, body);
+    },
 
-    hoverRightNavigationButton: () => nextTooltipDriver.mouseEnter(),
+    getPrevTooltipDriver: () => {
+      const element = getByDataHook(dataHooks.prevNavigationButtonTooltip);
+      return tooltipDriverFactory(element, body);
+    },
 
-    hoverLeftNavigationButton: () => prevTooltipDriver.mouseEnter(),
-
-    getCloseButtonTooltipText: () => closeButtonTooltipDriver.getTooltipText(),
-
-    getRightNavigationButtonTooltipText: () =>
-      nextTooltipDriver.getTooltipText(),
-
-    getLeftNavigationButtonTooltipText: () =>
-      prevTooltipDriver.getTooltipText(),
+    getCloseTooltipDriver: () => {
+      const element = getByDataHook(dataHooks.closeButtonTooltip);
+      return tooltipDriverFactory(element, body);
+    },
   };
 };

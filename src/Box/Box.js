@@ -36,12 +36,16 @@ const spacingValues = {
  *   1. A predefined spacing value with semantic name (tiny, small, etc.)
  *   2. Space-separated values that are represented by a string (for example: "3px 3px")
  * */
-const formatSpacingValue = value =>
-  isFinite(value)
-    ? `${value * spacingUnit}px`
-    : spacingValues[value] || `${value}`;
-
-const formatSizeValue = value => (isFinite(value) ? `${value}px` : `${value}`);
+const formatSpacingValue = value => {
+  if (typeof value !== 'undefined')
+    return isFinite(value)
+      ? `${value * spacingUnit}px`
+      : spacingValues[value] || `${value}`;
+};
+const formatSizeValue = value => {
+  if (typeof value !== 'undefined')
+    return isFinite(value) ? `${value}px` : `${value}`;
+};
 
 const Box = ({
   dataHook,
@@ -142,8 +146,17 @@ const Box = ({
     ...nativeStyles,
   };
 
+  // Filter undefined values
+  const rootStylesFiltered = Object.fromEntries(
+    Object.entries(rootStyles).filter(entry => typeof entry[1] !== 'undefined'),
+  );
+
   return (
-    <div data-hook={dataHook} className={rootClassNames} style={rootStyles}>
+    <div
+      data-hook={dataHook}
+      className={rootClassNames}
+      style={rootStylesFiltered}
+    >
       {children}
     </div>
   );
