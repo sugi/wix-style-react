@@ -84,7 +84,6 @@ class Breadcrumbs extends React.PureComponent {
             this.props,
           )}
           onClick={onClick}
-          data-fullwidth={fullWidth}
           children={breadcrumbText(item.value)}
         />
       );
@@ -103,7 +102,6 @@ class Breadcrumbs extends React.PureComponent {
             this.props,
           )}
           onClick={onClick}
-          data-fullwidth={fullWidth}
           children={breadcrumbText(item.value)}
         />
       );
@@ -114,7 +112,6 @@ class Breadcrumbs extends React.PureComponent {
         data-hook={`${DATA_HOOKS.BREADCRUMB_CLICKABLE}-${id}`}
         {...styles(styles.item, { fullWidth }, this.props)}
         onClick={onClick}
-        data-fullwidth={fullWidth}
         children={breadcrumbText(item.customElement)}
       />
     );
