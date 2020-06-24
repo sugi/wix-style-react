@@ -21,7 +21,7 @@ class StarsRatingBar extends React.PureComponent {
 
     this.state = {
       starsRatingBarSize,
-      hoveredStarIndex: -1,
+      hoveredStarIndex: 0,
     };
   }
 
@@ -60,7 +60,7 @@ class StarsRatingBar extends React.PureComponent {
   };
 
   _onMouseLeave = () => {
-    this.setState({ hoveredStarIndex: -1 });
+    this.setState({ hoveredStarIndex: 0 });
   };
 
   _onStarIconClick = ratingValue => {
@@ -100,7 +100,7 @@ class StarsRatingBar extends React.PureComponent {
     const { value } = this.props;
     const { starsRatingBarSize, hoveredStarIndex } = this.state;
 
-    const isStarHovered = hoveredStarIndex != -1;
+    const isStarHovered = hoveredStarIndex !== 0;
     const isFilledStar = isStarHovered
       ? ratingValue <= hoveredStarIndex
       : ratingValue <= value;
