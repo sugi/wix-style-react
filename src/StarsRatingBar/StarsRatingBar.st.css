@@ -3,9 +3,17 @@
   -st-named: Y10, D10-20, D20;
 }
 
+.starsContainer {
+  display: inline-block;
+}
+
 .star {
   -st-states: filled, empty, readOnly, hovered;
   margin-right: 6px;
+}
+
+.starsContainer > *:last-child {
+  margin-right: 0;
 }
 
 .star:filled {
@@ -30,5 +38,5 @@
 .rateCaption {
   display: inline-block;
   vertical-align: top;
-  margin: 10px 0 0 12px;
+  margin: 10px 0 0 18px;
 }
