@@ -2,6 +2,7 @@ import React, { useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { getScrollPositionY } from './scrollPositionLogic';
+import { extractDataAttributes } from '../../utils/extractAttributes';
 
 const ScrollableContainer = ({
   dataHook,
@@ -11,6 +12,7 @@ const ScrollableContainer = ({
   onScrollPositionChanged,
   onScrollChanged,
   scrollThrottleWait,
+  ...restProps
 }) => {
   const scrollContainerElement = useRef(null);
   const scrollPositionY = useRef('');
@@ -81,6 +83,7 @@ const ScrollableContainer = ({
       className={className}
       style={stl}
       ref={scrollContainerElement}
+      {...extractDataAttributes(restProps)}
     >
       {children}
     </div>
