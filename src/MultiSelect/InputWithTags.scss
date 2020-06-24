@@ -132,7 +132,8 @@
   flex-wrap: wrap;
 
   .draggedTag {
-    background-color: transparentize($B30, 0.2);
+    background-color: $B30;
+    opacity: 0.9
   }
 
   .draggedTagPlaceholder {

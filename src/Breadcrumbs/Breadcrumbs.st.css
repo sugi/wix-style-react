@@ -59,7 +59,7 @@
 }
 
 .root:theme(onDarkBackground) .item:not(:active):not(:disabled):hover {
-  -st-mixin: breadcrumbsHover( color D60, transparentize($D80, .9));
+  -st-mixin: breadcrumbsHover( color D60,backgroundColor (value(D80)-10));
 }
 
 .root:theme(onDarkBackground) .item {

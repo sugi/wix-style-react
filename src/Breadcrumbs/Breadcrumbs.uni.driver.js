@@ -30,19 +30,22 @@ export const breadcrumbsUniDriverFactory = base => {
     },
 
     /** fulfilled if breadcrumbs component is large */
-    isLarge: async () => base.hasClass('large'),
+    isLarge: async () => (await base.attr('data-size')) === 'large',
 
     /** fulfilled if breadcrumbs component is medium */
-    isMedium: async () => base.hasClass('medium'),
+    isMedium: async () => (await base.attr('data-size')) === 'medium',
 
     /** fulfilled if breadcrumbs component is on white background */
-    isOnWhiteBackground: async () => base.hasClass('onWhiteBackground'),
+    isOnWhiteBackground: async () =>
+      (await base.attr('data-theme')) === 'onWhiteBackground',
 
     /** fulfilled if breadcrumbs component is on gray background */
-    isOnGrayBackground: async () => base.hasClass('onGrayBackground'),
+    isOnGrayBackground: async () =>
+      (await base.attr('data-theme')) === 'onGrayBackground',
 
     /** fulfilled if breadcrumbs component is on dark background */
-    isOnDarkBackground: async () => base.hasClass('onDarkBackground'),
+    isOnDarkBackground: async () =>
+      (await base.attr('data-theme')) === 'onDarkBackground',
 
     /** returns breadcrumbs component classes */
     getLabelClassList: async position => {

@@ -1,5 +1,4 @@
 import ReactTestUtils from 'react-dom/test-utils';
-import { isClassExists } from '../../test/utils';
 
 const breadcrumbsDriverFactory = ({ element }) => {
   const optionAt = position => element.childNodes[position];
@@ -21,7 +20,7 @@ const breadcrumbsDriverFactory = ({ element }) => {
 
     /** return the active breadcrumb item position or return null if no active item exists */
     getActiveItemId: () => {
-      const activeItem = element.querySelector('.active');
+      const activeItem = element.querySelector('[data-active="true"]');
 
       if (!activeItem) {
         return null;
@@ -31,19 +30,22 @@ const breadcrumbsDriverFactory = ({ element }) => {
     },
 
     /** fulfilled if breadcrumbs component is large */
-    isLarge: () => isClassExists(element, 'large'),
+    isLarge: () => element.getAttribute('data-size') === 'large',
 
     /** fulfilled if breadcrumbs component is medium */
-    isMedium: () => isClassExists(element, 'medium'),
+    isMedium: () => element.getAttribute('data-size') === 'medium',
 
     /** fulfilled if breadcrumbs component is on white background */
-    isOnWhiteBackground: () => isClassExists(element, 'onWhiteBackground'),
+    isOnWhiteBackground: () =>
+      element.getAttribute('data-theme') === 'onWhiteBackground',
 
     /** fulfilled if breadcrumbs component is on gray background */
-    isOnGrayBackground: () => isClassExists(element, 'onGrayBackground'),
+    isOnGrayBackground: () =>
+      element.getAttribute('data-theme') === 'onGrayBackground',
 
     /** fulfilled if breadcrumbs component is on dark background */
-    isOnDarkBackground: () => isClassExists(element, 'onDarkBackground'),
+    isOnDarkBackground: () =>
+      element.getAttribute('data-theme') === 'onDarkBackground',
 
     /** returns breadcrumbs component classes */
     getLabelClassList: position =>
