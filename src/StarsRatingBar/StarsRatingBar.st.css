@@ -3,9 +3,6 @@
   -st-named: Y10, D10-20, D20;
 }
 
-.root {
-}
-
 .star {
   -st-states: filled, empty, readOnly, hovered;
 }
