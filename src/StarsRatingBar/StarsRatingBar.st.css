@@ -5,6 +5,7 @@
 
 .star {
   -st-states: filled, empty, readOnly, hovered;
+  margin-right: 6px;
 }
 
 .star:filled {
@@ -13,6 +14,9 @@
 
 .star:empty {
   color: value(Y10);
+}
+.star:readOnly {
+  margin-right: 0;
 }
 
 .star:readOnly:empty {
@@ -26,5 +30,5 @@
 .rateCaption {
   display: inline-block;
   vertical-align: top;
-  margin: 10px 0 0 18px;
+  margin: 10px 0 0 12px;
 }
