@@ -5,7 +5,6 @@
 
 :vars {
   zIndex_NOTIFICATION: 4000;
-  maxHeight: 72px; /* considering that notification label should be no longer than two lines */
 }
 
 .root {
