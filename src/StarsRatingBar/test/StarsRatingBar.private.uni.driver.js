@@ -5,8 +5,6 @@ export const starsRatingBarPrivateDriverFactory = (base, body) => {
   return {
     ...publicDriverFactory(base, body),
 
-    // Add here driver methods that considered "private"
-
     /** Get displayed caption label */
     getDisplayedRatingCaptionLabel: async () =>
       await base.$(`[data-hook="${dataHooks.ratingCaption}"]`).text(),
@@ -14,5 +12,8 @@ export const starsRatingBarPrivateDriverFactory = (base, body) => {
     /** Is the rating caption exist */
     isRatingCaptionExists: async () =>
       await base.$(`[data-hook="${dataHooks.ratingCaption}"]`).exists(),
+
+    /** Hover on a star  */
+    hoverOnStar: async id => await base.$(`[data-index="${id}"]`).hover(),
   };
 };

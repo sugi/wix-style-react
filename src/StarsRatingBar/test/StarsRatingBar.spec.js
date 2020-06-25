@@ -32,7 +32,6 @@ describe(StarsRatingBar.displayName, () => {
         <StarsRatingBar value={3} rateCaptions={rateCaptions} />,
       );
 
-      expect(await driver.isRatingCaptionExists()).toBeTruthy();
       expect(await driver.getDisplayedRatingCaptionLabel()).toEqual('ok');
     });
 
@@ -61,7 +60,14 @@ describe(StarsRatingBar.displayName, () => {
   });
 
   describe('hover', () => {
-    it('should show correct value on hover', async () => {});
+    it('should show correct value on hover', async () => {
+      const { driver } = render(<StarsRatingBar value={0} />);
+
+      expect(await driver.getSelectedRating()).toEqual(0);
+
+      await driver.hoverOnStar(3);
+      expect(await driver.getSelectedRating()).toEqual(3);
+    });
 
     it('should display the rate caption of the hovered star', async () => {});
   });
