@@ -19,12 +19,6 @@ describe(StarsRatingBar.displayName, () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should be displayed in interactive mode', async () => {
-    const { driver } = render(<StarsRatingBar value={1} />);
-  });
-
-  it('should be displayed in read only mode', async () => {});
-
   describe('rate caption', () => {
     it('should display the correct rate caption', async () => {
       const rateCaptions = ['bad', 'not good', 'ok', 'good', 'excellent'];
@@ -39,13 +33,6 @@ describe(StarsRatingBar.displayName, () => {
       const { driver } = render(<StarsRatingBar value={2} />);
 
       expect(await driver.isRatingCaptionExists()).toBeFalsy();
-    });
-
-    it('should not display a rate caption in readOnly mode', async () => {
-      // const rateCaptions = ['bad', 'not good', 'ok', 'good', 'excellent' ];
-      // const { driver } = render(<StarsRatingBar readOnly value={3} rateCaptions={rateCaptions} />);
-      //
-      // expect(await driver.isRatingCaptionExists()).toBeFalsy();
     });
   });
 
