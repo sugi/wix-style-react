@@ -7,14 +7,23 @@ import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
 function starsRatingBarWithMandatoryProps() {
-  return <StarsRatingBar />;
+  return (
+    <StarsRatingBar
+      value={2}
+    />
+  );
 }
 
 function starsRatingBarWithAllProps() {
   return (
     <StarsRatingBar
-      dataHook="dataHook"
-      className="className"
+      dataHook="star-rating-bar"
+      className="star-rating-bar"
+      size="large"
+      readOnly={false}
+      rateCaptions={['very bad', 'bad', 'ok', 'good', 'very good']}
+      value={2}
+      onChange={() => {}}
     />
   );
 }
