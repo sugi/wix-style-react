@@ -243,9 +243,18 @@ class InputArea extends React.PureComponent {
       computedStyle.getPropertyValue('line-height'),
       10,
     );
-    const lineHeightValue = isNaN(lineHeight)
-      ? this._getDefaultLineHeight() * fontSize
-      : lineHeight;
+    let lineHeightValue;
+
+    if (isNaN(lineHeight)) {
+      if (isNaN(fontSize)) {
+        return InputArea.MIN_ROWS;
+      }
+
+      lineHeightValue = this._getDefaultLineHeight() * fontSize;
+    } else {
+      lineHeightValue = lineHeight;
+    }
+
     return Math.floor(this.textArea.scrollHeight / lineHeightValue);
   };
 
