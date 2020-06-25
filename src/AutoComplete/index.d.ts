@@ -1,3 +1,4 @@
+import * as React from 'react';
 import InputWithOptions, {
   ManualInputFnSignature,
   OnSelectFnSignature,
@@ -7,7 +8,7 @@ import { DropdownLayoutValueOption } from '../DropdownLayout';
 
 export interface AutoCompleteProps extends InputWithOptionsProps {
   predicate?: (option: DropdownLayoutValueOption) => boolean;
-  emptyStateMessage?: string;
+  emptyStateMessage?: React.ReactNode;
 }
 
 export default class AutoComplete extends InputWithOptions<
