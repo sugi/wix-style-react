@@ -28,6 +28,8 @@ const modalDriverFactory = ({ element }) => {
       const button = getCloseButton();
       ReactTestUtils.Simulate.click(button);
     },
+    /** returns the element of the modal content (helpful to initialize a layout testkit) */
+    getContent,
     getContentStyle: () => getContent().style,
     /** returns the modal aria-label value as given in contentLabel property */
     getContentLabel: () => getContent().getAttribute('aria-label'),

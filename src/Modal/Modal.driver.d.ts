@@ -10,6 +10,7 @@ export interface ModalDriver<T> extends BaseDriver {
   closeButtonExists: () => boolean;
   clickOnOverlay: () => boolean;
   clickOnCloseButton: () => boolean;
+  getContent: () => Element;
   getContentStyle: () => CSSStyleDeclaration;
   getContentLabel: () => string | null;
   getZIndex: () => string | null;
