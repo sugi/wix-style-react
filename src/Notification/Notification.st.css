@@ -10,8 +10,8 @@
 
 .root {
   -st-states: theme(enum(standard, error, success,warning,premium )), type(enum(local, global, sticky));
-  /*position: relative;*/
-  /*z-index: value(zIndex_NOTIFICATION);*/
+  position: relative;
+  z-index: value(zIndex_NOTIFICATION);
 }
 
 .animatorContent > * {
@@ -50,24 +50,25 @@
   background-color: value(P20);
 }
 
-/*!* Positions *!*/
-/*.root:type(local) .animatorContent {*/
-/*  position: absolute;*/
-/*  right: 0;*/
-/*  left: 0;*/
-/*}*/
 
-/*.root:type(global) .animatorContent{*/
-/*  position: relative;*/
-/*  width: 100%;*/
-/*}*/
+/* Positions */
+.root:type(local) .animator {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
 
-/*.root:type(sticky) .animatorContent{*/
-/*  position: fixed;*/
-/*  right: 0;*/
-/*  width: 100%;*/
-/*  top: 0;*/
-/*}*/
+.root:type(global) .animator {
+  position: relative;
+  width: 100%;
+}
+
+.root:type(sticky) .animator{
+  position: fixed;
+  right: 0;
+  width: 100%;
+  top: 0;
+}
 
 
 .labelWrapper {

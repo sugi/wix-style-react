@@ -139,6 +139,7 @@ class Notification extends React.PureComponent {
       >
         <Animator
           show={show}
+          className={styles.animator}
           childClassName={styles.animatorContent}
           timing="medium"
           height={heightCalculation}
@@ -169,7 +170,6 @@ class Notification extends React.PureComponent {
             </div>
           </div>
         </Animator>
-        tetetete
       </div>
     );
   }
