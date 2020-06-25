@@ -46,6 +46,10 @@ class InputArea extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    this._updateComputedStyle.cancel();
+  }
+
   render() {
     const {
       dataHook,
