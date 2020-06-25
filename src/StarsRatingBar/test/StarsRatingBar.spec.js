@@ -32,7 +32,7 @@ describe(StarsRatingBar.displayName, () => {
         <StarsRatingBar value={3} rateCaptions={rateCaptions} />,
       );
 
-      expect(await driver.getDisplayedRatingCaptionLabel()).toEqual('ok');
+      expect(await driver.getDisplayedRateCaptionLabel()).toEqual('ok');
     });
 
     it('should not display a rate caption', async () => {
@@ -69,6 +69,16 @@ describe(StarsRatingBar.displayName, () => {
       expect(await driver.getSelectedRating()).toEqual(3);
     });
 
-    it('should display the rate caption of the hovered star', async () => {});
+    it('should display the rate caption of the hovered star', async () => {
+      const rateCaptions = ['bad', 'not good', 'ok', 'good', 'excellent'];
+      const { driver } = render(
+        <StarsRatingBar value={3} rateCaptions={rateCaptions} />,
+      );
+
+      expect(await driver.getSelectedRating()).toEqual(3);
+
+      await driver.hoverOnStar(4);
+      expect(await driver.getDisplayedRateCaptionLabel()).toEqual('good');
+    });
   });
 });

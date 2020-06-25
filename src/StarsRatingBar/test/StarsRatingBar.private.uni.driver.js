@@ -6,7 +6,7 @@ export const starsRatingBarPrivateDriverFactory = (base, body) => {
     ...publicDriverFactory(base, body),
 
     /** Get displayed caption label */
-    getDisplayedRatingCaptionLabel: async () =>
+    getDisplayedRateCaptionLabel: async () =>
       await base.$(`[data-hook="${dataHooks.ratingCaption}"]`).text(),
 
     /** Is the rating caption exist */
