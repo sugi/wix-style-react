@@ -52,7 +52,7 @@ export default {
           description({
             title: 'Description',
             text:
-              'This component let the users the ability to share their opinion about any requested subject.',
+              'This component let the users the ability to share their opinion about any requested subject on a 1-5 scale.',
           }),
 
           importExample(),
