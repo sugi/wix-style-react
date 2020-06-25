@@ -19,7 +19,9 @@ describe(StarsRatingBar.displayName, () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should be displayed in interactive mode', async () => {});
+  it('should be displayed in interactive mode', async () => {
+    const { driver } = render(<StarsRatingBar value={1} />);
+  });
 
   it('should be displayed in read only mode', async () => {});
 
@@ -27,7 +29,15 @@ describe(StarsRatingBar.displayName, () => {
 
   it('should not display a rate caption', async () => {});
 
-  it('should select a rating', async () => {});
+  it('should select a rating', async () => {
+    const onChange = jest.fn();
+    const { driver } = render(<StarsRatingBar value={0} onChange={onChange} />);
+
+    expect(await driver.getSelectedRating()).toEqual(0);
+
+    await driver.selectRating(4);
+    expect(onChange.mock.calls.length).toEqual(1);
+  });
 
   describe('Hover', () => {
     it('should show correct value on hover', async () => {});
