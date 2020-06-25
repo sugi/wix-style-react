@@ -21,6 +21,7 @@ class MessageBoxFunctionalLayout extends React.PureComponent {
 
   componentWillUnmount() {
     if (this.state.hasScroll) {
+      this._handleMessageBoxScroll.cancel();
       this.messageBoxRef.removeEventListener(
         'scroll',
         this._handleMessageBoxScroll,

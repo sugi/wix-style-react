@@ -52,12 +52,14 @@ const ScrollableContainer = ({
     return () => {
       // Unregistering from relevant events on component unmount
       if (onScrollPositionChanged) {
+        handleScrollPositionChanged.cancel();
         scrollableElement.removeEventListener(
           'scroll',
           handleScrollPositionChanged,
         );
       }
       if (onScrollChanged) {
+        handleScrollChanged.cancel();
         scrollableElement.removeEventListener('scroll', handleScrollChanged);
       }
     };
