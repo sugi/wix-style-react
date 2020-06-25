@@ -78,7 +78,7 @@ describe('Autocomplete', () => {
         <AutoComplete
           options={options}
           predicate={() => false}
-          emptyStateMessage={emptyStateMessage}
+          emptyStateMessage={<div>{emptyStateMessage}</div>}
         />,
       );
 

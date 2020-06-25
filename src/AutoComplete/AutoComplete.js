@@ -11,7 +11,7 @@ class AutoComplete extends InputWithOptions {
     predicate: PropTypes.func,
 
     /** The message to be displayed instead of options, when no options exist, or no options pass the predicate filter function */
-    emptyStateMessage: PropTypes.string,
+    emptyStateMessage: PropTypes.node,
   };
 
   static defaultProps = {
