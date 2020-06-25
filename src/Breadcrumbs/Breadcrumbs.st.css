@@ -1,6 +1,6 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D80, D30, B40, D60, D50;
+  -st-named: D80, D30, B40, D60, D50, D80-10;
 }
 
 .root{
