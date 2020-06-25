@@ -25,9 +25,30 @@ describe(StarsRatingBar.displayName, () => {
 
   it('should be displayed in read only mode', async () => {});
 
-  it('should display the correct rate caption', async () => {});
+  describe('rate caption', () => {
+    it('should display the correct rate caption', async () => {
+      const rateCaptions = ['bad', 'not good', 'ok', 'good', 'excellent'];
+      const { driver } = render(
+        <StarsRatingBar value={3} rateCaptions={rateCaptions} />,
+      );
 
-  it('should not display a rate caption', async () => {});
+      expect(await driver.isRatingCaptionExists()).toBeTruthy();
+      expect(await driver.getDisplayedRatingCaptionLabel()).toEqual('ok');
+    });
+
+    it('should not display a rate caption', async () => {
+      const { driver } = render(<StarsRatingBar value={2} />);
+
+      expect(await driver.isRatingCaptionExists()).toBeFalsy();
+    });
+
+    it('should not display a rate caption in readOnly mode', async () => {
+      // const rateCaptions = ['bad', 'not good', 'ok', 'good', 'excellent' ];
+      // const { driver } = render(<StarsRatingBar readOnly value={3} rateCaptions={rateCaptions} />);
+      //
+      // expect(await driver.isRatingCaptionExists()).toBeFalsy();
+    });
+  });
 
   it('expect onChange to be called after selecting a rating', async () => {
     const onChange = jest.fn();
@@ -39,7 +60,7 @@ describe(StarsRatingBar.displayName, () => {
     expect(onChange.mock.calls.length).toEqual(1);
   });
 
-  describe('Hover', () => {
+  describe('hover', () => {
     it('should show correct value on hover', async () => {});
 
     it('should display the rate caption of the hovered star', async () => {});

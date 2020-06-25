@@ -177,7 +177,13 @@ class StarsRatingBar extends React.PureComponent {
 
     return (
       <div className={styles.rateCaption}>
-        <Text ellipsis size="small" weight="bold" secondary>
+        <Text
+          dataHook={dataHooks.ratingCaption}
+          ellipsis
+          size="small"
+          weight="bold"
+          secondary
+        >
           {rateCaptionCurrentLabel}
         </Text>
       </div>
