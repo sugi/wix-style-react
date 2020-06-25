@@ -8,6 +8,21 @@ const commonProps = {
 
 const tests = [
   {
+    describe: 'modes',
+    its: [
+      {
+        it: 'interactive',
+        props: {},
+      },
+      {
+        it: 'read only',
+        props: {
+          readOnly: true,
+        },
+      },
+    ],
+  },
+  {
     describe: 'size',
     its: [
       {
