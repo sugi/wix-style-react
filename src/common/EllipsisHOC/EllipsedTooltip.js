@@ -4,7 +4,7 @@ import shallowEqual from 'shallowequal';
 import debounce from 'lodash/debounce';
 import Tooltip from '../../Tooltip';
 import { getDisplayName } from '../hocUtils';
-import styles from './EllipsedTooltip.st.css';
+import { st, classes } from './EllipsedTooltip.st.css';
 
 class StateFullComponentWrap extends React.Component {
   render() {
@@ -55,7 +55,7 @@ class EllipsedTooltip extends React.Component {
     const { component, style } = this.props;
     return (
       <StateFullComponentWrap
-        {...styles('text', {}, component.props)}
+        className={st(classes.text, component.props.className)}
         style={{
           ...style,
           whiteSpace: 'nowrap',
@@ -76,9 +76,12 @@ class EllipsedTooltip extends React.Component {
         <Tooltip
           appendTo="scrollParent"
           {...tooltipProps}
-          {...styles('root', {}, tooltipProps || this.props)}
+          className={st(
+            classes.root,
+            tooltipProps ? tooltipProps.className : this.props.className,
+          )}
           content={
-            <div className={styles.content}>{this.textNode.textContent}</div>
+            <div className={classes.content}>{this.textNode.textContent}</div>
           }
           showArrow
         >
