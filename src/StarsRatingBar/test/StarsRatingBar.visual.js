@@ -3,17 +3,56 @@ import { storiesOf } from '@storybook/react';
 import StarsRatingBar from '../StarsRatingBar';
 
 const commonProps = {
-  // use for repeated props across the tests (e.g. {buttonText: 'examples.js'})
+  value: 3,
 };
 
 const tests = [
   {
-    describe: 'sanity', // prop name (e.g. size)
+    describe: 'size',
     its: [
       {
-        it: 'default', // prop variation (e.g. small)
+        it: 'tiny- (read only mode)',
         props: {
-          // the simulation (e.g. {size: "small"})
+          size: 'tiny',
+          readOnly: true,
+        },
+      },
+      {
+        it: 'small- (read only mode)',
+        props: {
+          size: 'small',
+          readOnly: true,
+        },
+      },
+      {
+        it: 'medium- (read only mode)',
+        props: {
+          size: 'medium',
+          readOnly: true,
+        },
+      },
+      {
+        it: 'large- (read only mode)',
+        props: {
+          size: 'large',
+          readOnly: true,
+        },
+      },
+      {
+        it: 'large - (interactive mode)',
+        props: {
+          size: 'large',
+        },
+      },
+    ],
+  },
+  {
+    describe: 'rate captions',
+    its: [
+      {
+        it: 'example',
+        props: {
+          rateCaptions: ['bad', 'not good', 'ok', 'good', 'excellent'],
         },
       },
     ],
