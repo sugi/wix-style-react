@@ -29,7 +29,7 @@ describe(StarsRatingBar.displayName, () => {
 
   it('should not display a rate caption', async () => {});
 
-  it('should select a rating', async () => {
+  it('expect onChange to be called after selecting a rating', async () => {
     const onChange = jest.fn();
     const { driver } = render(<StarsRatingBar value={0} onChange={onChange} />);
 
